@@ -1,0 +1,10 @@
+/* Design tokens: the only place colours, type, radii and spacing are defined.
+   Ivory + forest green. Gold only for the eye drawing and small labels. Warm-brown text. No red. */
+:root{
+  --bg:#FBF7EF; --card:#FFFDF8; --soft:#EEF1E8; --line:#E7E0D2; --line-2:#D9CFBC;
+  --green:#2F5D4A; --green-2:#3B7059; --green-dark:#24483A;
+  --gold:#B8893A; --gold-text:#87621F; --gold-bg:#F6EBD5;
+  --ink:#2B2620; --body:#3D3630; --mute:#6A6057;
+  --f:"Anek Gujarati Variable","Anek Gujarati",system-ui,sans-serif;
+  --r:16px; --pad:24px; --gap:16px; --sec:80px;
+}

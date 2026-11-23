@@ -1,0 +1,290 @@
+// The six treatment pages, in Gujarati and English.
+// Clinic-specific claims come only from Dr. Shah's confirmed facts (docs/QUESTIONS.md).
+// General medical explanations and all FAQs are DRAFTS awaiting Dr. Shah's approval (docs/INFO-AUDIT.md).
+import type { L } from "./site";
+
+export type Part = "lens" | "nerve" | "retina" | "cornea" | "surface";
+export type Section = { h: L; p?: L; list?: L<string[]>; note?: L; lenses?: { name: L; d: L }[] };
+export type Treatment = {
+  slug: string;
+  icon: string;
+  part: Part;
+  photo?: "ot";
+  name: L;
+  chip: L;
+  card: L;
+  title: L;
+  description: L;
+  intro: L;
+  partNote: L;
+  sections: Section[];
+  faqs: { q: L; a: L }[];
+};
+
+const SIGNS_NOTE: L = {
+  gu: "આ લક્ષણોનાં બીજાં કારણો પણ હોઈ શકે. ફક્ત આંખની તપાસથી જ ખબર પડે.",
+  en: "These signs can have other causes. Only an eye examination can tell.",
+};
+
+export const TREATMENTS: Treatment[] = [
+  {
+    slug: "cataract-surgery",
+    icon: "i-cataract",
+    part: "lens",
+    photo: "ot",
+    name: { gu: "મોતિયાનું ઓપરેશન", en: "Cataract surgery" },
+    chip: { gu: "મોતિયો", en: "Cataract" },
+    card: {
+      gu: "પોતાના થિયેટરમાં ટાંકા વગરનું ફેકો ઓપરેશન — મોનોફોકલ, ટોરિક કે મલ્ટિફોકલ લેન્સ સાથે.",
+      en: "Stitchless phaco surgery in our own theatre, with a monofocal, toric or multifocal lens.",
+    },
+    title: { gu: "જામનગરમાં મોતિયાનું ઓપરેશન", en: "Cataract surgery in Jamnagar" },
+    description: {
+      gu: "સુભમ્ આઈ ક્લિનિક, જામનગરમાં ડૉ. રાજીવ શાહ દ્વારા ક્લિનિકના પોતાના ઓપરેશન થિયેટરમાં ટાંકા વગરનું ફેકો મોતિયાનું ઓપરેશન. મોનોફોકલ, ટોરિક અને મલ્ટિફોકલ લેન્સ.",
+      en: "Stitchless phaco cataract surgery by Dr. Rajeev Shah in the clinic’s own operation theatre at Subham Eye Clinic, Jamnagar. Monofocal, toric and multifocal lenses.",
+    },
+    intro: {
+      gu: "આંખની અંદરનો કુદરતી લેન્સ ધૂંધળો થઈ જાય તેને મોતિયો કહે છે. ઉંમર સાથે તે સામાન્ય છે. ઓપરેશનથી ધૂંધળો લેન્સ કાઢીને તેની જગ્યાએ સ્વચ્છ કૃત્રિમ લેન્સ મૂકવામાં આવે છે.",
+      en: "A cataract is when the natural lens inside the eye becomes cloudy. It is common with age. It is treated by surgery that replaces the cloudy lens with a clear artificial lens.",
+    },
+    partNote: { gu: "મોતિયો: આંખની અંદરનો લેન્સ ધૂંધળો થઈ જાય.", en: "Cataract: the lens inside the eye becomes cloudy." },
+    sections: [
+      {
+        h: { gu: "આ લક્ષણો દેખાઈ શકે", en: "Signs you may notice" },
+        list: {
+          gu: ["ઝાંખું કે ધૂંધળું દેખાવું", "લાઇટથી ચમક લાગવી, ખાસ કરીને રાત્રે", "રંગો ફિક્કા દેખાવા", "ચશ્માના નંબર વારંવાર બદલાવા"],
+          en: ["Blurred or cloudy vision", "Glare from lights, especially at night", "Colours look faded", "Your glasses number keeps changing"],
+        },
+        note: SIGNS_NOTE,
+      },
+      {
+        h: { gu: "સુભમ્ આઈ ક્લિનિકમાં ઓપરેશન", en: "Surgery at Subham Eye Clinic" },
+        p: {
+          gu: "ડૉ. શાહ ક્લિનિકના પોતાના ઓપરેશન થિયેટરમાં ફેકો ઓપરેશન કરે છે. નાના છેદમાંથી અલ્ટ્રાસાઉન્ડ વડે ધૂંધળો લેન્સ કાઢવામાં આવે છે અને વાળેલો લેન્સ આંખમાં મૂકવામાં આવે છે. સામાન્ય રીતે ટાંકાની જરૂર પડતી નથી.",
+          en: "Dr. Shah performs phaco surgery in the clinic’s own operation theatre. The cloudy lens is removed through a small opening using ultrasound, and a folded lens is placed inside the eye. The opening usually needs no stitches.",
+        },
+      },
+      {
+        h: { gu: "લેન્સના પ્રકાર", en: "Lens options" },
+        lenses: [
+          { name: { gu: "મોનોફોકલ", en: "Monofocal" }, d: { gu: "એક અંતરે, સામાન્ય રીતે દૂરનું, સ્પષ્ટ દેખાય. વાંચવા માટે સામાન્ય રીતે ચશ્મા જોઈએ.", en: "Clear vision at one distance, usually far. Reading glasses are usually still needed." } },
+          { name: { gu: "ટોરિક", en: "Toric" }, d: { gu: "સિલિન્ડર નંબર (એસ્ટિગ્મેટિઝમ) પણ સુધારે.", en: "Also corrects astigmatism (a cylindrical number)." } },
+          { name: { gu: "મલ્ટિફોકલ / EDOF", en: "Multifocal / EDOF" }, d: { gu: "એકથી વધુ અંતરે ચશ્માની જરૂર ઘટાડવાનો હેતુ. દરેક આંખ માટે યોગ્ય ન પણ હોય.", en: "Aims to reduce the need for glasses at more than one distance. Not suitable for every eye." } },
+        ],
+        note: { gu: "આંખની તપાસ પછી ડૉ. શાહ જણાવશે કે આપના માટે કયો લેન્સ યોગ્ય છે.", en: "After examining your eyes, Dr. Shah will advise which lens suits you." },
+      },
+      {
+        h: { gu: "ઓપરેશન પછી", en: "After surgery" },
+        p: {
+          gu: "ઓપરેશન પછીના દિવસો માટે ટીપાં અને સ્પષ્ટ સૂચનાઓ આપવામાં આવે છે, અને ફરી બતાવવાનો સમય નક્કી કરવામાં આવે છે. ક્લિનિકમાં આપેલી સૂચનાઓનું પાલન કરો.",
+          en: "You are given eye drops and clear instructions for the days after surgery, and follow-up visits are arranged. Please follow the instructions given at the clinic.",
+        },
+      },
+    ],
+    faqs: [
+      { q: { gu: "શું ઓપરેશન ક્લિનિકમાં જ થાય છે?", en: "Is the operation done at the clinic itself?" }, a: { gu: "હા. ડૉ. શાહ ક્લિનિકના પોતાના ઓપરેશન થિયેટરમાં મોતિયાનું ઓપરેશન કરે છે.", en: "Yes. Dr. Shah performs cataract surgery in the clinic’s own operation theatre." } },
+      { q: { gu: "મોતિયાનું ઓપરેશન ક્યારે કરાવવું?", en: "When should a cataract be operated?" }, a: { gu: "મોતિયો 'પાકે' તેની રાહ જોવાની જરૂર નથી. ઝાંખું દેખાવાથી રોજિંદા કામમાં તકલીફ પડવા લાગે ત્યારે સામાન્ય રીતે ઓપરેશનની સલાહ અપાય છે — તપાસ પછી ડૉ. શાહ સલાહ આપશે.", en: "There is no need to wait for a cataract to become ‘ripe’. Surgery is usually advised when blurred vision starts to affect daily life — Dr. Shah will advise after an examination." } },
+      { q: { gu: "શું ટાંકા લેવા પડે છે?", en: "Are stitches needed?" }, a: { gu: "ફેકો ઓપરેશન નાના છેદમાંથી થાય છે, જેમાં સામાન્ય રીતે ટાંકાની જરૂર પડતી નથી.", en: "Phaco surgery is done through a small opening that usually needs no stitches." } },
+      { q: { gu: "મારા માટે કયો લેન્સ યોગ્ય છે?", en: "Which lens is right for me?" }, a: { gu: "મોનોફોકલ, ટોરિક અને મલ્ટિફોકલ/EDOF લેન્સ ઉપલબ્ધ છે. આંખની તપાસ પછી ડૉ. શાહ જણાવે છે કે આપના માટે કયો યોગ્ય છે.", en: "Monofocal, toric and multifocal/EDOF lenses are available. Dr. Shah advises which suits you after examining your eyes." } },
+      { q: { gu: "શું મેડિક્લેમ ચાલે છે?", en: "Is mediclaim accepted?" }, a: { gu: "હા, રિઈમ્બર્સમેન્ટથી: વીમા કંપની પાસે ક્લેમ કરવા માટેના બધા કાગળો ક્લિનિક આપે છે. કેશલેસ સુવિધા નથી.", en: "Yes, by reimbursement: the clinic gives you all the papers to claim from your insurer. Cashless treatment is not available." } },
+    ],
+  },
+  {
+    slug: "glaucoma",
+    icon: "i-glaucoma",
+    part: "nerve",
+    name: { gu: "ઝામર (ગ્લુકોમા)", en: "Glaucoma" },
+    chip: { gu: "ઝામર", en: "Glaucoma" },
+    card: { gu: "આંખના દબાણની તપાસ, ટીપાં અને ઝામરનું ઓપરેશન.", en: "Eye-pressure checks, drops and glaucoma surgery." },
+    title: { gu: "જામનગરમાં ઝામર (ગ્લુકોમા)ની સારવાર", en: "Glaucoma care in Jamnagar" },
+    description: {
+      gu: "સુભમ્ આઈ ક્લિનિક, જામનગરમાં ડૉ. રાજીવ શાહ દ્વારા ઝામરની સારવાર: આંખના દબાણની તપાસ, ટીપાં અને ક્લિનિકના પોતાના થિયેટરમાં ઝામરનું ઓપરેશન.",
+      en: "Glaucoma care by Dr. Rajeev Shah at Subham Eye Clinic, Jamnagar: eye-pressure checks, eye drops and glaucoma surgery in the clinic’s own operation theatre.",
+    },
+    intro: {
+      gu: "ઝામર (ગ્લુકોમા) એ આંખની એવી તકલીફ છે જેમાં ઑપ્ટિક નર્વને નુકસાન થાય છે, ઘણી વાર આંખનું દબાણ વધવાથી. ઝામરથી ગયેલી દૃષ્ટિ પાછી આવતી નથી, એટલે વહેલી ખબર પડવી જરૂરી છે.",
+      en: "Glaucoma is a group of eye conditions that damage the optic nerve, often because of high pressure inside the eye. Vision lost to glaucoma cannot be brought back, so finding it early matters.",
+    },
+    partNote: { gu: "ઝામરમાં ઑપ્ટિક નર્વને નુકસાન થાય છે, ઘણી વાર આંખનું દબાણ વધવાથી.", en: "Glaucoma damages the optic nerve, often because of high pressure in the eye." },
+    sections: [
+      {
+        h: { gu: "આ લક્ષણો દેખાઈ શકે", en: "Signs you may notice" },
+        list: {
+          gu: ["શરૂઆતમાં ઘણી વાર કોઈ લક્ષણ નથી હોતાં", "બાજુની દૃષ્ટિ ધીમે ધીમે ઓછી થવી", "અચાનક આંખમાં દુખાવો, લાલાશ, માથાનો દુખાવો અને લાઇટની આસપાસ રંગીન કુંડાળાં સાથે ઝાંખું દેખાવું — તેમાં તાત્કાલિક સારવાર જોઈએ"],
+          en: ["Often no symptoms in the early stages", "Slow loss of side vision", "Sudden eye pain, redness, headache and blurred vision with coloured rings around lights — this needs urgent care"],
+        },
+        note: SIGNS_NOTE,
+      },
+      {
+        h: { gu: "સુભમ્ આઈ ક્લિનિકમાં સારવાર", en: "Care at Subham Eye Clinic" },
+        p: {
+          gu: "ડૉ. શાહ આંખનું દબાણ તપાસે છે અને ઑપ્ટિક નર્વની તપાસ કરે છે. સારવાર સામાન્ય રીતે ટીપાંથી શરૂ થાય છે; જરૂર પડે તો ક્લિનિકના પોતાના ઓપરેશન થિયેટરમાં ઝામરનું ઓપરેશન કરવામાં આવે છે.",
+          en: "Dr. Shah checks the pressure in the eye and examines the optic nerve. Treatment usually starts with eye drops; when needed, glaucoma surgery is done in the clinic’s own operation theatre.",
+        },
+      },
+    ],
+    faqs: [
+      { q: { gu: "શું ઝામર મટી શકે?", en: "Can glaucoma be cured?" }, a: { gu: "થયેલું નુકસાન પાછું આવતું નથી. આંખનું દબાણ કાબૂમાં રાખીને બાકીની દૃષ્ટિ બચાવવી એ સારવારનો હેતુ છે.", en: "Damage already done cannot be reversed. Treatment aims to protect the remaining vision by controlling the eye pressure." } },
+      { q: { gu: "કોણે તપાસ કરાવવી જોઈએ?", en: "Who should get checked?" }, a: { gu: "૪૦ વર્ષથી વધુ ઉંમરના સૌએ, અને જેમના કુટુંબમાં ઝામર હોય કે જેમને ડાયાબિટીસ હોય તેમણે નિયમિત આંખની તપાસ કરાવવી જોઈએ.", en: "Anyone over 40, and people with a family history of glaucoma or with diabetes, should have regular eye check-ups." } },
+      { q: { gu: "શું લાંબા સમય સુધી ટીપાં નાખવાં પડશે?", en: "Will I need drops for a long time?" }, a: { gu: "ઝામરમાં સામાન્ય રીતે લાંબા ગાળાની સારવાર અને નિયમિત તપાસ જોઈએ. ડૉ. શાહને પૂછ્યા વગર ટીપાં બંધ ન કરો.", en: "Glaucoma usually needs long-term treatment and regular check-ups. Do not stop the drops without asking Dr. Shah." } },
+    ],
+  },
+  {
+    slug: "diabetic-eye-checkup",
+    icon: "i-retina",
+    part: "retina",
+    name: { gu: "ડાયાબિટીસમાં આંખની તપાસ", en: "Diabetic eye check-ups" },
+    chip: { gu: "ડાયાબિટીસ", en: "Diabetic eye" },
+    card: { gu: "OCT સ્કેન અને પડદાના ફોટા સાથે રેટિનાની તપાસ.", en: "Check-ups of the retina with OCT scans and retina photographs." },
+    title: { gu: "જામનગરમાં ડાયાબિટીસમાં આંખની તપાસ", en: "Diabetic eye check-ups in Jamnagar" },
+    description: {
+      gu: "સુભમ્ આઈ ક્લિનિક, જામનગરમાં ડાયાબિટીસમાં આંખની તપાસ: ડૉ. રાજીવ શાહ દ્વારા OCT સ્કેન અને પડદાના ફોટા સાથે રેટિનાની તપાસ.",
+      en: "Diabetic eye check-ups at Subham Eye Clinic, Jamnagar: retina examination with OCT scans and retina photographs by Dr. Rajeev Shah.",
+    },
+    intro: {
+      gu: "ડાયાબિટીસ રેટિનાની — આંખની પાછળના જોવાના પડદાની — નાની રક્તવાહિનીઓને નુકસાન કરી શકે. મોટે ભાગે તકલીફ વધી ન જાય ત્યાં સુધી કોઈ લક્ષણ દેખાતાં નથી, એટલે ડાયાબિટીસ હોય તેમણે નિયમિત આંખની તપાસ કરાવવી જરૂરી છે.",
+      en: "Diabetes can damage the small blood vessels of the retina, the seeing layer at the back of the eye. This often causes no symptoms until it is advanced, so people with diabetes need regular eye check-ups.",
+    },
+    partNote: { gu: "ડાયાબિટીસ રેટિનાને નુકસાન કરી શકે — આંખની પાછળનો જોવાનો પડદો.", en: "Diabetes can damage the retina, the seeing layer at the back of the eye." },
+    sections: [
+      {
+        h: { gu: "ક્લિનિકમાં તપાસ", en: "The check-up at the clinic" },
+        p: {
+          gu: "ડૉ. શાહ રેટિનાની તપાસ કરે છે અને જરૂર પડે તો ફંડસ કેમેરાથી પડદાના ફોટા તથા OCT સ્કેન કરે છે, જેમાં રેટિનાનાં પડ વિગતે દેખાય છે.",
+          en: "Dr. Shah examines the retina and, where needed, takes retina photographs with the fundus camera and an OCT scan, which shows the layers of the retina in detail.",
+        },
+      },
+      {
+        h: { gu: "આ લક્ષણો હોય તો વહેલા બતાવો", en: "Signs to report early" },
+        list: {
+          gu: ["ઝાંખું કે ટુકડે ટુકડે દેખાવું", "કાળા ડાઘ કે તરતા કણ દેખાવા", "રાત્રે જોવામાં તકલીફ"],
+          en: ["Blurred or patchy vision", "Dark spots or floaters", "Difficulty seeing at night"],
+        },
+        note: SIGNS_NOTE,
+      },
+    ],
+    faqs: [
+      { q: { gu: "ડાયાબિટીસ હોય તો કેટલી વાર આંખ તપાસાવવી?", en: "How often should I get my eyes checked if I have diabetes?" }, a: { gu: "ઓછામાં ઓછું વર્ષમાં એક વાર, અથવા ડૉ. શાહ કહે તો વધુ વાર.", en: "At least once a year, or more often if Dr. Shah advises." } },
+      { q: { gu: "મને બરાબર દેખાય છે, તો પણ તપાસ જરૂરી છે?", en: "My vision is fine. Do I still need a check-up?" }, a: { gu: "હા. શરૂઆતમાં રેટિનાના નુકસાનનાં ઘણી વાર કોઈ લક્ષણ હોતાં નથી.", en: "Yes. Diabetic damage to the retina often has no symptoms in the early stages." } },
+      { q: { gu: "સાથે શું લાવવું?", en: "What should I bring?" }, a: { gu: "તાજેતરના સુગરના રિપોર્ટ, દવાઓની યાદી અને ચશ્મા.", en: "Your recent sugar reports, a list of your medicines and your glasses." } },
+      { q: { gu: "શું આંખમાં ટીપાં નાખવામાં આવશે?", en: "Will drops be put in my eyes?" }, a: { gu: "ઘણી વાર હા. તેનાથી થોડા કલાક ઝાંખું દેખાઈ શકે, એટલે કોઈને સાથે લાવો અને જાતે વાહન ચલાવીને ઘરે ન જાઓ.", en: "Often yes. They can blur your vision for a few hours, so come with someone and don’t drive yourself home." } },
+    ],
+  },
+  {
+    slug: "eye-injuries",
+    icon: "i-injury",
+    part: "cornea",
+    name: { gu: "આંખની ઇજા — ૨૪×૭", en: "Eye injuries — 24×7" },
+    chip: { gu: "ઇજા", en: "Injury" },
+    card: { gu: "આંખમાં કણ, કેમિકલથી ઇજા અને કોર્નિયાની ઇજાનું ઓપરેશન.", en: "Foreign bodies, chemical injuries and repair of corneal injuries." },
+    title: { gu: "જામનગરમાં આંખની ઇજા અને ઇમરજન્સી — ૨૪×૭", en: "Eye injuries and emergencies in Jamnagar — 24×7" },
+    description: {
+      gu: "સુભમ્ આઈ ક્લિનિક, જામનગરમાં આંખની ઇજા અને ઇમરજન્સી ૨૪×૭: આંખમાં કણ, કેમિકલથી ઇજા અને કોર્નિયાની ઇજાનું ઓપરેશન — ડૉ. રાજીવ શાહ. ફોન 0288 256 3274.",
+      en: "Eye injuries and emergencies seen 24×7 at Subham Eye Clinic, Jamnagar: foreign bodies, chemical injuries and repair of corneal injuries by Dr. Rajeev Shah. Call 0288 256 3274.",
+    },
+    intro: {
+      gu: "આંખની ઇજામાં તરત સારવાર જરૂરી છે. ડૉ. શાહ ૨૪×૭ આંખની ઇમરજન્સી જુએ છે — ગમે ત્યારે ક્લિનિકના નંબર પર ફોન કરો.",
+      en: "Eye injuries need prompt care. Dr. Shah sees eye emergencies 24×7 — call the clinic number at any hour.",
+    },
+    partNote: { gu: "ઇજા અને આંખમાં પડેલા કણની અસર મોટે ભાગે કોર્નિયા પર થાય — આગળની પારદર્શક બારી.", en: "Injuries and foreign bodies most often affect the cornea, the clear front window." },
+    sections: [
+      {
+        h: { gu: "પહેલાં શું કરવું", en: "What to do first" },
+        list: {
+          gu: ["કેમિકલ ઊડે તો: કોઈ ક્લિનિકમાં ફોન કરે ત્યાં સુધી આંખને પુષ્કળ ચોખ્ખા પાણીથી ધોતા રહો", "આંખમાં કંઈ પડે તો: આંખ ચોળશો નહીં", "આંખમાં કંઈ ખૂંપી ગયું હોય તો: જાતે કાઢવાનો પ્રયત્ન ન કરો — આંખને હળવેથી ઢાંકીને ક્લિનિક આવો"],
+          en: ["Chemical splash: keep rinsing the eye with plenty of clean water while someone calls the clinic", "Something in the eye: do not rub it", "Something stuck in the eye: do not try to pull it out — cover the eye gently and come to the clinic"],
+        },
+      },
+      {
+        h: { gu: "સુભમ્ આઈ ક્લિનિકમાં સારવાર", en: "Care at Subham Eye Clinic" },
+        p: {
+          gu: "ડૉ. શાહ આંખમાંથી કણ કાઢે છે, કેમિકલથી થયેલી ઇજાની સારવાર કરે છે અને ક્લિનિકના પોતાના ઓપરેશન થિયેટરમાં કોર્નિયાની ઇજાનું ઓપરેશન કરે છે.",
+          en: "Dr. Shah removes foreign bodies, treats chemical injuries and repairs injuries of the cornea in the clinic’s own operation theatre.",
+        },
+      },
+    ],
+    faqs: [
+      { q: { gu: "શું રાત્રે ઇમરજન્સીમાં ક્લિનિક ખુલ્લું હોય છે?", en: "Is the clinic open at night for emergencies?" }, a: { gu: "હા. આંખની ઇમરજન્સી ૨૪×૭ જોવામાં આવે છે — પહેલાં 0288 256 3274 પર ફોન કરો.", en: "Yes. Eye emergencies are seen 24×7 — call 0288 256 3274 first." } },
+      { q: { gu: "કેમિકલ ઊડે તો શું કરવું?", en: "What should I do after a chemical splash?" }, a: { gu: "તરત જ પુષ્કળ ચોખ્ખા પાણીથી આંખ ધોવો અને રસ્તામાં પણ ધોતા રહો. શક્ય હોય તો કેમિકલનું નામ કે ડબ્બો સાથે લાવો.", en: "Rinse the eye immediately with plenty of clean water and keep rinsing on the way. Bring the chemical’s name or container if you can." } },
+      { q: { gu: "આંખમાં કંઈ પડે તો આંખ ચોળવી?", en: "Should I rub my eye if something gets in it?" }, a: { gu: "ના. ચોળવાથી કોર્નિયા પર ઘસરકો પડી શકે. હળવેથી પલકારા મારો અને ન નીકળે તો ક્લિનિક આવો.", en: "No. Rubbing can scratch the cornea. Blink gently, and come to the clinic if it does not come out." } },
+    ],
+  },
+  {
+    slug: "pterygium-chalazion",
+    icon: "i-lid",
+    part: "surface",
+    name: { gu: "ટેરીજીયમ અને પાંપણની ગાંઠ", en: "Pterygium & chalazion" },
+    chip: { gu: "ટેરીજીયમ", en: "Pterygium" },
+    card: { gu: "પોતાના થિયેટરમાં નાનું ઓપરેશન.", en: "Small operations in our own theatre." },
+    title: { gu: "જામનગરમાં ટેરીજીયમ અને પાંપણની ગાંઠ (કેલેઝિયન)નું ઓપરેશન", en: "Pterygium and chalazion surgery in Jamnagar" },
+    description: {
+      gu: "ટેરીજીયમ અને પાંપણની ગાંઠ (કેલેઝિયન): સુભમ્ આઈ ક્લિનિક, જામનગરમાં ડૉ. રાજીવ શાહ દ્વારા ક્લિનિકના પોતાના થિયેટરમાં નાનું ઓપરેશન.",
+      en: "Pterygium and chalazion: small operations by Dr. Rajeev Shah in the clinic’s own operation theatre at Subham Eye Clinic, Jamnagar.",
+    },
+    intro: {
+      gu: "આંખની સપાટી અને પાંપણની બે સામાન્ય તકલીફો — જરૂર પડે તો બંનેનું ક્લિનિકના પોતાના થિયેટરમાં નાનું ઓપરેશન થાય છે.",
+      en: "Two common conditions of the eye surface and eyelid, both treated with a small operation in the clinic’s own theatre when needed.",
+    },
+    partNote: { gu: "ટેરીજીયમ: આંખની સપાટી પર માંસ જેવો ભાગ વધવો.", en: "Pterygium: a growth of tissue onto the surface of the eye." },
+    sections: [
+      {
+        h: { gu: "ટેરીજીયમ (આંખમાં માંસ વધવું)", en: "Pterygium" },
+        p: {
+          gu: "આંખના સફેદ ભાગમાંથી કોર્નિયા તરફ વધતો માંસ જેવો ભાગ. તડકા અને ધૂળવાળા વાતાવરણમાં તે સામાન્ય છે. તકલીફ કરે કે આંખની વચ્ચે તરફ વધે તો નાના ઓપરેશનથી કાઢી શકાય છે.",
+          en: "A fleshy growth that spreads from the white of the eye onto the cornea. It is common in sunny, dusty conditions. If it causes trouble or grows towards the centre of the eye, it can be removed with a small operation.",
+        },
+      },
+      {
+        h: { gu: "પાંપણની ગાંઠ (કેલેઝિયન)", en: "Chalazion" },
+        p: {
+          gu: "પાંપણની તેલ-ગ્રંથિ બંધ થવાથી થતી દુખાવા વગરની ગાંઠ. ઘણી ગાંઠો ગરમ શેકથી બેસી જાય છે; ન બેસે તો નાના ઓપરેશનથી કાઢી શકાય છે.",
+          en: "A painless lump in the eyelid caused by a blocked oil gland. Many settle with warm compresses; one that does not can be removed with a small operation.",
+        },
+      },
+    ],
+    faqs: [
+      { q: { gu: "શું ઓપરેશન ક્લિનિકમાં જ થાય છે?", en: "Is the operation done at the clinic?" }, a: { gu: "હા, ક્લિનિકના પોતાના ઓપરેશન થિયેટરમાં.", en: "Yes, in the clinic’s own operation theatre." } },
+      { q: { gu: "ટેરીજીયમ કાઢ્યા પછી ફરી થઈ શકે?", en: "Can a pterygium come back after removal?" }, a: { gu: "કેટલાક લોકોમાં ફરી થઈ શકે. આપની આંખ માટે શું અપેક્ષા રાખવી તે ડૉ. શાહ સમજાવશે.", en: "It can come back in some people. Dr. Shah will explain what to expect for your eye." } },
+      { q: { gu: "શું પાંપણની ગાંઠ અને આંજણી એક જ છે?", en: "Is a chalazion the same as a stye?" }, a: { gu: "ના. આંજણી સામાન્ય રીતે પાંપણની કિનારે દુખાવાવાળી, ચેપવાળી ફોલ્લી હોય છે; પાંપણની ગાંઠ સામાન્ય રીતે પાંપણની અંદર દુખાવા વગરની ગાંઠ હોય છે.", en: "No. A stye is usually a painful, infected bump at the edge of the lid; a chalazion is usually a painless lump inside the lid." } },
+    ],
+  },
+  {
+    slug: "eye-tests-contact-lenses",
+    icon: "i-glasses",
+    part: "lens",
+    name: { gu: "આંખની તપાસ અને કોન્ટેક્ટ લેન્સ", en: "Eye tests and contact lenses" },
+    chip: { gu: "તપાસ", en: "Eye tests" },
+    card: { gu: "કમ્પ્યુટરથી ચશ્માના નંબરની તપાસ અને કોન્ટેક્ટ લેન્સ.", en: "Computerised eye testing for glasses numbers, and contact lenses." },
+    title: { gu: "જામનગરમાં આંખની તપાસ અને કોન્ટેક્ટ લેન્સ", en: "Eye tests and contact lenses in Jamnagar" },
+    description: {
+      gu: "સુભમ્ આઈ ક્લિનિક, જામનગરમાં આંખની તપાસ: ચશ્માના નંબરની કમ્પ્યુટરથી તપાસ, ડૉ. રાજીવ શાહ દ્વારા આંખની તપાસ અને કોન્ટેક્ટ લેન્સ.",
+      en: "Eye check-ups at Subham Eye Clinic, Jamnagar: computerised eye testing for glasses numbers, an eye examination by Dr. Rajeev Shah, and contact lenses.",
+    },
+    intro: {
+      gu: "નિયમિત આંખની તપાસથી તકલીફ વહેલી પકડાય છે — ક્યારેક તમને ખબર પડે તે પહેલાં.",
+      en: "A regular eye check-up finds problems early — sometimes before you notice them.",
+    },
+    partNote: { gu: "આંખનો નંબર કોર્નિયા અને લેન્સ પ્રકાશને કેવી રીતે વાળે છે તેના પર આધાર રાખે છે.", en: "Your glasses number depends on how the cornea and lens bend light." },
+    sections: [
+      {
+        h: { gu: "તપાસમાં શું થાય", en: "At the check-up" },
+        list: {
+          gu: ["કમ્પ્યુટરથી ચશ્માના નંબરની તપાસ", "ડૉ. શાહ દ્વારા આંખની તપાસ"],
+          en: ["Computerised testing of your glasses number", "An eye examination by Dr. Shah"],
+        },
+      },
+      {
+        h: { gu: "કોન્ટેક્ટ લેન્સ", en: "Contact lenses" },
+        p: {
+          gu: "ક્લિનિકમાં કોન્ટેક્ટ લેન્સ ઉપલબ્ધ છે. તે આપની આંખ માટે યોગ્ય છે કે નહીં તે ડૉ. શાહ જણાવશે.",
+          en: "Contact lenses are available at the clinic. Dr. Shah will advise whether they suit your eyes.",
+        },
+      },
+    ],
+    faqs: [
+      { q: { gu: "આંખની તપાસ માટે એપોઇન્ટમેન્ટ જોઈએ?", en: "Do I need an appointment for an eye test?" }, a: { gu: "સમય માટે 0288 256 3274 પર ફોન કરો.", en: "Please call 0288 256 3274 for a time." } },
+      { q: { gu: "આંખ કેટલી વાર તપાસાવવી?", en: "How often should I get my eyes tested?" }, a: { gu: "બાળકો અને મોટાંએ નિયમિત આંખ તપાસાવવી જોઈએ; ૪૦ વર્ષ પછી સામાન્ય રીતે દર એક-બે વર્ષે તપાસની સલાહ અપાય છે, અથવા ડૉ. શાહ કહે તેમ.", en: "Children and adults should have their eyes checked regularly; after 40, a check-up every one to two years is commonly advised, or as Dr. Shah suggests." } },
+      { q: { gu: "શું ક્લિનિકમાંથી કોન્ટેક્ટ લેન્સ મળે?", en: "Can I get contact lenses at the clinic?" }, a: { gu: "હા, કોન્ટેક્ટ લેન્સ ઉપલબ્ધ છે. પહેલાં ડૉ. શાહ તપાસશે કે તે આપની આંખ માટે યોગ્ય છે.", en: "Yes, contact lenses are available. Dr. Shah will first check that they suit your eyes." } },
+    ],
+  },
+];
