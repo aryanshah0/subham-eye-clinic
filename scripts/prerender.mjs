@@ -8,6 +8,8 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const dist = path.join(root, "dist");
 const STAGING = process.env.STAGING === "1";
+// Google Search Console ownership check (HTML-tag method): GSC_VERIFY=<content value> at production build time.
+const GSC = !STAGING && process.env.GSC_VERIFY ? `<meta name="google-site-verification" content="${process.env.GSC_VERIFY}" />` : "";
 const { render, routes, SITE, UI } = await import(pathToFileURL(path.join(root, "dist-ssr", "entry-server.js")).href);
 
 const O = SITE.origin;
@@ -75,6 +77,7 @@ function head(r) {
     `<title>${esc(r.title)}</title>`,
     r.description && `<meta name="description" content="${esc(r.description)}" />`,
     (STAGING || nf) && `<meta name="robots" content="noindex, nofollow" />`,
+    GSC,
   ];
   if (!nf) {
     tags.push(

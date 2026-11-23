@@ -11,6 +11,9 @@ npm run dev        # local development (http://127.0.0.1:5190)
 npm run build      # typecheck → client bundle → SSR bundle → prerender all pages → checks
 npm run preview    # serve dist/ (http://127.0.0.1:4180)
 
+# production build with the Google Search Console verification tag
+GSC_VERIFY=<token> npm run build
+
 # staging copy for GitHub Pages (noindex, under /subham-eye-clinic/)
 BASE=/subham-eye-clinic/ STAGING=1 npm run build
 ```
