@@ -4,6 +4,11 @@ The website of Subham Eye Clinic, Jamnagar (Dr. Rajeev Shah, MBBS, DOMS). It is 
 
 React 19 and Vite. Every page is **pre-rendered to static HTML** at build time, so search engines and slow phones get the full content without JavaScript. React then hydrates the page for the live open/closed status and the interactive eye drawing.
 
+## Live
+- Production: https://subhameyeclinic.pages.dev/ (Cloudflare Pages project `subhameyeclinic`), deployed with `scripts/deploy.sh`
+- Staging (noindex): https://aryanshah0.github.io/subham-eye-clinic/, deployed with `scripts/deploy-staging.sh`
+- `public/_headers`: noindex on per-deployment copies, one-year cache for /assets/*
+
 ## Commands
 ```bash
 npm install

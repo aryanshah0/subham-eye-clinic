@@ -1,0 +1,12 @@
+# Cloudflare Pages headers.
+# Only the main address (subhameyeclinic.pages.dev) may be indexed; per-deployment and branch copies are hidden from search.
+https://:version.subhameyeclinic.pages.dev/*
+  X-Robots-Tag: noindex
+
+# Fingerprinted build files never change: cache for a year.
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/*
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Content-Type-Options: nosniff
