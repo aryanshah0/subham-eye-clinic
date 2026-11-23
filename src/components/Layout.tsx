@@ -6,6 +6,8 @@ import { TREATMENTS } from "../content/treatments";
 import { href, homePath, treatmentPath, type Route } from "../routes";
 import { Icon, Sprite, Tx } from "./ui";
 
+const GA_ON = Boolean(import.meta.env.VITE_GA_ID);
+
 const Logo = () => (
   <svg className="mark" viewBox="0 0 48 48" aria-hidden="true">
     <path d="M3 24C9 14.5 16 10 24 10s15 4.5 21 14c-6 9.5-13 14-21 14S9 33.5 3 24Z" fill="none" stroke="#2F5D4A" strokeWidth="2.6" strokeLinejoin="round" />
@@ -47,7 +49,7 @@ function Footer({ lang }: { lang: Lang }) {
           {TREATMENTS.map((t) => <a key={t.slug} href={href(treatmentPath(lang, t))}>{t.name[lang]}</a>)}
         </div>
       </div>
-      <div className="legal"><b>{L.doctor}</b>, MBBS, DOMS · {L.regV} · {L.footNote}</div>
+      <div className="legal"><b>{L.doctor}</b>, MBBS, DOMS · {L.regV} · {L.footNote}{GA_ON && <> · {L.gaNote}</>}</div>
     </div></footer>
   );
 }
