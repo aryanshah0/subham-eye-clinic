@@ -128,6 +128,8 @@ function head(r) {
     r.description && `<meta name="description" content="${esc(r.description)}" />`,
     (STAGING || nf) && `<meta name="robots" content="noindex, nofollow" />`,
     ...FONTS[r.lang].map((f) => `<script src="${BASE}/assets/${f}"></script>`),
+    // Paint only once the page is parsed, so a half-arrived header is never drawn and then moved.
+    `<link rel="expect" href="#main" blocking="render" />`,
     // Chrome fetches a page as the visitor is about to tap its link, so it opens at once.
     `<script type="speculationrules">{"prerender":[{"where":{"href_matches":"${BASE}/*"},"eagerness":"moderate"}]}</script>`,
     GSC,
