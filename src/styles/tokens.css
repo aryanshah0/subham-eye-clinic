@@ -5,6 +5,7 @@
   --green:#2F5D4A; --green-2:#3B7059; --green-dark:#24483A;
   --gold:#B8893A; --gold-text:#87621F; --gold-bg:#F6EBD5;
   --ink:#2B2620; --body:#3D3630; --mute:#6A6057;
-  --f:"Anek Gujarati Variable","Anek Gujarati",system-ui,sans-serif;
+  --f:"Anek",system-ui,sans-serif;
+  /* type: 14, 16, 18 (body), 20, 24-28 (row headings), 34, h1; weights 400 and 600 only */
   --r:16px; --pad:24px; --gap:16px; --sec:80px;
 }

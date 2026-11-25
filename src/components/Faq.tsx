@@ -2,6 +2,7 @@
 // With JavaScript the answer slides open and closed, so the rows below glide instead of jumping.
 import type { MouseEvent } from "react";
 import type { Lang } from "../content/site";
+import { Phones } from "./ui";
 
 function toggle(e: MouseEvent<HTMLElement>) {
   const d = e.currentTarget.parentElement as HTMLDetailsElement;
@@ -24,11 +25,11 @@ function toggle(e: MouseEvent<HTMLElement>) {
 
 export function Faq({ items, lang }: { items: { q: Record<Lang, string>; a: Record<Lang, string> }[]; lang: Lang }) {
   return (
-    <div className="card faq">
+    <div className="faq">
       {items.map((f, i) => (
         <details key={i} open={i === 0}>
           <summary onClick={toggle}>{f.q[lang]}</summary>
-          <div className="ans"><p>{f.a[lang]}</p></div>
+          <div className="ans"><p><Phones>{f.a[lang]}</Phones></p></div>
         </details>
       ))}
     </div>

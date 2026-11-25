@@ -1,9 +1,9 @@
 import type { ReactNode } from "react";
-import type { Lang } from "../content/site";
+import { SITE, type Lang } from "../content/site";
 import { UI } from "../content/ui";
 import { TREATMENTS, type Treatment as T } from "../content/treatments";
 import { href, homePath, treatmentPath } from "../routes";
-import { CallButton, DirectionsButton, Icon, Photo } from "../components/ui";
+import { CallButton, DirectionsButton, Icon, Phones, Photo } from "../components/ui";
 import { Faq } from "../components/Faq";
 import { OpenStatus } from "../components/OpenStatus";
 import { EyeDiagram } from "../components/EyeDiagram";
@@ -18,7 +18,7 @@ export function Treatment({ lang, t }: { lang: Lang; t: T }) {
   const L = UI[lang];
   const photos = { ot: { file: "ot", alt: L.altOT, caption: L.phOT }, consult: { file: "consult", alt: L.altConsult, caption: L.phConsult } };
   return (
-    <>
+    <div className="t-page">
       <nav className="crumbs" aria-label={lang === "gu" ? "તમે અહીં છો" : "Breadcrumb"}>
         <ol>
           <li><a href={href(homePath(lang))}>{L.home}</a></li>
@@ -30,20 +30,19 @@ export function Treatment({ lang, t }: { lang: Lang; t: T }) {
       <div className="hero hero-t">
         <div className="hero-l">
           <div>
-            <p className="kicker">{L.kicker}</p>
             <h1>{t.name[lang]}</h1>
             <p className="lede">{t.intro[lang]}</p>
           </div>
           <OpenStatus lang={lang} emergency={t.slug === "eye-injuries"}>
             <div className="acts"><CallButton lang={lang} long={t.slug !== "eye-injuries"} /><DirectionsButton lang={lang} /></div>
-            <p className="emline"><b>{L.emLabel}</b> {L.emText}</p>
+            {t.slug !== "eye-injuries" && <p className="emline"><b>{L.emLabel}</b> {L.emText}</p>}
           </OpenStatus>
         </div>
         <EyeDiagram lang={lang} start={t.part} interactive={false} noteText={t.partNote[lang]} />
       </div>
 
       <dl className="card glance">
-        {t.facts.map((f) => <div key={f.k.en}><dt className="label">{f.k[lang]}</dt><dd>{f.v[lang]}</dd></div>)}
+        {t.facts.map((f) => <div key={f.k.en}><dt className="label">{f.k[lang]}</dt><dd><Phones>{f.v[lang]}</Phones></dd></div>)}
       </dl>
 
       <div className="rows">
@@ -57,7 +56,7 @@ export function Treatment({ lang, t }: { lang: Lang; t: T }) {
               </div>
             )}
             {s.note && <p className="note">{s.note[lang]}</p>}
-            {s.photo && <Photo {...photos[s.photo]} />}
+            {s.photo && (s.photo !== "ot" || SITE.photos.ot) && <Photo {...photos[s.photo]} />}
           </Row>
         ))}
         <Row h={L.v2t}>
@@ -78,6 +77,6 @@ export function Treatment({ lang, t }: { lang: Lang; t: T }) {
           ))}
         </div>
       </section>
-    </>
+    </div>
   );
 }

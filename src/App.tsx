@@ -16,7 +16,7 @@ function NotFound({ lang }: { lang: Lang }) {
       <p>{L.notFoundBody}</p>
       <p lang={other}>{O.notFoundTitle}. {O.notFoundBody}</p>
       <div className="acts">
-        <a className="btn dir" href={href(homePath(lang))}>{L.home}</a>
+        <a className="btn call" href={href(homePath(lang))}>{L.home}</a>
         <a className="btn dir" href={href(homePath(other))} lang={other}>{O.home} ({O.langName})</a>
         <CallButton lang={lang} />
       </div>

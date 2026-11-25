@@ -1,5 +1,5 @@
 // Page frame: header with language switch, footer, and the phone call bar.
-import type { ReactNode } from "react";
+import type { MouseEvent, ReactNode } from "react";
 import { SITE, type Lang } from "../content/site";
 import { UI } from "../content/ui";
 import { TREATMENTS } from "../content/treatments";
@@ -14,12 +14,18 @@ const Logo = () => (
   </svg>
 );
 
+// Switching language part-way down the page opens the other language at the same section.
+function keepPlace(e: MouseEvent<HTMLAnchorElement>) {
+  const here = [...document.querySelectorAll("main section[id]")].filter((s) => s.getBoundingClientRect().top < 160).pop();
+  if (here && scrollY > 200) e.currentTarget.hash = here.id;
+}
+
 function Header({ route }: { route: Route }) {
   const lang = route.lang, L = UI[lang], home = href(homePath(lang));
   const onHome = route.kind === "home";
   // Sections on this page are plain anchors; the rest go to the home page. Treatment pages have their own timings section.
   const sec = (id: string) => (onHome || (id === "visit" && route.kind === "treatment") ? `#${id}` : `${home}#${id}`);
-  const links = [["tx", L.navTx], ["clinic", L.navClinic], ["doc", L.navDoc], ["visit", L.navVisit]].map(([id, label]) => ({ to: sec(id), label }));
+  const links = [["tx", L.navTx], ["doc", L.navDoc], ["clinic", L.navClinic], ["visit", L.navVisit]].map(([id, label]) => ({ to: sec(id), label }));
   return (
     <header className="top"><div className="wrap">
       <a className="homelink" href={home}>
@@ -32,7 +38,7 @@ function Header({ route }: { route: Route }) {
       <a className="hcall" href={`tel:${SITE.phoneTel}`}><Icon id="i-phone" />{SITE.phone}</a>
       <div className="lang" role="group" aria-label="Language / ભાષા">
         {(["en", "gu"] as Lang[]).map((l) => (
-          <a key={l} href={href(route.alt[l])} hrefLang={l} lang={l} aria-current={l === lang ? "page" : undefined} aria-label={UI[l].langName}>{l === "gu" ? "ગુ" : "EN"}</a>
+          <a key={l} href={href(route.alt[l])} hrefLang={l} lang={l} aria-current={l === lang ? "page" : undefined} aria-label={UI[l].langName} onClick={keepPlace}>{l === "gu" ? "ગુજરાતી" : <><span className="lg">English</span><span className="sm">EN</span></>}</a>
         ))}
       </div>
       <Menu route={route} lang={lang} links={links.slice(1)} />
@@ -45,11 +51,12 @@ function Footer({ lang }: { lang: Lang }) {
   return (
     <footer><div className="wrap">
       <div className="cols">
-        <div className="contact"><b>{L.brand}</b><br /><Tx k="address" lang={lang} /><br /><a href={`tel:${SITE.phoneTel}`}><b>{SITE.phone}</b></a><br /><a href={`mailto:${SITE.email}`}>{SITE.email}</a></div>
-        <div><p className="fh">{L.timings}</p>{L.monSat}<br />{L.morning}<br />{L.evening}<br />{L.sunday}: {L.closed}</div>
-        <div><p className="fh">{L.emergency}</p>{L.always}<br /><a href={`tel:${SITE.phoneTel}`}><b>{SITE.phone}</b></a></div>
-        <div className="list"><p className="fh">{L.navTx}</p>
+        <div className="contact"><b>{L.brand}</b><Tx k="address" lang={lang} /><a href={`tel:${SITE.phoneTel}`}><b>{SITE.phone}</b></a><a href={`mailto:${SITE.email}`}>{SITE.email}</a></div>
+        <div className="list two"><p className="fh">{L.navTx}</p>
           {TREATMENTS.map((t) => <a key={t.slug} href={href(treatmentPath(lang, t))}>{t.name[lang]}</a>)}
+        </div>
+        <div className="list"><p className="fh">{L.navClinic}</p>
+          {[["doc", L.navDoc], ["your-visit", L.visTitle], ["visit", L.navVisit]].map(([id, label]) => <a key={id} href={href(homePath(lang)) + "#" + id}>{label}</a>)}
         </div>
       </div>
       <div className="legal"><b>{L.doctor}</b>, MBBS, DOMS · {L.regV} · {L.footNote}</div>

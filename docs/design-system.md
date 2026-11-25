@@ -16,7 +16,7 @@
 Every text colour pair passes WCAG AA (lowest is 5.18:1). There is no red anywhere: emergency information is a plain bold-label line.
 
 ## Type
-Anek Gujarati Variable, self-hosted, covering both scripts.
+Anek Gujarati, self-hosted, covering both scripts, weights 400 and 600 only. The files in src/fonts are built by tools/build-fonts.py: shapes merged (the original variable file shows notches in Gujarati stems) and the line box centred on capitals so text sits in the middle of buttons. Type sizes: 14, 16, 18 (body), 20, row headings 24–28, section headings 34, h1.
 - h1: 32–50px
 - h2: 26–34px
 - h3: 19.5px
@@ -47,3 +47,5 @@ Gujarati text gets more line-height (h1 1.32, body 1.75) so vowel signs are neve
 - **Arriving at a section from another page is instant.** Smooth scrolling applies only after `html.ready` is set by entry-client.
 - **One name per treatment.** Card, menu, breadcrumb, page heading and footer all use `t.name`. The longer `t.title` (with "Jamnagar") is only the browser and Google title.
 - **No empty photo slots.** Portrait and building photos appear when `SITE.photos` is switched on in src/content/site.ts.
+- **Photos:** `SITE.photos` also switches the operation-theatre and waiting-area photos; the 2020 crops are off until the new photos arrive. New photos: 3:2, at least 2000 px wide, covers off, no brand names readable.
+- **Phones:** the call bar is always on screen, so the hero has no second pair of buttons there.

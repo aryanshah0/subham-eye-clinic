@@ -16,7 +16,7 @@ export const SITE = {
   mapsCid: "3656070401854130553",
   mapsUrl: "https://maps.google.com/?cid=3656070401854130553",
   // Embed by coordinates: a plain pin, without Google's place card (which shows a star rating, not allowed under the NMC rules).
-  mapEmbed: "https://maps.google.com/maps?q=22.465287,70.0573347&z=16&output=embed",
+  mapEmbed: "https://maps.google.com/maps?q=22.465287,70.0573347&z=17&output=embed",
   geo: { lat: 22.465287, lng: 70.0573347 },
   regNo: "G-13342",
   openedYear: 2002,
@@ -29,7 +29,8 @@ export const SITE = {
   },
   // Photos shot at the clinic. Set to true after adding public/photos/portrait.jpg (4:5) or building.jpg (4:3);
   // until then the page simply has no empty slot for them.
-  photos: { portrait: false as boolean, building: false as boolean },
+  // ot and waiting are off too: the 2020 crops show a covered machine with a brand name, and an empty wall.
+  photos: { portrait: false as boolean, building: false as boolean, ot: false as boolean, waiting: false as boolean },
   // OPD sessions, minutes after midnight, Monday–Saturday. Sunday closed. Emergencies 24×7 on the same number.
   sessions: [[9 * 60, 13 * 60], [17 * 60 + 30, 20 * 60 + 30]] as [number, number][],
   // Festival days when the OPD is closed (India dates, "YYYY-MM-DD"). Emergencies are still seen 24×7 on the same number.

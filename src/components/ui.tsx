@@ -1,5 +1,5 @@
 // Small building blocks shared by every page.
-import type { ReactNode } from "react";
+import { Fragment, type ReactNode } from "react";
 import sprite from "./icons.svg?raw";
 import { SITE, type Lang } from "../content/site";
 import { UI, type UIKey } from "../content/ui";
@@ -39,3 +39,9 @@ export const Photo = ({ file, alt, caption, w = 1152, h = 440, className = "" }:
     {caption && <figcaption>{caption}</figcaption>}
   </figure>
 );
+
+/** Text in which the clinic's phone number can be tapped. */
+export function Phones({ children }: { children: string }) {
+  const parts = children.split(SITE.phone);
+  return <>{parts.map((x, i) => <Fragment key={i}>{i > 0 && <a className="tel" href={`tel:${SITE.phoneTel}`}>{SITE.phone}</a>}{x}</Fragment>)}</>;
+}
