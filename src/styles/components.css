@@ -261,7 +261,7 @@ html[data-lang="gu"] .faq summary{line-height:1.6}
   body{padding-bottom:0}.dock{display:none}
   .nav{display:flex}.lang{margin-left:24px}
   .hero{grid-template-columns:1fr 1.05fr;gap:56px;padding-top:64px}
-  .hero .fig{align-self:center}
+  .hero .fig{align-self:start}
   .g2{grid-template-columns:1fr 1fr}
   .g3{grid-template-columns:repeat(3,1fr)}
   .g4{grid-template-columns:repeat(4,1fr)}
@@ -303,4 +303,5 @@ html[data-lang="gu"] .faq summary{line-height:1.6}
   .lang a[aria-current]{display:none}
   .lang a:not([aria-current]){background:var(--soft);color:var(--green);border-radius:10px;min-width:46px}
 }
+@media (max-width:374px){.mark{width:34px;height:34px}.homelink{gap:8px}.top .wrap{gap:6px}}
 @media (max-width:359px){.brand{font-size:17px}.brand small{display:none}.mark{width:32px;height:32px}.homelink{gap:8px}.top .wrap{gap:6px;padding:0 14px}.menu summary{margin-right:-8px}}

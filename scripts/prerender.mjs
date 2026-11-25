@@ -3,6 +3,7 @@
 // STAGING=1 adds noindex everywhere and blocks crawlers (GitHub Pages staging copy).
 import fs from "node:fs";
 import path from "node:path";
+import { createHash } from "node:crypto";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -15,10 +16,23 @@ const { render, routes, SITE, UI } = await import(pathToFileURL(path.join(root, 
 const O = SITE.origin;
 const tpl = fs.readFileSync(path.join(dist, "index.html"), "utf8");
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-// Font files (hashed names), preloaded so text is drawn once, in the right font. Gujarati pages need both scripts.
-const fontFile = (script) => fs.readdirSync(path.join(dist, "assets")).find((f) => new RegExp(`^anek-gujarati-${script}-wght.*\\.woff2$`).test(f));
-const FONTS = { en: [fontFile("latin")], gu: [fontFile("gujarati"), fontFile("latin")] };
-if (FONTS.gu.some((f) => !f)) throw new Error("font file not found in dist/assets");
+// The font is in a small blocking script per script (cached for a year) that hands its bytes to the browser before the page
+// is laid out, so the page is drawn once, in the right font, also on a first visit. A font in CSS, even embedded, is decoded
+// a frame later and makes the first view jump. English pages don't load the Gujarati file. Without JavaScript: system font.
+const FONT_DIR = path.join(root, "node_modules/@fontsource-variable/anek-gujarati/files");
+const RANGE = {
+  latin: "U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-200B,U+200E-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215",
+  gujarati: "U+0951-0952,U+0964-0965,U+0A80-0AFF,U+200C-200D,U+20B9,U+25CC,U+A830-A839",
+};
+const fontJs = (script) => {
+  const data = fs.readFileSync(path.join(FONT_DIR, `anek-gujarati-${script}-wght-normal.woff2`)).toString("base64");
+  const js = `try{document.fonts.add(new FontFace("Anek Gujarati Variable",Uint8Array.from(atob("${data}"),function(c){return c.charCodeAt(0)}).buffer,{weight:"100 800",display:"block",unicodeRange:"${RANGE[script]}"}))}catch(e){}`;
+  const name = `font-${script}-${createHash("sha256").update(js).digest("hex").slice(0, 8)}.js`;
+  fs.writeFileSync(path.join(dist, "assets", name), js);
+  return name;
+};
+const latinJs = fontJs("latin"), guJs = fontJs("gujarati");
+const FONTS = { en: [latinJs], gu: [guJs, latinJs] };
 const BASE = (process.env.BASE || "/").replace(/\/$/, "");
 const OG_ALT = {
   en: "Subham Eye Clinic, Jamnagar — Dr. Rajeev Shah, MBBS, DOMS. 0288 256 3274",
@@ -108,7 +122,7 @@ function head(r) {
     `<title>${esc(r.title)}</title>`,
     r.description && `<meta name="description" content="${esc(r.description)}" />`,
     (STAGING || nf) && `<meta name="robots" content="noindex, nofollow" />`,
-    ...FONTS[r.lang].map((f) => `<link rel="preload" href="${BASE}/assets/${f}" as="font" type="font/woff2" crossorigin />`),
+    ...FONTS[r.lang].map((f) => `<script src="${BASE}/assets/${f}"></script>`),
     // Chrome fetches a page as the visitor is about to tap its link, so it opens at once.
     `<script type="speculationrules">{"prerender":[{"where":{"href_matches":"${BASE}/*"},"eagerness":"moderate"}]}</script>`,
     GSC,

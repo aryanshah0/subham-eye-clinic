@@ -1,4 +1,3 @@
-/* Design system entry: fonts → tokens → components. */
-@import "./fonts.css";
+/* Design system entry: tokens → components. Fonts: see scripts/prerender.mjs (production) and fonts.css (dev server). */
 @import "./tokens.css";
 @import "./components.css";

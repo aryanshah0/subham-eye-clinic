@@ -14,3 +14,5 @@ hydrateRoot(document.getElementById("root")!, <App route={route} />);
 // Smooth scrolling for links inside the page, only once this page has settled (see components.css).
 const ready = () => setTimeout(() => document.documentElement.classList.add("ready"), 300);
 if (document.readyState === "complete") ready(); else addEventListener("load", ready);
+
+if (import.meta.env.DEV) import("./styles/fonts.css");
