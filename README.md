@@ -1,6 +1,6 @@
 # Subham Eye Clinic: website
 
-The website of Subham Eye Clinic, Jamnagar (Dr. Rajeev Shah, MBBS, DOMS). It is in Gujarati first (`/`), with English under `/en/`.
+The website of Subham Eye Clinic, Jamnagar (Dr. Rajeev Shah, MBBS, DOMS). It is in English first (`/`), with Gujarati under `/gu/` (Dr. Shah's choice, 2026-11-25; old `/en/` addresses redirect via `public/_redirects`).
 
 React 19 and Vite. Every page is **pre-rendered to static HTML** at build time, so search engines and slow phones get the full content without JavaScript. React then hydrates the page for the live open/closed status and the interactive eye drawing.
 

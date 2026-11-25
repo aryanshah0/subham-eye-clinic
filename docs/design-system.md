@@ -1,6 +1,6 @@
 # Design system
 
-**Principles:** genuine, calm and precise. No warning banners, no filler, no stock or AI images. Gujarati comes first.
+**Principles:** genuine, calm and precise. No warning banners, no filler, no stock or AI images. English comes first, Gujarati second.
 
 ## Tokens (`src/styles/tokens.css`)
 | Token | Value | Use |

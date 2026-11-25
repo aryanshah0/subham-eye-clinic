@@ -26,8 +26,8 @@ function Header({ route }: { route: Route }) {
       <nav className="nav" aria-label={lang === "gu" ? "મુખ્ય" : "Main"}>
         <a href={sec("tx")}>{L.navTx}</a><a href={sec("clinic")}>{L.navClinic}</a><a href={sec("doc")}>{L.navDoc}</a><a href={sec("visit")}>{L.navVisit}</a>
       </nav>
-      <div className="lang" role="group" aria-label="ભાષા / Language">
-        {(["gu", "en"] as Lang[]).map((l) => (
+      <div className="lang" role="group" aria-label="Language / ભાષા">
+        {(["en", "gu"] as Lang[]).map((l) => (
           <a key={l} href={href(route.alt[l])} hrefLang={l} lang={l} aria-current={l === lang ? "true" : undefined} aria-label={UI[l].langName}>{l === "gu" ? "ગુ" : "EN"}</a>
         ))}
       </div>

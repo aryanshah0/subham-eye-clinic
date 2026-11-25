@@ -8,10 +8,10 @@ import "./styles/index.css";
 function NotFound() {
   return (
     <div className="nf">
-      <h1>{UI.gu.notFoundTitle}</h1>
-      <p>{UI.gu.notFoundBody}</p>
-      <p lang="en">{UI.en.notFoundTitle}. {UI.en.notFoundBody}</p>
-      <p style={{ marginTop: 20 }}><a className="btn call" href={href("/")}>{UI.gu.home}</a> <a className="btn dir" href={href("/en/")}>Home (English)</a></p>
+      <h1>{UI.en.notFoundTitle}</h1>
+      <p>{UI.en.notFoundBody}</p>
+      <p lang="gu">{UI.gu.notFoundTitle}. {UI.gu.notFoundBody}</p>
+      <p style={{ marginTop: 20 }}><a className="btn call" href={href("/")}>{UI.en.home}</a> <a className="btn dir" href={href("/gu/")} lang="gu">{UI.gu.home} (ગુજરાતી)</a></p>
     </div>
   );
 }

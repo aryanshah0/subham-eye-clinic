@@ -1,0 +1,4 @@
+# English became the main language on 2026-11-25 (Dr. Shah's choice): English moved from /en/ to /, Gujarati from / to /gu/.
+# Old English addresses that Google or people may have saved go to their new place.
+/en       /       301
+/en/*     /:splat 301

@@ -3,8 +3,8 @@
 export type Lang = "gu" | "en";
 export type L<T = string> = Record<Lang, T>;
 
-export const LANGS: Lang[] = ["gu", "en"];
-export const DEFAULT_LANG: Lang = "gu";
+export const LANGS: Lang[] = ["en", "gu"];
+export const DEFAULT_LANG: Lang = "en";
 
 export const SITE = {
   // Canonical address of the public site. Staging builds keep this canonical and add noindex.

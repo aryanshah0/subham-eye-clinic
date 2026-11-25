@@ -1,4 +1,4 @@
-// Every page of the site, in both languages. Gujarati lives at "/", English mirrors it under "/en/".
+// Every page of the site, in both languages. English lives at "/", Gujarati mirrors it under "/gu/" (Dr. Shah's choice, 2026-11-25).
 import { LANGS, type L, type Lang } from "./content/site";
 import { TREATMENTS, type Treatment } from "./content/treatments";
 
@@ -12,7 +12,7 @@ export type Route = {
   alt: L; // the same page in each language
 };
 
-const pathFor = (lang: Lang, slug = "") => (lang === "gu" ? "/" : "/en/") + (slug ? slug + "/" : "");
+const pathFor = (lang: Lang, slug = "") => (lang === "en" ? "/" : "/gu/") + (slug ? slug + "/" : "");
 
 const HOME_TITLE: L = {
   gu: "સુભમ્ આઈ ક્લિનિક, જામનગર — ડૉ. રાજીવ શાહ, આંખના સર્જન",
@@ -46,11 +46,11 @@ export const routes: Route[] = [
   ),
   {
     path: "/404/",
-    lang: "gu",
+    lang: "en",
     kind: "notfound",
-    title: "આ પાનું મળ્યું નથી / Page not found — Subham Eye Clinic",
+    title: "Page not found / આ પાનું મળ્યું નથી — Subham Eye Clinic",
     description: "",
-    alt: { gu: "/", en: "/en/" },
+    alt: { en: "/", gu: "/gu/" },
   },
 ];
 

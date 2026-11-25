@@ -1,5 +1,5 @@
 // Build step 3: render every route to static HTML with its full <head> for search engines and link previews:
-// title, description, canonical, hreflang (gu/en/x-default), Open Graph, JSON-LD; plus sitemap.xml, robots.txt and 404.html.
+// title, description, canonical, hreflang (en/gu/x-default = English), Open Graph, JSON-LD; plus sitemap.xml, robots.txt and 404.html.
 // STAGING=1 adds noindex everywhere and blocks crawlers (GitHub Pages staging copy).
 import fs from "node:fs";
 import path from "node:path";
@@ -52,16 +52,16 @@ const doctor = {
     { "@type": "EducationalOccupationalCredential", credentialCategory: "degree", name: "MBBS" },
     { "@type": "EducationalOccupationalCredential", credentialCategory: "degree", name: "DOMS (Diploma in Ophthalmic Medicine and Surgery)" },
   ],
-  knowsLanguage: ["gu", "hi", "en"],
+  knowsLanguage: ["en", "gu", "hi"],
 };
-const website = { "@type": "WebSite", "@id": O + "/#website", url: O + "/", name: "Subham Eye Clinic", inLanguage: ["gu", "en"], publisher: { "@id": O + "/#clinic" } };
+const website = { "@type": "WebSite", "@id": O + "/#website", url: O + "/", name: "Subham Eye Clinic", inLanguage: ["en", "gu"], publisher: { "@id": O + "/#clinic" } };
 
 function jsonLd(r) {
   const url = O + r.path;
   if (r.kind === "home") {
     return [website, clinic, doctor, { "@type": "WebPage", "@id": url, url, name: r.title, description: r.description, inLanguage: r.lang, isPartOf: { "@id": O + "/#website" }, about: { "@id": O + "/#clinic" } }];
   }
-  const t = r.treatment, L = UI[r.lang], home = O + (r.lang === "gu" ? "/" : "/en/");
+  const t = r.treatment, L = UI[r.lang], home = O + (r.lang === "en" ? "/" : "/gu/");
   return [
     { "@type": "MedicalWebPage", "@id": url, url, name: r.title, description: r.description, inLanguage: r.lang, isPartOf: { "@id": O + "/#website" },
       about: { "@type": "MedicalProcedure", name: t.name[r.lang] }, publisher: { "@id": O + "/#clinic" } },
@@ -84,9 +84,9 @@ function head(r) {
   if (!nf) {
     tags.push(
       `<link rel="canonical" href="${url}" />`,
-      `<link rel="alternate" hreflang="gu" href="${O + r.alt.gu}" />`,
       `<link rel="alternate" hreflang="en" href="${O + r.alt.en}" />`,
-      `<link rel="alternate" hreflang="x-default" href="${O + r.alt.gu}" />`,
+      `<link rel="alternate" hreflang="gu" href="${O + r.alt.gu}" />`,
+      `<link rel="alternate" hreflang="x-default" href="${O + r.alt.en}" />`,
       `<meta property="og:type" content="website" />`,
       `<meta property="og:site_name" content="Subham Eye Clinic" />`,
       `<meta property="og:title" content="${esc(r.title)}" />`,
@@ -108,7 +108,7 @@ function head(r) {
 let n = 0;
 for (const r of routes) {
   const html = tpl
-    .replace(/<html lang="gu" data-lang="gu">/, `<html lang="${r.lang}" data-lang="${r.lang}">`)
+    .replace(/<html lang="en" data-lang="en">/, `<html lang="${r.lang}" data-lang="${r.lang}">`)
     .replace("<!--head-->", head(r))
     .replace("<!--app-->", render(r.path));
   const out = r.kind === "notfound" ? path.join(dist, "404.html") : path.join(dist, r.path, "index.html");
@@ -123,9 +123,9 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 ${pages.map((r) => `  <url>
     <loc>${O + r.path}</loc>
     <lastmod>${today}</lastmod>
-    <xhtml:link rel="alternate" hreflang="gu" href="${O + r.alt.gu}"/>
     <xhtml:link rel="alternate" hreflang="en" href="${O + r.alt.en}"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="${O + r.alt.gu}"/>
+    <xhtml:link rel="alternate" hreflang="gu" href="${O + r.alt.gu}"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="${O + r.alt.en}"/>
   </url>`).join("\n")}
 </urlset>
 `;
