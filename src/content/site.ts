@@ -27,6 +27,9 @@ export const SITE = {
     region: "Gujarat",
     country: "IN",
   },
+  // Photos shot at the clinic. Set to true after adding public/photos/portrait.jpg (4:5) or building.jpg (4:3);
+  // until then the page simply has no empty slot for them.
+  photos: { portrait: false as boolean, building: false as boolean },
   // OPD sessions, minutes after midnight, Monday–Saturday. Sunday closed. Emergencies 24×7 on the same number.
   sessions: [[9 * 60, 13 * 60], [17 * 60 + 30, 20 * 60 + 30]] as [number, number][],
   // Festival days when the OPD is closed (India dates, "YYYY-MM-DD"). Emergencies are still seen 24×7 on the same number.

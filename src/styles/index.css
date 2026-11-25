@@ -1,4 +1,4 @@
 /* Design system entry: fonts → tokens → components. */
-@import "@fontsource-variable/anek-gujarati";
+@import "./fonts.css";
 @import "./tokens.css";
 @import "./components.css";

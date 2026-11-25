@@ -32,15 +32,10 @@ export const Section = ({ id, title, sub, children }: { id?: string; title: Reac
   </section>
 );
 
-export function Faq({ items, lang }: { items: { q: Record<Lang, string>; a: Record<Lang, string> }[]; lang: Lang }) {
-  return (
-    <div className="card faq">
-      {items.map((f, i) => (
-        <details key={i} open={i === 0}>
-          <summary>{f.q[lang]}</summary>
-          <p className="ans">{f.a[lang]}</p>
-        </details>
-      ))}
-    </div>
-  );
-}
+/** A photo of the clinic with its caption underneath. */
+export const Photo = ({ file, alt, caption, w = 1152, h = 440, className = "" }: { file: string; alt: string; caption?: string; w?: number; h?: number; className?: string }) => (
+  <figure className={`photo ${className}`}>
+    <img src={`${import.meta.env.BASE_URL}photos/${file}.jpg`} alt={alt} width={w} height={h} loading="lazy" decoding="async" />
+    {caption && <figcaption>{caption}</figcaption>}
+  </figure>
+);

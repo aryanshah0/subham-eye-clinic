@@ -10,3 +10,7 @@ if (!path.endsWith("/")) path += "/";
 const nfLang = document.documentElement.lang === "gu" ? "gu" : "en";
 const route = routes.find((r) => r.path === path) ?? routes.find((r) => r.kind === "notfound" && r.lang === nfLang)!;
 hydrateRoot(document.getElementById("root")!, <App route={route} />);
+
+// Smooth scrolling for links inside the page, only once this page has settled (see components.css).
+const ready = () => setTimeout(() => document.documentElement.classList.add("ready"), 300);
+if (document.readyState === "complete") ready(); else addEventListener("load", ready);

@@ -40,3 +40,10 @@ Gujarati text gets more line-height (h1 1.32, body 1.75) so vowel signs are neve
 - Grids: 3 columns for treatments and steps (2 on tablet), 4 for photos (2 on tablet), 2 for equipment and for timings/map.
 - Breakpoints: 600px and 940px.
 - Tap targets: at least 44px.
+
+## Stability rules (2026-11-25)
+
+- **Nothing moves by itself.** Fonts are preloaded with `font-display: optional` (src/styles/fonts.css); all notes under the eye drawing share one grid cell, so the card has a fixed height; the menu panel floats; FAQ answers slide (src/components/Faq.tsx).
+- **Arriving at a section from another page is instant.** Smooth scrolling applies only after `html.ready` is set by entry-client.
+- **One name per treatment.** Card, menu, breadcrumb, page heading and footer all use `t.name`. The longer `t.title` (with "Jamnagar") is only the browser and Google title.
+- **No empty photo slots.** Portrait and building photos appear when `SITE.photos` is switched on in src/content/site.ts.

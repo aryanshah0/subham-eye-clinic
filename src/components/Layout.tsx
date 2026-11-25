@@ -5,6 +5,7 @@ import { UI } from "../content/ui";
 import { TREATMENTS } from "../content/treatments";
 import { href, homePath, treatmentPath, type Route } from "../routes";
 import { Icon, Sprite, Tx } from "./ui";
+import { Menu } from "./Menu";
 
 const Logo = () => (
   <svg className="mark" viewBox="0 0 48 48" aria-hidden="true">
@@ -16,7 +17,9 @@ const Logo = () => (
 function Header({ route }: { route: Route }) {
   const lang = route.lang, L = UI[lang], home = href(homePath(lang));
   const onHome = route.kind === "home";
-  const sec = (id: string) => (onHome ? `#${id}` : `${home}#${id}`);
+  // Sections on this page are plain anchors; the rest go to the home page. Treatment pages have their own timings section.
+  const sec = (id: string) => (onHome || (id === "visit" && route.kind === "treatment") ? `#${id}` : `${home}#${id}`);
+  const links = [["tx", L.navTx], ["clinic", L.navClinic], ["doc", L.navDoc], ["visit", L.navVisit]].map(([id, label]) => ({ to: sec(id), label }));
   return (
     <header className="top"><div className="wrap">
       <a className="homelink" href={home}>
@@ -24,13 +27,15 @@ function Header({ route }: { route: Route }) {
         <span className="brand">{L.brand}<small>{L.doctor} · {L.place}</small></span>
       </a>
       <nav className="nav" aria-label={lang === "gu" ? "મુખ્ય" : "Main"}>
-        <a href={sec("tx")}>{L.navTx}</a><a href={sec("clinic")}>{L.navClinic}</a><a href={sec("doc")}>{L.navDoc}</a><a href={sec("visit")}>{L.navVisit}</a>
+        {links.map((l) => <a key={l.to} href={l.to}>{l.label}</a>)}
       </nav>
+      <a className="hcall" href={`tel:${SITE.phoneTel}`}><Icon id="i-phone" />{SITE.phone}</a>
       <div className="lang" role="group" aria-label="Language / ભાષા">
         {(["en", "gu"] as Lang[]).map((l) => (
           <a key={l} href={href(route.alt[l])} hrefLang={l} lang={l} aria-current={l === lang ? "page" : undefined} aria-label={UI[l].langName}>{l === "gu" ? "ગુ" : "EN"}</a>
         ))}
       </div>
+      <Menu route={route} lang={lang} links={links.slice(1)} />
     </div></header>
   );
 }

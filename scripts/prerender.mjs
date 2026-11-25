@@ -15,8 +15,10 @@ const { render, routes, SITE, UI } = await import(pathToFileURL(path.join(root, 
 const O = SITE.origin;
 const tpl = fs.readFileSync(path.join(dist, "index.html"), "utf8");
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-// The Gujarati font file (hashed name), preloaded on Gujarati pages so the text doesn't redraw after a fallback font.
-const guFont = fs.readdirSync(path.join(dist, "assets")).find((f) => /^anek-gujarati-gujarati-.*\.woff2$/.test(f));
+// Font files (hashed names), preloaded so text is drawn once, in the right font. Gujarati pages need both scripts.
+const fontFile = (script) => fs.readdirSync(path.join(dist, "assets")).find((f) => new RegExp(`^anek-gujarati-${script}-wght.*\\.woff2$`).test(f));
+const FONTS = { en: [fontFile("latin")], gu: [fontFile("gujarati"), fontFile("latin")] };
+if (FONTS.gu.some((f) => !f)) throw new Error("font file not found in dist/assets");
 const BASE = (process.env.BASE || "/").replace(/\/$/, "");
 const OG_ALT = {
   en: "Subham Eye Clinic, Jamnagar — Dr. Rajeev Shah, MBBS, DOMS. 0288 256 3274",
@@ -106,7 +108,9 @@ function head(r) {
     `<title>${esc(r.title)}</title>`,
     r.description && `<meta name="description" content="${esc(r.description)}" />`,
     (STAGING || nf) && `<meta name="robots" content="noindex, nofollow" />`,
-    r.lang === "gu" && guFont && `<link rel="preload" href="${BASE}/assets/${guFont}" as="font" type="font/woff2" crossorigin />`,
+    ...FONTS[r.lang].map((f) => `<link rel="preload" href="${BASE}/assets/${f}" as="font" type="font/woff2" crossorigin />`),
+    // Chrome fetches a page as the visitor is about to tap its link, so it opens at once.
+    `<script type="speculationrules">{"prerender":[{"where":{"href_matches":"${BASE}/*"},"eagerness":"moderate"}]}</script>`,
     GSC,
   ];
   if (!nf) {
