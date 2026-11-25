@@ -88,12 +88,14 @@ function jsonLd(r) {
   }
   const t = r.treatment, L = UI[r.lang], home = O + (r.lang === "en" ? "/" : "/gu/");
   return [
+    { "@type": "WebSite", "@id": O + "/#website", url: O + "/", name: "Subham Eye Clinic" },
     clinicRef,
     { "@type": "MedicalWebPage", "@id": url, url, name: r.title, description: r.description, inLanguage: r.lang, isPartOf: { "@id": O + "/#website" },
       about: { "@type": "MedicalProcedure", name: t.name[r.lang] }, publisher: { "@id": O + "/#clinic" } },
     { "@type": "BreadcrumbList", itemListElement: [
       { "@type": "ListItem", position: 1, name: L.home, item: home },
-      { "@type": "ListItem", position: 2, name: t.name[r.lang], item: url } ] },
+      { "@type": "ListItem", position: 2, name: L.navTx, item: home + "#tx" },
+      { "@type": "ListItem", position: 3, name: t.name[r.lang], item: url } ] },
     { "@type": "FAQPage", inLanguage: r.lang, mainEntity: t.faqs.map((f) => ({ "@type": "Question", name: f.q[r.lang], acceptedAnswer: { "@type": "Answer", text: f.a[r.lang] } })) },
   ];
 }

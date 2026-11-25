@@ -177,9 +177,9 @@ export const TREATMENTS: Treatment[] = [
     name: { gu: "આંખની ઇજા — ૨૪×૭", en: "Eye injuries — 24×7" },
     chip: { gu: "ઇજા", en: "Injury" },
     card: { gu: "આંખમાં કણ, કેમિકલથી ઇજા અને કોર્નિયાની ઇજાનું ઓપરેશન.", en: "Foreign bodies, chemical injuries and repair of corneal injuries." },
-    title: { gu: "જામનગરમાં આંખની ઇજા અને ઇમરજન્સી 24×7", en: "Eye injuries and emergencies 24×7 in Jamnagar" },
+    title: { gu: "જામનગરમાં આંખની ઇજા અને ઇમરજન્સી ૨૪×૭", en: "Eye injuries and emergencies 24×7 in Jamnagar" },
     description: {
-      gu: "સુભમ્ આઈ ક્લિનિક, જામનગરમાં આંખની ઇજા અને ઇમરજન્સી ૨૪×૭: આંખમાં કણ, કેમિકલથી ઇજા અને કોર્નિયાની ઇજાનું ઓપરેશન — ડૉ. રાજીવ શાહ. ફોન 0288 256 3274.",
+      gu: "સુભમ્ આઈ ક્લિનિક, જામનગરમાં આંખની ઇજા અને ઇમરજન્સી ૨૪×૭: આંખમાં કણ, કેમિકલથી ઇજા અને કોર્નિયાની ઇજાનું ઓપરેશન. ફોન 0288 256 3274.",
       en: "Eye injuries and emergencies seen 24×7 at Subham Eye Clinic, Jamnagar: foreign bodies, chemical injuries, corneal injury repair. Call 0288 256 3274.",
     },
     intro: {
@@ -191,7 +191,7 @@ export const TREATMENTS: Treatment[] = [
       {
         h: { gu: "પહેલાં શું કરવું", en: "What to do first" },
         list: {
-          gu: ["કેમિકલ ઊડે તો: આંખને પુષ્કળ ચોખ્ખા પાણીથી સતત ધોતા રહો; એ દરમિયાન બીજું કોઈ ક્લિનિકમાં ફોન કરે", "આંખમાં કંઈ પડે તો: આંખ ચોળશો નહીં", "આંખમાં કંઈ ખૂંપી ગયું હોય તો: જાતે કાઢવાનો પ્રયત્ન ન કરો — આંખને હળવેથી ઢાંકીને ક્લિનિક આવો"],
+          gu: ["કેમિકલ ઊડે તો: આંખને પુષ્કળ ચોખ્ખા પાણીથી સતત ધોતા રહો; એ દરમિયાન બીજા કોઈને ક્લિનિકમાં ફોન કરવા કહો", "આંખમાં કંઈ પડે તો: આંખ ચોળશો નહીં", "આંખમાં કંઈ ખૂંપી ગયું હોય તો: જાતે કાઢવાનો પ્રયત્ન ન કરો — આંખને હળવેથી ઢાંકીને ક્લિનિક આવો"],
           en: ["Chemical splash: keep rinsing the eye with plenty of clean water while someone calls the clinic", "Something in the eye: do not rub it", "Something stuck in the eye: do not try to pull it out — cover the eye gently and come to the clinic"],
         },
       },

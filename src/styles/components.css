@@ -186,7 +186,7 @@ html[data-lang="gu"] .art h2{line-height:1.48}
   footer .list .fh{margin-bottom:0}
 }
 @media (max-width:599px){
-  .eye text{font-size:28px} /* the drawing shrinks to about half; keeps labels readable */
+  .eye:not(.compact) text{font-size:28px} /* the full drawing shrinks to about half on phones; keeps labels readable */
 }
 @media (min-width:600px){
   .acts{display:flex;flex-wrap:wrap;gap:12px}

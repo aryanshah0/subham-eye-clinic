@@ -20,7 +20,7 @@ export function EyeDiagram({ lang, start = "lens", interactive = true, compact =
 
   return (
     <figure className="card fig">
-      <svg className="eye" viewBox={compact ? "120 20 440 310" : "0 0 560 330"} role="img" aria-label={L.eyeAria}>
+      <svg className={compact ? "eye compact" : "eye"} viewBox={compact ? "120 20 440 310" : "0 0 560 330"} role="img" aria-label={L.eyeAria}>
         <defs><marker id="dot" viewBox="0 0 6 6" refX="3" refY="3" markerWidth="6" markerHeight="6"><circle cx="3" cy="3" r="2.4" fill={C.line} /></marker></defs>
         {!compact && (
           <g stroke={C.gold} strokeWidth="1.6" strokeDasharray="5 5" fill="none" opacity={dim(null)}>
