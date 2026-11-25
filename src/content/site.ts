@@ -15,7 +15,8 @@ export const SITE = {
   email: "subhamiclinic@gmail.com",
   mapsCid: "3656070401854130553",
   mapsUrl: "https://maps.google.com/?cid=3656070401854130553",
-  mapEmbed: "https://maps.google.com/maps?q=Subham%20Eye%20Clinic%2C%20Summair%20Club%20Road%2C%20Jamnagar&z=16&output=embed",
+  // Embed by coordinates: a plain pin, without Google's place card (which shows a star rating, not allowed under the NMC rules).
+  mapEmbed: "https://maps.google.com/maps?q=22.465287,70.0573347&z=16&output=embed",
   geo: { lat: 22.465287, lng: 70.0573347 },
   regNo: "G-13342",
   openedYear: 2002,
@@ -28,4 +29,9 @@ export const SITE = {
   },
   // OPD sessions, minutes after midnight, Monday–Saturday. Sunday closed. Emergencies 24×7 on the same number.
   sessions: [[9 * 60, 13 * 60], [17 * 60 + 30, 20 * 60 + 30]] as [number, number][],
+  // Festival days when the OPD is closed (India dates, "YYYY-MM-DD"). Emergencies are still seen 24×7 on the same number.
+  // Dates come from Dr. Shah; empty until he gives them.
+  holidays: [] as string[],
+  // Date the page text last changed (sitemap <lastmod>). Change it by hand when the content changes, not on every deploy.
+  contentUpdated: "2026-11-25",
 } as const;

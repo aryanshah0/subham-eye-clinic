@@ -15,7 +15,22 @@ const { render, routes, SITE, UI } = await import(pathToFileURL(path.join(root, 
 const O = SITE.origin;
 const tpl = fs.readFileSync(path.join(dist, "index.html"), "utf8");
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-const today = new Date().toISOString().slice(0, 10);
+// The Gujarati font file (hashed name), preloaded on Gujarati pages so the text doesn't redraw after a fallback font.
+const guFont = fs.readdirSync(path.join(dist, "assets")).find((f) => /^anek-gujarati-gujarati-.*\.woff2$/.test(f));
+const BASE = (process.env.BASE || "/").replace(/\/$/, "");
+const OG_ALT = {
+  en: "Subham Eye Clinic, Jamnagar — Dr. Rajeev Shah, MBBS, DOMS. 0288 256 3274",
+  gu: "સુભમ્ આઈ ક્લિનિક, જામનગર — ડૉ. રાજીવ શાહ, MBBS, DOMS. 0288 256 3274",
+};
+// What each treatment page offers, named and typed for search engines (the page titles are written for patients).
+const SERVICES = {
+  "cataract-surgery": [["MedicalProcedure", "Phaco cataract surgery"]],
+  glaucoma: [["MedicalTherapy", "Glaucoma treatment"], ["MedicalProcedure", "Glaucoma surgery"]],
+  "diabetic-eye-checkup": [["MedicalTest", "Diabetic eye examination"]],
+  "eye-injuries": [["MedicalProcedure", "Eye injury and corneal injury repair"]],
+  "pterygium-chalazion": [["MedicalProcedure", "Pterygium surgery"], ["MedicalProcedure", "Chalazion surgery"]],
+  "eye-tests-contact-lenses": [["MedicalTest", "Eye examination"]],
+};
 const LOCALE = { gu: "gu_IN", en: "en_IN" };
 
 const clinic = {
@@ -38,19 +53,29 @@ const clinic = {
     { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], opens: "09:00", closes: "13:00" },
     { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], opens: "17:30", closes: "20:30" },
   ],
-  availableService: routes.filter((r) => r.kind === "treatment" && r.lang === "en").map((r) => ({ "@type": "MedicalProcedure", name: r.treatment.name.en, url: O + r.path })),
+  availableService: routes.filter((r) => r.kind === "treatment" && r.lang === "en")
+    .flatMap((r) => SERVICES[r.treatment.slug].map(([type, name]) => ({ "@type": type, name, url: O + r.path }))),
+  // Emergencies are seen 24×7 on the clinic number (QUESTIONS.md).
+  contactPoint: { "@type": "ContactPoint", contactType: "emergency", telephone: SITE.phoneIntl, availableLanguage: ["en", "gu", "hi"],
+    hoursAvailable: { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], opens: "00:00", closes: "23:59" } },
+  areaServed: { "@type": "City", name: "Jamnagar" },
   employee: { "@id": O + "/#rajeev-shah" },
 };
+// Treatment pages refer to the clinic by @id; this short copy makes each page's data complete on its own.
+const clinicRef = { "@type": "MedicalClinic", "@id": O + "/#clinic", name: "Subham Eye Clinic", url: O + "/", telephone: SITE.phoneIntl, address: clinic.address };
 const doctor = {
   "@type": "Person",
   "@id": O + "/#rajeev-shah",
   name: "Dr. Rajeev Shah",
-  jobTitle: "Eye surgeon (ophthalmologist)",
+  alternateName: ["Dr. Rajiv Shah", "ડૉ. રાજીવ શાહ"],
+  jobTitle: "Ophthalmologist and eye surgeon",
   worksFor: { "@id": O + "/#clinic" },
   alumniOf: { "@type": "CollegeOrUniversity", name: "M.P. Shah Medical College, Jamnagar" },
   hasCredential: [
     { "@type": "EducationalOccupationalCredential", credentialCategory: "degree", name: "MBBS" },
     { "@type": "EducationalOccupationalCredential", credentialCategory: "degree", name: "DOMS (Diploma in Ophthalmic Medicine and Surgery)" },
+    { "@type": "EducationalOccupationalCredential", credentialCategory: "license", name: "Gujarat Medical Council registration", identifier: SITE.regNo,
+      recognizedBy: { "@type": "Organization", name: "Gujarat Medical Council" } },
   ],
   knowsLanguage: ["en", "gu", "hi"],
 };
@@ -63,12 +88,12 @@ function jsonLd(r) {
   }
   const t = r.treatment, L = UI[r.lang], home = O + (r.lang === "en" ? "/" : "/gu/");
   return [
+    clinicRef,
     { "@type": "MedicalWebPage", "@id": url, url, name: r.title, description: r.description, inLanguage: r.lang, isPartOf: { "@id": O + "/#website" },
       about: { "@type": "MedicalProcedure", name: t.name[r.lang] }, publisher: { "@id": O + "/#clinic" } },
     { "@type": "BreadcrumbList", itemListElement: [
       { "@type": "ListItem", position: 1, name: L.home, item: home },
-      { "@type": "ListItem", position: 2, name: L.navTx, item: home + "#tx" },
-      { "@type": "ListItem", position: 3, name: t.name[r.lang], item: url } ] },
+      { "@type": "ListItem", position: 2, name: t.name[r.lang], item: url } ] },
     { "@type": "FAQPage", inLanguage: r.lang, mainEntity: t.faqs.map((f) => ({ "@type": "Question", name: f.q[r.lang], acceptedAnswer: { "@type": "Answer", text: f.a[r.lang] } })) },
   ];
 }
@@ -79,6 +104,7 @@ function head(r) {
     `<title>${esc(r.title)}</title>`,
     r.description && `<meta name="description" content="${esc(r.description)}" />`,
     (STAGING || nf) && `<meta name="robots" content="noindex, nofollow" />`,
+    r.lang === "gu" && guFont && `<link rel="preload" href="${BASE}/assets/${guFont}" as="font" type="font/woff2" crossorigin />`,
     GSC,
   ];
   if (!nf) {
@@ -97,7 +123,7 @@ function head(r) {
       `<meta property="og:image" content="${O}/og-image.png" />`,
       `<meta property="og:image:width" content="1200" />`,
       `<meta property="og:image:height" content="630" />`,
-      `<meta property="og:image:alt" content="Subham Eye Clinic, Jamnagar — Dr. Rajeev Shah, MBBS, DOMS. 0288 256 3274" />`,
+      `<meta property="og:image:alt" content="${esc(OG_ALT[r.lang])}" />`,
       `<meta name="twitter:card" content="summary_large_image" />`,
       `<script type="application/ld+json">${JSON.stringify({ "@context": "https://schema.org", "@graph": jsonLd(r) }).replace(/</g, "\\u003c")}</script>`,
     );
@@ -111,7 +137,7 @@ for (const r of routes) {
     .replace(/<html lang="en" data-lang="en">/, `<html lang="${r.lang}" data-lang="${r.lang}">`)
     .replace("<!--head-->", head(r))
     .replace("<!--app-->", render(r.path));
-  const out = r.kind === "notfound" ? path.join(dist, "404.html") : path.join(dist, r.path, "index.html");
+  const out = r.kind === "notfound" ? path.join(dist, r.lang === "gu" ? "gu" : "", "404.html") : path.join(dist, r.path, "index.html");
   fs.mkdirSync(path.dirname(out), { recursive: true });
   fs.writeFileSync(out, html);
   n++;
@@ -122,7 +148,7 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${pages.map((r) => `  <url>
     <loc>${O + r.path}</loc>
-    <lastmod>${today}</lastmod>
+    <lastmod>${SITE.contentUpdated}</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="${O + r.alt.en}"/>
     <xhtml:link rel="alternate" hreflang="gu" href="${O + r.alt.gu}"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="${O + r.alt.en}"/>

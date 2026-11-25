@@ -28,7 +28,7 @@ function Header({ route }: { route: Route }) {
       </nav>
       <div className="lang" role="group" aria-label="Language / ભાષા">
         {(["en", "gu"] as Lang[]).map((l) => (
-          <a key={l} href={href(route.alt[l])} hrefLang={l} lang={l} aria-current={l === lang ? "true" : undefined} aria-label={UI[l].langName}>{l === "gu" ? "ગુ" : "EN"}</a>
+          <a key={l} href={href(route.alt[l])} hrefLang={l} lang={l} aria-current={l === lang ? "page" : undefined} aria-label={UI[l].langName}>{l === "gu" ? "ગુ" : "EN"}</a>
         ))}
       </div>
     </div></header>
@@ -40,8 +40,8 @@ function Footer({ lang }: { lang: Lang }) {
   return (
     <footer><div className="wrap">
       <div className="cols">
-        <div><b>{L.brand}</b><br /><Tx k="address" lang={lang} /><br /><a href={`tel:${SITE.phoneTel}`}><b>{SITE.phone}</b></a><br /><a href={`mailto:${SITE.email}`}>{SITE.email}</a></div>
-        <div><p className="fh">{L.visitTitle}</p>{L.monSat}<br />{L.morning}<br />{L.evening}<br />{L.sunday}: {L.closed}</div>
+        <div className="contact"><b>{L.brand}</b><br /><Tx k="address" lang={lang} /><br /><a href={`tel:${SITE.phoneTel}`}><b>{SITE.phone}</b></a><br /><a href={`mailto:${SITE.email}`}>{SITE.email}</a></div>
+        <div><p className="fh">{L.timings}</p>{L.monSat}<br />{L.morning}<br />{L.evening}<br />{L.sunday}: {L.closed}</div>
         <div><p className="fh">{L.emergency}</p>{L.always}<br /><a href={`tel:${SITE.phoneTel}`}><b>{SITE.phone}</b></a></div>
         <div className="list"><p className="fh">{L.navTx}</p>
           {TREATMENTS.map((t) => <a key={t.slug} href={href(treatmentPath(lang, t))}>{t.name[lang]}</a>)}

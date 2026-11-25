@@ -35,17 +35,17 @@ export const TREATMENTS: Treatment[] = [
     name: { gu: "મોતિયાનું ઓપરેશન", en: "Cataract surgery" },
     chip: { gu: "મોતિયો", en: "Cataract" },
     card: {
-      gu: "પોતાના થિયેટરમાં ટાંકા વગરનું ફેકો ઓપરેશન — મોનોફોકલ, ટોરિક કે મલ્ટિફોકલ લેન્સ સાથે.",
-      en: "Stitchless phaco surgery in our own theatre, with a monofocal, toric or multifocal lens.",
+      gu: "પોતાના થિયેટરમાં ફેકો ઓપરેશન, સામાન્ય રીતે ટાંકા વગર — મોનોફોકલ, ટોરિક કે મલ્ટિફોકલ/EDOF લેન્સ સાથે.",
+      en: "Phaco surgery in our own theatre, usually without stitches, with a monofocal, toric or multifocal/EDOF lens.",
     },
     title: { gu: "જામનગરમાં મોતિયાનું ઓપરેશન", en: "Cataract surgery in Jamnagar" },
     description: {
-      gu: "સુભમ્ આઈ ક્લિનિક, જામનગરમાં ડૉ. રાજીવ શાહ દ્વારા ક્લિનિકના પોતાના ઓપરેશન થિયેટરમાં ટાંકા વગરનું ફેકો મોતિયાનું ઓપરેશન. મોનોફોકલ, ટોરિક અને મલ્ટિફોકલ લેન્સ.",
-      en: "Stitchless phaco cataract surgery by Dr. Rajeev Shah in the clinic’s own operation theatre at Subham Eye Clinic, Jamnagar. Monofocal, toric and multifocal lenses.",
+      gu: "સુભમ્ આઈ ક્લિનિક, જામનગરમાં ડૉ. રાજીવ શાહ દ્વારા ક્લિનિકના પોતાના ઓપરેશન થિયેટરમાં ફેકો મોતિયાનું ઓપરેશન, સામાન્ય રીતે ટાંકા વગર. મોનોફોકલ, ટોરિક અને મલ્ટિફોકલ/EDOF લેન્સ.",
+      en: "Phaco cataract surgery, usually without stitches, by Dr. Rajeev Shah in the clinic’s own operation theatre at Subham Eye Clinic, Jamnagar. Monofocal, toric and multifocal/EDOF lenses.",
     },
     intro: {
       gu: "આંખની અંદરનો કુદરતી લેન્સ ધૂંધળો થઈ જાય તેને મોતિયો કહે છે. ઉંમર સાથે તે સામાન્ય છે. ઓપરેશનથી ધૂંધળો લેન્સ કાઢીને તેની જગ્યાએ સ્વચ્છ કૃત્રિમ લેન્સ મૂકવામાં આવે છે.",
-      en: "A cataract is when the natural lens inside the eye becomes cloudy. It is common with age. It is treated by surgery that replaces the cloudy lens with a clear artificial lens.",
+      en: "A cataract (motiyo in Gujarati, motiyabind in Hindi) is when the natural lens inside the eye becomes cloudy. It is common with age. It is treated by surgery that replaces the cloudy lens with a clear artificial lens.",
     },
     partNote: { gu: "મોતિયો: આંખની અંદરનો લેન્સ ધૂંધળો થઈ જાય.", en: "Cataract: the lens inside the eye becomes cloudy." },
     sections: [
@@ -103,7 +103,7 @@ export const TREATMENTS: Treatment[] = [
     },
     intro: {
       gu: "ઝામર (ગ્લુકોમા) એ આંખની એવી તકલીફ છે જેમાં ઑપ્ટિક નર્વને નુકસાન થાય છે, ઘણી વાર આંખનું દબાણ વધવાથી. ઝામરથી ગયેલી દૃષ્ટિ પાછી આવતી નથી, એટલે વહેલી ખબર પડવી જરૂરી છે.",
-      en: "Glaucoma is a group of eye conditions that damage the optic nerve, often because of high pressure inside the eye. Vision lost to glaucoma cannot be brought back, so finding it early matters.",
+      en: "Glaucoma (zamar in Gujarati, kala motia in Hindi) is a group of eye conditions that damage the optic nerve, often because of high pressure inside the eye. Vision lost to glaucoma cannot be brought back, so finding it early matters.",
     },
     partNote: { gu: "ઝામરમાં ઑપ્ટિક નર્વને નુકસાન થાય છે, ઘણી વાર આંખનું દબાણ વધવાથી.", en: "Glaucoma damages the optic nerve, often because of high pressure in the eye." },
     sections: [
@@ -177,10 +177,10 @@ export const TREATMENTS: Treatment[] = [
     name: { gu: "આંખની ઇજા — ૨૪×૭", en: "Eye injuries — 24×7" },
     chip: { gu: "ઇજા", en: "Injury" },
     card: { gu: "આંખમાં કણ, કેમિકલથી ઇજા અને કોર્નિયાની ઇજાનું ઓપરેશન.", en: "Foreign bodies, chemical injuries and repair of corneal injuries." },
-    title: { gu: "જામનગરમાં આંખની ઇજા અને ઇમરજન્સી — ૨૪×૭", en: "Eye injuries and emergencies in Jamnagar — 24×7" },
+    title: { gu: "જામનગરમાં આંખની ઇજા અને ઇમરજન્સી 24×7", en: "Eye injuries and emergencies 24×7 in Jamnagar" },
     description: {
       gu: "સુભમ્ આઈ ક્લિનિક, જામનગરમાં આંખની ઇજા અને ઇમરજન્સી ૨૪×૭: આંખમાં કણ, કેમિકલથી ઇજા અને કોર્નિયાની ઇજાનું ઓપરેશન — ડૉ. રાજીવ શાહ. ફોન 0288 256 3274.",
-      en: "Eye injuries and emergencies seen 24×7 at Subham Eye Clinic, Jamnagar: foreign bodies, chemical injuries and repair of corneal injuries by Dr. Rajeev Shah. Call 0288 256 3274.",
+      en: "Eye injuries and emergencies seen 24×7 at Subham Eye Clinic, Jamnagar: foreign bodies, chemical injuries, corneal injury repair. Call 0288 256 3274.",
     },
     intro: {
       gu: "આંખની ઇજામાં તરત સારવાર જરૂરી છે. ડૉ. શાહ ૨૪×૭ આંખની ઇમરજન્સી જુએ છે — ગમે ત્યારે ક્લિનિકના નંબર પર ફોન કરો.",
@@ -191,7 +191,7 @@ export const TREATMENTS: Treatment[] = [
       {
         h: { gu: "પહેલાં શું કરવું", en: "What to do first" },
         list: {
-          gu: ["કેમિકલ ઊડે તો: કોઈ ક્લિનિકમાં ફોન કરે ત્યાં સુધી આંખને પુષ્કળ ચોખ્ખા પાણીથી ધોતા રહો", "આંખમાં કંઈ પડે તો: આંખ ચોળશો નહીં", "આંખમાં કંઈ ખૂંપી ગયું હોય તો: જાતે કાઢવાનો પ્રયત્ન ન કરો — આંખને હળવેથી ઢાંકીને ક્લિનિક આવો"],
+          gu: ["કેમિકલ ઊડે તો: આંખને પુષ્કળ ચોખ્ખા પાણીથી સતત ધોતા રહો; એ દરમિયાન બીજું કોઈ ક્લિનિકમાં ફોન કરે", "આંખમાં કંઈ પડે તો: આંખ ચોળશો નહીં", "આંખમાં કંઈ ખૂંપી ગયું હોય તો: જાતે કાઢવાનો પ્રયત્ન ન કરો — આંખને હળવેથી ઢાંકીને ક્લિનિક આવો"],
           en: ["Chemical splash: keep rinsing the eye with plenty of clean water while someone calls the clinic", "Something in the eye: do not rub it", "Something stuck in the eye: do not try to pull it out — cover the eye gently and come to the clinic"],
         },
       },
@@ -205,7 +205,7 @@ export const TREATMENTS: Treatment[] = [
     ],
     faqs: [
       { q: { gu: "શું રાત્રે ઇમરજન્સીમાં ક્લિનિક ખુલ્લું હોય છે?", en: "Is the clinic open at night for emergencies?" }, a: { gu: "હા. આંખની ઇમરજન્સી ૨૪×૭ જોવામાં આવે છે — પહેલાં 0288 256 3274 પર ફોન કરો.", en: "Yes. Eye emergencies are seen 24×7 — call 0288 256 3274 first." } },
-      { q: { gu: "કેમિકલ ઊડે તો શું કરવું?", en: "What should I do after a chemical splash?" }, a: { gu: "તરત જ પુષ્કળ ચોખ્ખા પાણીથી આંખ ધોવો અને રસ્તામાં પણ ધોતા રહો. શક્ય હોય તો કેમિકલનું નામ કે ડબ્બો સાથે લાવો.", en: "Rinse the eye immediately with plenty of clean water and keep rinsing on the way. Bring the chemical’s name or container if you can." } },
+      { q: { gu: "કેમિકલ ઊડે તો શું કરવું?", en: "What should I do after a chemical splash?" }, a: { gu: "તરત જ પુષ્કળ ચોખ્ખા પાણીથી આંખ ધુઓ અને રસ્તામાં પણ ધોતા રહો. શક્ય હોય તો કેમિકલનું નામ કે ડબ્બો સાથે લાવો.", en: "Rinse the eye immediately with plenty of clean water and keep rinsing on the way. Bring the chemical’s name or container if you can." } },
       { q: { gu: "આંખમાં કંઈ પડે તો આંખ ચોળવી?", en: "Should I rub my eye if something gets in it?" }, a: { gu: "ના. ચોળવાથી કોર્નિયા પર ઘસરકો પડી શકે. હળવેથી પલકારા મારો અને ન નીકળે તો ક્લિનિક આવો.", en: "No. Rubbing can scratch the cornea. Blink gently, and come to the clinic if it does not come out." } },
     ],
   },
@@ -213,16 +213,16 @@ export const TREATMENTS: Treatment[] = [
     slug: "pterygium-chalazion",
     icon: "i-lid",
     part: "surface",
-    name: { gu: "ટેરીજીયમ અને પાંપણની ગાંઠ", en: "Pterygium & chalazion" },
+    name: { gu: "ટેરીજીયમ અને પોપચાની ગાંઠ", en: "Pterygium & chalazion" },
     chip: { gu: "ટેરીજીયમ", en: "Pterygium" },
     card: { gu: "પોતાના થિયેટરમાં નાનું ઓપરેશન.", en: "Small operations in our own theatre." },
-    title: { gu: "જામનગરમાં ટેરીજીયમ અને પાંપણની ગાંઠ (કેલેઝિયન)નું ઓપરેશન", en: "Pterygium and chalazion surgery in Jamnagar" },
+    title: { gu: "જામનગરમાં ટેરીજીયમ અને પોપચાની ગાંઠનું ઓપરેશન", en: "Pterygium and chalazion surgery in Jamnagar" },
     description: {
-      gu: "ટેરીજીયમ અને પાંપણની ગાંઠ (કેલેઝિયન): સુભમ્ આઈ ક્લિનિક, જામનગરમાં ડૉ. રાજીવ શાહ દ્વારા ક્લિનિકના પોતાના થિયેટરમાં નાનું ઓપરેશન.",
+      gu: "ટેરીજીયમ અને પોપચાની ગાંઠ (કેલેઝિયન): સુભમ્ આઈ ક્લિનિક, જામનગરમાં ડૉ. રાજીવ શાહ દ્વારા ક્લિનિકના પોતાના થિયેટરમાં નાનું ઓપરેશન.",
       en: "Pterygium and chalazion: small operations by Dr. Rajeev Shah in the clinic’s own operation theatre at Subham Eye Clinic, Jamnagar.",
     },
     intro: {
-      gu: "આંખની સપાટી અને પાંપણની બે સામાન્ય તકલીફો — જરૂર પડે તો બંનેનું ક્લિનિકના પોતાના થિયેટરમાં નાનું ઓપરેશન થાય છે.",
+      gu: "આંખની સપાટી અને પોપચાની બે સામાન્ય તકલીફો — જરૂર પડે તો બંનેનું ક્લિનિકના પોતાના થિયેટરમાં નાનું ઓપરેશન થાય છે.",
       en: "Two common conditions of the eye surface and eyelid, both treated with a small operation in the clinic’s own theatre when needed.",
     },
     partNote: { gu: "ટેરીજીયમ: આંખની સપાટી પર માંસ જેવો ભાગ વધવો.", en: "Pterygium: a growth of tissue onto the surface of the eye." },
@@ -235,17 +235,17 @@ export const TREATMENTS: Treatment[] = [
         },
       },
       {
-        h: { gu: "પાંપણની ગાંઠ (કેલેઝિયન)", en: "Chalazion" },
+        h: { gu: "પોપચાની ગાંઠ (કેલેઝિયન)", en: "Chalazion" },
         p: {
-          gu: "પાંપણની તેલ-ગ્રંથિ બંધ થવાથી થતી દુખાવા વગરની ગાંઠ. ઘણી ગાંઠો ગરમ શેકથી બેસી જાય છે; ન બેસે તો નાના ઓપરેશનથી કાઢી શકાય છે.",
-          en: "A painless lump in the eyelid caused by a blocked oil gland. Many settle with warm compresses; one that does not can be removed with a small operation.",
+          gu: "પોપચાની તેલ-ગ્રંથિ બંધ થવાથી થતી ગાંઠ, જેમાં સામાન્ય રીતે દુખાવો થતો નથી. ઘણી ગાંઠો ગરમ શેકથી બેસી જાય છે; ન બેસે તો નાના ઓપરેશનથી કાઢી શકાય છે.",
+          en: "A lump in the eyelid, usually not painful, caused by a blocked oil gland. Many settle with warm compresses; one that does not can be removed with a small operation.",
         },
       },
     ],
     faqs: [
       { q: { gu: "શું ઓપરેશન ક્લિનિકમાં જ થાય છે?", en: "Is the operation done at the clinic?" }, a: { gu: "હા, ક્લિનિકના પોતાના ઓપરેશન થિયેટરમાં.", en: "Yes, in the clinic’s own operation theatre." } },
       { q: { gu: "ટેરીજીયમ કાઢ્યા પછી ફરી થઈ શકે?", en: "Can a pterygium come back after removal?" }, a: { gu: "કેટલાક લોકોમાં ફરી થઈ શકે. આપની આંખ માટે શું અપેક્ષા રાખવી તે ડૉ. શાહ સમજાવશે.", en: "It can come back in some people. Dr. Shah will explain what to expect for your eye." } },
-      { q: { gu: "શું પાંપણની ગાંઠ અને આંજણી એક જ છે?", en: "Is a chalazion the same as a stye?" }, a: { gu: "ના. આંજણી સામાન્ય રીતે પાંપણની કિનારે દુખાવાવાળી, ચેપવાળી ફોલ્લી હોય છે; પાંપણની ગાંઠ સામાન્ય રીતે પાંપણની અંદર દુખાવા વગરની ગાંઠ હોય છે.", en: "No. A stye is usually a painful, infected bump at the edge of the lid; a chalazion is usually a painless lump inside the lid." } },
+      { q: { gu: "શું પોપચાની ગાંઠ અને આંજણી એક જ છે?", en: "Is a chalazion the same as a stye?" }, a: { gu: "ના. આંજણી સામાન્ય રીતે પોપચાની કિનારે દુખાવાવાળી, ચેપવાળી ફોલ્લી હોય છે; પોપચાની ગાંઠ સામાન્ય રીતે પોપચાની અંદર દુખાવા વગરની ગાંઠ હોય છે.", en: "No. A stye is usually a painful, infected bump at the edge of the lid; a chalazion is usually a lump inside the lid that does not hurt." } },
     ],
   },
   {
@@ -261,7 +261,7 @@ export const TREATMENTS: Treatment[] = [
       en: "Eye check-ups at Subham Eye Clinic, Jamnagar: computerised eye testing for glasses numbers, an eye examination by Dr. Rajeev Shah, and contact lenses.",
     },
     intro: {
-      gu: "નિયમિત આંખની તપાસથી તકલીફ વહેલી પકડાય છે — ક્યારેક તમને ખબર પડે તે પહેલાં.",
+      gu: "નિયમિત આંખની તપાસથી તકલીફ વહેલી પકડાય છે — ક્યારેક આપને ખબર પડે તે પહેલાં.",
       en: "A regular eye check-up finds problems early — sometimes before you notice them.",
     },
     partNote: { gu: "આંખનો નંબર કોર્નિયા અને લેન્સ પ્રકાશને કેવી રીતે વાળે છે તેના પર આધાર રાખે છે.", en: "Your glasses number depends on how the cornea and lens bend light." },

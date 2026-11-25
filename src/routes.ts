@@ -44,14 +44,9 @@ export const routes: Route[] = [
       alt: { gu: pathFor("gu", t.slug), en: pathFor("en", t.slug) },
     })),
   ),
-  {
-    path: "/404/",
-    lang: "en",
-    kind: "notfound",
-    title: "Page not found / આ પાનું મળ્યું નથી — Subham Eye Clinic",
-    description: "",
-    alt: { en: "/", gu: "/gu/" },
-  },
+  // 404 pages: written to /404.html and /gu/404.html (Cloudflare Pages serves the nearest one).
+  { path: "/404/", lang: "en", kind: "notfound", title: "Page not found — Subham Eye Clinic", description: "", alt: { en: "/", gu: "/gu/" } },
+  { path: "/gu/404/", lang: "gu", kind: "notfound", title: "આ પાનું મળ્યું નથી — સુભમ્ આઈ ક્લિનિક", description: "", alt: { en: "/", gu: "/gu/" } },
 ];
 
 export const treatmentPath = (lang: Lang, t: Treatment) => pathFor(lang, t.slug);

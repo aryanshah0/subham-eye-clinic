@@ -58,7 +58,7 @@ export function Treatment({ lang, t }: { lang: Lang; t: T }) {
         <aside className="art-side">
           <EyeDiagram lang={lang} start={t.part} interactive={false} compact noteText={t.partNote[lang]} />
           <div className="card side-box">
-            <OpenStatus lang={lang} className="sidestatus">
+            <OpenStatus lang={lang} className="sidestatus" emergency={t.slug === "eye-injuries"}>
               <div className="acts"><CallButton lang={lang} /><DirectionsButton lang={lang} /></div>
               <p className="emline"><b>{L.emLabel}</b> {L.emText}</p>
             </OpenStatus>
