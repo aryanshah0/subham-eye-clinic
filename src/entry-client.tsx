@@ -2,7 +2,6 @@
 import { hydrateRoot } from "react-dom/client";
 import { App } from "./App";
 import { routes } from "./routes";
-import { telOnComputers } from "./tel";
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 let path = location.pathname.startsWith(base) ? location.pathname.slice(base.length) : location.pathname;
@@ -11,8 +10,6 @@ if (!path.endsWith("/")) path += "/";
 const nfLang = document.documentElement.lang === "gu" ? "gu" : "en";
 const route = routes.find((r) => r.path === path) ?? routes.find((r) => r.kind === "notfound" && r.lang === nfLang)!;
 hydrateRoot(document.getElementById("root")!, <App route={route} />);
-
-telOnComputers();
 
 // Smooth scrolling for links inside the page, only once this page has settled (see components.css).
 const ready = () => setTimeout(() => document.documentElement.classList.add("ready"), 300);
