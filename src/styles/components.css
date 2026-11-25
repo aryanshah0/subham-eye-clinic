@@ -245,6 +245,11 @@ html[data-lang="gu"] .faq summary{line-height:1.6}
 .nf .acts{margin-top:24px}
 .nf p{margin-top:12px;color:var(--mute)}
 
+/* message after clicking the phone number on a computer; it floats, so nothing moves */
+.toast{position:fixed;left:50%;bottom:28px;z-index:60;translate:-50% 12px;display:grid;gap:2px;padding:14px 24px;border-radius:12px;background:var(--green-dark);color:#fff;text-align:center;font-size:16px;opacity:0;visibility:hidden;transition:opacity .2s,translate .2s,visibility .2s}
+.toast.on{opacity:1;visibility:visible;translate:-50% 0}
+.toast b{font:600 20px var(--f)}
+
 /* phones: the call bar covers the bottom of the page, so the footer gets the room under it */
 @media (max-width:939px){
   footer{padding-bottom:calc(32px + 80px + env(safe-area-inset-bottom))}
