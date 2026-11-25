@@ -100,7 +100,10 @@ const doctor = {
   ],
   knowsLanguage: ["en", "gu", "hi"],
 };
-const website = { "@type": "WebSite", "@id": O + "/#website", url: O + "/", name: "Subham Eye Clinic", inLanguage: ["en", "gu"], publisher: { "@id": O + "/#clinic" } };
+// alternateName ends with our own address: Google's documented remedy when it shows the parent domain's name
+// ("Cloudflare", because of pages.dev) as the site name in search results.
+const SITE_ALT = ["સુભમ્ આઈ ક્લિનિક", "Shubham Eye Clinic", new URL(O).hostname];
+const website = { "@type": "WebSite", "@id": O + "/#website", url: O + "/", name: "Subham Eye Clinic", alternateName: SITE_ALT, inLanguage: ["en", "gu"], publisher: { "@id": O + "/#clinic" } };
 
 function jsonLd(r) {
   const url = O + r.path;
@@ -109,7 +112,7 @@ function jsonLd(r) {
   }
   const t = r.treatment, L = UI[r.lang], home = O + (r.lang === "en" ? "/" : "/gu/");
   return [
-    { "@type": "WebSite", "@id": O + "/#website", url: O + "/", name: "Subham Eye Clinic" },
+    { "@type": "WebSite", "@id": O + "/#website", url: O + "/", name: "Subham Eye Clinic", alternateName: SITE_ALT },
     clinicRef,
     { "@type": "MedicalWebPage", "@id": url, url, name: r.title, description: r.description, inLanguage: r.lang, isPartOf: { "@id": O + "/#website" },
       about: { "@type": "MedicalProcedure", name: t.name[r.lang] }, publisher: { "@id": O + "/#clinic" } },
@@ -147,7 +150,7 @@ function head(r) {
       `<meta property="og:url" content="${url}" />`,
       `<meta property="og:locale" content="${LOCALE[r.lang]}" />`,
       `<meta property="og:locale:alternate" content="${LOCALE[r.lang === "gu" ? "en" : "gu"]}" />`,
-      `<meta property="og:image" content="${O}/og-image.png" />`,
+      `<meta property="og:image" content="${O}/og-image${r.lang === "gu" ? "-gu" : ""}.png" />`,
       `<meta property="og:image:width" content="1200" />`,
       `<meta property="og:image:height" content="630" />`,
       `<meta property="og:image:alt" content="${esc(OG_ALT[r.lang])}" />`,

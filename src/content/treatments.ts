@@ -41,8 +41,8 @@ export const TREATMENTS: Treatment[] = [
     },
     title: { gu: "જામનગરમાં મોતિયાનું ઓપરેશન", en: "Cataract surgery in Jamnagar" },
     description: {
-      gu: "સુભમ્ આઈ ક્લિનિક, જામનગરમાં ડૉ. રાજીવ શાહ દ્વારા ક્લિનિકના પોતાના ઓપરેશન થિયેટરમાં ફેકો મોતિયાનું ઓપરેશન, સામાન્ય રીતે ટાંકા વગર. મોનોફોકલ, ટોરિક અને મલ્ટિફોકલ/EDOF લેન્સ.",
-      en: "Phaco cataract surgery, usually without stitches, by Dr. Rajeev Shah in the clinic’s own operation theatre at Subham Eye Clinic, Jamnagar. Monofocal, toric and multifocal/EDOF lenses.",
+      gu: "જામનગરમાં ડૉ. રાજીવ શાહ દ્વારા ક્લિનિકના પોતાના થિયેટરમાં ફેકો મોતિયાનું ઓપરેશન, સામાન્ય રીતે ટાંકા વગર. મોનોફોકલ, ટોરિક, મલ્ટિફોકલ/EDOF લેન્સ.",
+      en: "Phaco cataract surgery in Jamnagar, usually without stitches, by Dr. Rajeev Shah in the clinic’s own theatre. Monofocal, toric, multifocal/EDOF lenses.",
     },
     intro: {
       gu: "આંખની અંદરનો કુદરતી લેન્સ ધૂંધળો થઈ જાય તેને મોતિયો કહે છે. ઉંમર સાથે તે સામાન્ય છે. ઓપરેશનથી ધૂંધળો લેન્સ કાઢીને તેની જગ્યાએ સ્વચ્છ કૃત્રિમ લેન્સ મૂકવામાં આવે છે.",

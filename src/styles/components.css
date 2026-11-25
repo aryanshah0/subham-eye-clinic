@@ -337,3 +337,14 @@ html[data-lang="gu"] .faq summary{line-height:1.6}
 @media (max-width:359px){.brand{font-size:18px}.brand small{display:none}.mark{width:32px;height:32px}.homelink{gap:8px}.top .wrap{gap:6px;padding:0 14px}.menu summary{margin-right:-8px}}
 @media (max-width:599px){:root{--pad:20px}}
 @media (min-width:600px) and (max-width:767px),(min-width:1140px){.parts button{flex:1 1 auto;padding:0 8px}}
+
+/* Printing (a patient may print a page or save it as PDF): text, hours and address only */
+@media print{
+  .top{position:static;backdrop-filter:none}.nav,.lang,.menu,.dock,.mapcard,.fig,.others,.skip,.photo,.acts,.crumbs,.st{display:none!important}
+  .hero,.row,.g2,.doc{display:block!important}
+  .t-page > section:last-child{display:none}
+  body{background:#fff;font-size:12pt}.hero,.hero-t{padding-top:12px}.card{border-color:#bbb;break-inside:avoid}
+  .row{padding:14px 0;break-inside:avoid}section{padding-top:24px}
+  .faq details:not([open]) .ans,.faq details::details-content{display:block;content-visibility:visible;block-size:auto}
+  footer{background:none;color:#000;margin-top:24px;padding:12px 0}footer .list,footer b,footer a{color:#000}footer .list{display:none!important}footer .legal{color:#333;border-color:#bbb}
+}
