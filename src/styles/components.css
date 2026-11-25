@@ -84,6 +84,7 @@ html[lang="en"] .lang a[lang="gu"]{font-family:"Anek Switch","Noto Sans Gujarati
 .acts{display:grid;gap:10px}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 24px;border-radius:12px;font:600 18px var(--f)}
 @media (hover:hover){.btn,.dock a{transition:background .18s,border-color .18s}}
+.btn span{white-space:nowrap}
 .btn .i{width:20px;height:20px}
 .btn.call{background:var(--green);color:#fff}
 .btn.call:hover{background:var(--green-2)}

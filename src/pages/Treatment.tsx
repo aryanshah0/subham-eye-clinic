@@ -34,7 +34,7 @@ export function Treatment({ lang, t }: { lang: Lang; t: T }) {
             <p className="lede">{t.intro[lang]}</p>
           </div>
           <OpenStatus lang={lang} emergency={t.slug === "eye-injuries"}>
-            <div className="acts"><CallButton lang={lang} long={t.slug !== "eye-injuries"} /><DirectionsButton lang={lang} /></div>
+            <div className="acts"><CallButton lang={lang} /><DirectionsButton lang={lang} /></div>
             {t.slug !== "eye-injuries" && <p className="emline"><b>{L.emLabel}</b> {L.emText}</p>}
           </OpenStatus>
         </div>

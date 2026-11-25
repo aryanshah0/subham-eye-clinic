@@ -17,8 +17,9 @@ export function Tx({ k, lang, as: As = "span", className }: { k: UIKey; lang: La
   return v.includes("<") ? <As className={className} dangerouslySetInnerHTML={{ __html: v }} /> : <As className={className}>{v}</As>;
 }
 
-export const CallButton = ({ lang, long = false }: { lang: Lang; long?: boolean }) => (
-  <a className="btn call" href={`tel:${SITE.phoneTel}`}><Icon id="i-phone" /><span>{UI[lang][long ? "callLong" : "call"]}</span></a>
+/** The number is on the button itself: on a computer it is all a visitor needs, with no click. */
+export const CallButton = ({ lang }: { lang: Lang }) => (
+  <a className="btn call" href={`tel:${SITE.phoneTel}`}><Icon id="i-phone" /><span>{UI[lang].call} {SITE.phone}</span></a>
 );
 
 export const DirectionsButton = ({ lang, label = "dir" }: { lang: Lang; label?: UIKey }) => (

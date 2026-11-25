@@ -24,7 +24,7 @@ export function Home({ lang }: { lang: Lang }) {
             <p className="lede">{L.heroSub}</p>
           </div>
           <OpenStatus lang={lang}>
-            <div className="acts"><CallButton lang={lang} long /><DirectionsButton lang={lang} /></div>
+            <div className="acts"><CallButton lang={lang} /><DirectionsButton lang={lang} /></div>
             <p className="emline"><b>{L.emLabel}</b> {L.emText}</p>
           </OpenStatus>
         </div>
