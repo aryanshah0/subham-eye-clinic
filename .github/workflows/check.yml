@@ -1,0 +1,28 @@
+# Every pull request: build both copies and run all checks (titles, links, alt text, private numbers). Deploys nothing.
+name: Check
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      PRIVATE_NUMBERS: ${{ secrets.PRIVATE_NUMBERS }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Production build
+        run: npm run build
+      - name: Development build
+        run: npm run build
+        env:
+          BASE: /subham-eye-clinic/
+          DEV: "1"

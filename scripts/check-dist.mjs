@@ -9,11 +9,12 @@ const files = [];
 (function walk(d) { for (const f of fs.readdirSync(d)) { const p = path.join(d, f); fs.statSync(p).isDirectory() ? walk(p) : f.endsWith(".html") && files.push(p); } })(dist);
 
 // Numbers that must never appear on the site (the doctor's personal mobile). They live in .private-numbers,
-// one per line, which is git-ignored so they never reach the public repo. Without the file the check is skipped.
+// one per line, which is git-ignored so they never reach the public repo; in GitHub Actions they come from the
+// PRIVATE_NUMBERS secret. Without either, the check is skipped with a warning.
 const privFile = path.join(dist, "..", ".private-numbers");
-const privateNumbers = fs.existsSync(privFile)
-  ? fs.readFileSync(privFile, "utf8").split("\n").map((l) => l.replace(/\D/g, "")).filter((n) => n.length >= 8)
-  : (console.warn("check-dist: .private-numbers not found, private-number check skipped"), []);
+const privText = process.env.PRIVATE_NUMBERS ?? (fs.existsSync(privFile) ? fs.readFileSync(privFile, "utf8") : "");
+const privateNumbers = privText.split(/[\n,]/).map((l) => l.replace(/\D/g, "")).filter((n) => n.length >= 8);
+if (!privateNumbers.length) console.warn("check-dist: no private numbers given (.private-numbers or PRIVATE_NUMBERS), private-number check skipped");
 const errors = [], titles = new Map();
 const exists = (url) => {
   let p = url.split("#")[0].split("?")[0];

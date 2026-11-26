@@ -7,7 +7,7 @@ export const LANGS: Lang[] = ["en", "gu"];
 export const DEFAULT_LANG: Lang = "en";
 
 export const SITE = {
-  // Canonical address of the public site. Staging builds keep this canonical and add noindex.
+  // Canonical address of the public site. The dev copy keeps this canonical and adds noindex.
   origin: "https://subhameyeclinic.pages.dev",
   phone: "0288 256 3274",
   phoneTel: "+912882563274",

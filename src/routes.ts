@@ -52,5 +52,5 @@ export const routes: Route[] = [
 export const treatmentPath = (lang: Lang, t: Treatment) => pathFor(lang, t.slug);
 export const homePath = (lang: Lang) => pathFor(lang);
 
-// The deploy base ("/" in production, "/subham-eye-clinic/" on the staging copy) is added to every internal link.
+// The deploy base ("/" in production, "/subham-eye-clinic/" on the dev copy) is added to every internal link.
 export const href = (path: string) => import.meta.env.BASE_URL.replace(/\/$/, "") + path;
