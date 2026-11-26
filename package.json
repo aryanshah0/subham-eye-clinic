@@ -1,7 +1,7 @@
 {
   "name": "subham-eye-clinic",
   "private": true,
-  "version": "0.1.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,11 +10,11 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@fontsource-variable/anek-gujarati": "^5.3.0",
     "react": "^19.3.1",
     "react-dom": "^19.3.1"
   },
   "devDependencies": {
+    "@fontsource-variable/anek-gujarati": "^5.3.0",
     "@types/node": "^22.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
@@ -22,5 +22,8 @@
     "typescript": "^5.9.0",
     "vite": "^8.3.8",
     "wrangler": "^4.166.0"
+  },
+  "engines": {
+    "node": ">=22"
   }
 }

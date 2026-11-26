@@ -1,6 +1,6 @@
 // Build step 3: render every route to static HTML with its full <head> for search engines and link previews:
 // title, description, canonical, hreflang (en/gu/x-default = English), Open Graph, JSON-LD; plus sitemap.xml, robots.txt and 404.html.
-// STAGING=1 adds noindex everywhere and blocks crawlers (GitHub Pages staging copy).
+// DEV=1 builds the development copy (GitHub Pages): noindex everywhere, crawlers blocked, and a visible strip saying so.
 import fs from "node:fs";
 import path from "node:path";
 import { createHash } from "node:crypto";
@@ -8,9 +8,9 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const dist = path.join(root, "dist");
-const STAGING = process.env.STAGING === "1";
+const DEV = process.env.DEV === "1";
 // Google Search Console ownership check (HTML-tag method): GSC_VERIFY=<content value> at production build time.
-const GSC = !STAGING && process.env.GSC_VERIFY ? `<meta name="google-site-verification" content="${process.env.GSC_VERIFY}" />` : "";
+const GSC = !DEV && process.env.GSC_VERIFY ? `<meta name="google-site-verification" content="${process.env.GSC_VERIFY}" />` : "";
 const { render, routes, SITE, UI } = await import(pathToFileURL(path.join(root, "dist-ssr", "entry-server.js")).href);
 
 const O = SITE.origin;
@@ -63,7 +63,7 @@ const clinic = {
   url: O + "/",
   telephone: SITE.phoneIntl,
   email: SITE.email,
-  image: [O + "/og-image.png", O + "/photos/consult.jpg", O + "/photos/ot.jpg"],
+  image: [O + "/og-image.png", O + "/photos/consult.jpg"],
   logo: { "@type": "ImageObject", url: O + "/icon-192.png", width: 192, height: 192 },
   foundingDate: "2002-06",
   medicalSpecialty: "Ophthalmology",
@@ -129,7 +129,7 @@ function head(r) {
   const tags = [
     `<title>${esc(r.title)}</title>`,
     r.description && `<meta name="description" content="${esc(r.description)}" />`,
-    (STAGING || nf) && `<meta name="robots" content="noindex, nofollow" />`,
+    (DEV || nf) && `<meta name="robots" content="noindex, nofollow" />`,
     ...FONTS[r.lang].map((f) => `<script src="${BASE}/assets/${f}"></script>`),
     // Paint only once the page is parsed, so a half-arrived header is never drawn and then moved.
     `<link rel="expect" href="#main" blocking="render" />`,
@@ -161,12 +161,15 @@ function head(r) {
   return tags.filter(Boolean).join("\n    ");
 }
 
+// Development copy only: a plain strip above the page, so nobody shares this copy by mistake.
+const DEV_STRIP = `<p style="margin:0;padding:8px 16px;background:#24483A;color:#fff;font:600 14px/1.4 system-ui,sans-serif;text-align:center">Development copy, not the clinic's website. The real site is <a href="${O}/" style="color:#fff">${new URL(O).host}</a></p>`;
 let n = 0;
 for (const r of routes) {
   const html = tpl
     .replace(/<html lang="en" data-lang="en">/, `<html lang="${r.lang}" data-lang="${r.lang}">`)
     .replace("<!--head-->", head(r))
-    .replace("<!--app-->", render(r.path));
+    .replace("<!--app-->", render(r.path))
+    .replace('<div id="root">', DEV ? `${DEV_STRIP}<div id="root">` : '<div id="root">');
   const out = r.kind === "notfound" ? path.join(dist, r.lang === "gu" ? "gu" : "", "404.html") : path.join(dist, r.path, "index.html");
   fs.mkdirSync(path.dirname(out), { recursive: true });
   fs.writeFileSync(out, html);
@@ -186,6 +189,6 @@ ${pages.map((r) => `  <url>
 </urlset>
 `;
 fs.writeFileSync(path.join(dist, "sitemap.xml"), sitemap);
-fs.writeFileSync(path.join(dist, "robots.txt"), STAGING ? "User-agent: *\nDisallow: /\n" : `User-agent: *\nAllow: /\n\nSitemap: ${O}/sitemap.xml\n`);
+fs.writeFileSync(path.join(dist, "robots.txt"), DEV ? "User-agent: *\nDisallow: /\n" : `User-agent: *\nAllow: /\n\nSitemap: ${O}/sitemap.xml\n`);
 fs.writeFileSync(path.join(dist, ".nojekyll"), "");
-console.log(`prerendered ${n} pages (${STAGING ? "STAGING: noindex" : "production"}), sitemap with ${pages.length} URLs`);
+console.log(`prerendered ${n} pages (${DEV ? "DEV: noindex" : "production"}), sitemap with ${pages.length} URLs`);
