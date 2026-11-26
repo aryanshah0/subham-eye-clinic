@@ -18,9 +18,9 @@ Every text colour pair passes WCAG AA (lowest is 5.18:1). There is no red anywhe
 ## Type
 Anek Gujarati, self-hosted, covering both scripts, weights 400 and 600 only. The files in src/fonts are built by tools/build-fonts.py: shapes merged (the original variable file shows notches in Gujarati stems) and the line box centred on capitals so text sits in the middle of buttons. Type sizes: 14, 16, 18 (body), 20, row headings 24–28, section headings 34, h1.
 - h1: 32–50px
-- h2: 26–34px
-- h3: 19.5px
-- body: 18.5px
+- h2: 34px (28px on treatment pages); row headings 24–28px
+- h3: 20px
+- body: 18px
 
 Gujarati text gets more line-height (h1 1.32, body 1.75) so vowel signs are never clipped.
 
