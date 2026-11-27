@@ -351,15 +351,15 @@ export const TREATMENTS: Treatment[] = [
         h: { gu: "તપાસમાં શું થાય", en: "At the check-up" },
         photo: "consult",
         list: {
-          gu: ["કમ્પ્યુટરથી ચશ્માના નંબરની તપાસ", "ડૉ. શાહ દ્વારા આંખની તપાસ"],
-          en: ["Computerised testing of your glasses number", "An eye examination by Dr. Shah"],
+          gu: ["ઑટો‑રિફ્રેક્ટોમીટરથી ચશ્માના નંબરની કમ્પ્યુટર તપાસ", "ડૉ. શાહ દ્વારા આંખની તપાસ"],
+          en: ["Computerised testing of your glasses number with an auto‑refractometer", "An eye examination by Dr. Shah"],
         },
       },
       {
         h: { gu: "કોન્ટેક્ટ લેન્સ", en: "Contact lenses" },
         p: {
-          gu: "ક્લિનિકમાં કોન્ટેક્ટ લેન્સ ઉપલબ્ધ છે. તે આપની આંખ માટે યોગ્ય છે કે નહીં તે ડૉ. શાહ જણાવશે.",
-          en: "Contact lenses are available at the clinic. Dr. Shah will advise whether they suit your eyes.",
+          gu: "ક્લિનિકમાં કોન્ટેક્ટ લેન્સ ઉપલબ્ધ છે. કેરાટોમીટરથી કોર્નિયાનો વળાંક માપવામાં આવે છે, અને લેન્સ આપની આંખ માટે યોગ્ય છે કે નહીં તે ડૉ. શાહ જણાવશે.",
+          en: "Contact lenses are available at the clinic. The curve of your cornea is measured with a keratometer, and Dr. Shah will advise whether lenses suit your eyes.",
         },
       },
     ],
