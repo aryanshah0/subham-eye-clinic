@@ -37,5 +37,5 @@ export const SITE = {
   // Dates come from Dr. Shah; empty until he gives them.
   holidays: [] as string[],
   // Date the page text last changed (sitemap <lastmod>). Change it by hand when the content changes, not on every deploy.
-  contentUpdated: "2026-11-25",
+  contentUpdated: "2026-11-27",
 } as const;

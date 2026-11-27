@@ -1,6 +1,7 @@
 import { Layout } from "./components/Layout";
 import { Home } from "./pages/Home";
 import { Treatment } from "./pages/Treatment";
+import { Doctor } from "./pages/Doctor";
 import { UI } from "./content/ui";
 import { href, homePath, type Route } from "./routes";
 import { CallButton } from "./components/ui";
@@ -29,6 +30,7 @@ export function App({ route }: { route: Route }) {
     <Layout route={route}>
       {route.kind === "home" && <Home lang={route.lang} />}
       {route.kind === "treatment" && route.treatment && <Treatment lang={route.lang} t={route.treatment} />}
+      {route.kind === "doctor" && <Doctor lang={route.lang} />}
       {route.kind === "notfound" && <NotFound lang={route.lang} />}
     </Layout>
   );

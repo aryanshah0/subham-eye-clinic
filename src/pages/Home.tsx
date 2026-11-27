@@ -1,7 +1,7 @@
 import { SITE, type Lang } from "../content/site";
 import { UI } from "../content/ui";
 import { TREATMENTS } from "../content/treatments";
-import { href, treatmentPath } from "../routes";
+import { doctorPath, href, treatmentPath } from "../routes";
 import { CallButton, DirectionsButton, Icon, Phones, Photo, Section, Tx } from "../components/ui";
 import { OpenStatus } from "../components/OpenStatus";
 import { EyeDiagram } from "../components/EyeDiagram";
@@ -52,6 +52,7 @@ export function Home({ lang }: { lang: Lang }) {
               <div><dt className="label">{L.regK}</dt><dd>{L.regV}</dd></div>
               <div><dt className="label">{L.campsK}</dt><dd>{L.campsV}</dd></div>
             </dl>
+            <p className="doc-more"><a href={href(doctorPath(lang))}>{L.docMore}</a></p>
           </div>
         </div>
       </Section>

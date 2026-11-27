@@ -3,7 +3,7 @@ import type { MouseEvent, ReactNode } from "react";
 import { SITE, type Lang } from "../content/site";
 import { UI } from "../content/ui";
 import { TREATMENTS } from "../content/treatments";
-import { href, homePath, treatmentPath, type Route } from "../routes";
+import { doctorPath, href, homePath, treatmentPath, type Route } from "../routes";
 import { Icon, Sprite, Tx } from "./ui";
 import { Menu } from "./Menu";
 
@@ -24,8 +24,9 @@ function Header({ route }: { route: Route }) {
   const lang = route.lang, L = UI[lang], home = href(homePath(lang));
   const onHome = route.kind === "home";
   // Sections on this page are plain anchors; the rest go to the home page. Treatment pages have their own timings section.
-  const sec = (id: string) => (onHome || (id === "visit" && route.kind === "treatment") ? `#${id}` : `${home}#${id}`);
-  const links = [["tx", L.navTx], ["doc", L.navDoc], ["clinic", L.navClinic], ["visit", L.navVisit]].map(([id, label]) => ({ to: sec(id), label }));
+  const sec = (id: string) => (onHome || (id === "visit" && (route.kind === "treatment" || route.kind === "doctor")) ? `#${id}` : `${home}#${id}`);
+  const links = [["tx", L.navTx], ["doc", L.navDoc], ["clinic", L.navClinic], ["visit", L.navVisit]]
+    .map(([id, label]) => ({ to: id === "doc" ? href(doctorPath(lang)) : sec(id), label }));
   return (
     <header className="top"><div className="wrap">
       <a className="homelink" href={home}>
@@ -56,7 +57,8 @@ function Footer({ lang }: { lang: Lang }) {
           {TREATMENTS.map((t) => <a key={t.slug} href={href(treatmentPath(lang, t))}>{t.name[lang]}</a>)}
         </div>
         <div className="list"><p className="fh">{L.navClinic}</p>
-          {[["doc", L.navDoc], ["your-visit", L.visTitle], ["visit", L.navVisit]].map(([id, label]) => <a key={id} href={href(homePath(lang)) + "#" + id}>{label}</a>)}
+          <a href={href(doctorPath(lang))}>{L.navDoc}</a>
+          {[["your-visit", L.visTitle], ["visit", L.navVisit]].map(([id, label]) => <a key={id} href={href(homePath(lang)) + "#" + id}>{label}</a>)}
         </div>
       </div>
       <div className="legal"><b>{L.doctor}</b>, MBBS, DOMS · {L.regV} · {L.footNote}</div>

@@ -1,17 +1,19 @@
 // Every page of the site, in both languages. English lives at "/", Gujarati mirrors it under "/gu/" (Dr. Shah's choice, 2026-11-25).
 import { LANGS, type L, type Lang } from "./content/site";
+import { UI } from "./content/ui";
 import { TREATMENTS, type Treatment } from "./content/treatments";
 
 export type Route = {
   path: string; // without the deploy base, always starts and ends with "/" (404 is "/404/")
   lang: Lang;
-  kind: "home" | "treatment" | "notfound";
+  kind: "home" | "treatment" | "doctor" | "notfound";
   treatment?: Treatment;
   title: string;
   description: string;
   alt: L; // the same page in each language
 };
 
+export const DOCTOR_SLUG = "dr-rajeev-shah";
 const pathFor = (lang: Lang, slug = "") => (lang === "en" ? "/" : "/gu/") + (slug ? slug + "/" : "");
 
 const HOME_TITLE: L = {
@@ -44,6 +46,14 @@ export const routes: Route[] = [
       alt: { gu: pathFor("gu", t.slug), en: pathFor("en", t.slug) },
     })),
   ),
+  ...LANGS.map((lang): Route => ({
+    path: pathFor(lang, DOCTOR_SLUG),
+    lang,
+    kind: "doctor",
+    title: `${UI[lang].docPageTitle} — ${BRAND[lang]}`,
+    description: UI[lang].docPageDesc,
+    alt: { gu: pathFor("gu", DOCTOR_SLUG), en: pathFor("en", DOCTOR_SLUG) },
+  })),
   // 404 pages: written to /404.html and /gu/404.html (Cloudflare Pages serves the nearest one).
   { path: "/404/", lang: "en", kind: "notfound", title: "Page not found — Subham Eye Clinic", description: "", alt: { en: "/", gu: "/gu/" } },
   { path: "/gu/404/", lang: "gu", kind: "notfound", title: "આ પાનું મળ્યું નથી — સુભમ્ આઈ ક્લિનિક", description: "", alt: { en: "/", gu: "/gu/" } },
@@ -51,6 +61,7 @@ export const routes: Route[] = [
 
 export const treatmentPath = (lang: Lang, t: Treatment) => pathFor(lang, t.slug);
 export const homePath = (lang: Lang) => pathFor(lang);
+export const doctorPath = (lang: Lang) => pathFor(lang, DOCTOR_SLUG);
 
 // The deploy base ("/" in production, "/subham-eye-clinic/" on the dev copy) is added to every internal link.
 export const href = (path: string) => import.meta.env.BASE_URL.replace(/\/$/, "") + path;

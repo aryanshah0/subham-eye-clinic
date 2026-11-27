@@ -145,6 +145,13 @@ html[lang="en"] .lang a[lang="gu"]{font-family:"Anek Switch","Noto Sans Gujarati
 .portrait img{aspect-ratio:4/5}
 .doc{display:grid;gap:var(--gap)}
 .doc-card > p{font-size:20px;line-height:1.6;color:var(--ink);max-width:52em}
+.doc-more{margin-top:22px}
+.doc-more a{font-weight:600;color:var(--green);padding:10px 0}
+.doc-more a::after{content:"\00a0→";color:var(--green-2)}
+.doc-more a:hover{text-decoration:underline;text-underline-offset:4px}
+.doc-facts{align-self:center}
+.doc-facts .facts{margin-top:0;border-top:0}
+.doc-facts .facts div:first-child{padding-top:0}
 html[data-lang="gu"] .doc-card > p{line-height:1.75}
 .facts{display:grid;gap:0;margin-top:20px;border-top:1px solid var(--line)}
 .facts div{padding:14px 0;border-bottom:1px solid var(--line)}

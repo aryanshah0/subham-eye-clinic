@@ -89,6 +89,7 @@ const doctor = {
   "@id": O + "/#rajeev-shah",
   name: "Dr. Rajeev Shah",
   alternateName: ["Dr. Rajiv Shah", "ડૉ. રાજીવ શાહ"],
+  url: O + "/dr-rajeev-shah/",
   jobTitle: "Ophthalmologist and eye surgeon",
   worksFor: { "@id": O + "/#clinic" },
   alumniOf: { "@type": "CollegeOrUniversity", name: "M.P. Shah Medical College, Jamnagar" },
@@ -110,7 +111,20 @@ function jsonLd(r) {
   if (r.kind === "home") {
     return [website, clinic, doctor, { "@type": "WebPage", "@id": url, url, name: r.title, description: r.description, inLanguage: r.lang, isPartOf: { "@id": O + "/#website" }, about: { "@id": O + "/#clinic" } }];
   }
-  const t = r.treatment, L = UI[r.lang], home = O + (r.lang === "en" ? "/" : "/gu/");
+  const L = UI[r.lang], home = O + (r.lang === "en" ? "/" : "/gu/");
+  if (r.kind === "doctor") {
+    return [
+      { "@type": "WebSite", "@id": O + "/#website", url: O + "/", name: "Subham Eye Clinic", alternateName: SITE_ALT },
+      clinicRef,
+      doctor,
+      { "@type": "ProfilePage", "@id": url, url, name: r.title, description: r.description, inLanguage: r.lang, isPartOf: { "@id": O + "/#website" },
+        mainEntity: { "@id": O + "/#rajeev-shah" }, publisher: { "@id": O + "/#clinic" } },
+      { "@type": "BreadcrumbList", itemListElement: [
+        { "@type": "ListItem", position: 1, name: L.home, item: home },
+        { "@type": "ListItem", position: 2, name: L.doctor, item: url } ] },
+    ];
+  }
+  const t = r.treatment;
   return [
     { "@type": "WebSite", "@id": O + "/#website", url: O + "/", name: "Subham Eye Clinic", alternateName: SITE_ALT },
     clinicRef,
