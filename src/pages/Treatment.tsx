@@ -18,6 +18,7 @@ export function Treatment({ lang, t }: { lang: Lang; t: T }) {
   const L = UI[lang];
   const photos = {
     ot: { file: "ot", alt: L.altOT, caption: L.phOT, className: "tall" },
+    consult: { file: "consult", alt: L.altConsult, caption: L.phConsult },
     tests: { file: "tests", alt: L.altTests, caption: L.phTests, className: "tall" },
     kerato: { file: "kerato", alt: L.altKerato, caption: L.phKerato, className: "tall" },
   };

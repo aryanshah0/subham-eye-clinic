@@ -57,6 +57,7 @@ export function Home({ lang }: { lang: Lang }) {
       </Section>
 
       <Section id="clinic" title={L.galTitle} sub={L.galSub}>
+        <Photo file="consult" alt={L.altConsult} caption={L.phConsult} className="lead" />
         {photos.length > 1
           ? <div className={photos.length === 3 ? "g3" : photos.length === 4 ? "g4" : "g2"}>{photos.map((x) => <Photo key={x.file} {...x} className="tall" />)}</div>
           : photos.map((x) => <Photo key={x.file} {...x} />)}

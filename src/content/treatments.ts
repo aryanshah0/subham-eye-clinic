@@ -4,7 +4,7 @@
 import type { L } from "./site";
 
 export type Part = "lens" | "nerve" | "retina" | "cornea" | "surface";
-export type Section = { h: L; p?: L; list?: L<string[]>; note?: L; photo?: "ot" | "tests" | "kerato"; lenses?: { name: L; d: L }[] };
+export type Section = { h: L; p?: L; list?: L<string[]>; note?: L; photo?: "ot" | "consult" | "tests" | "kerato"; lenses?: { name: L; d: L }[] };
 export type Treatment = {
   slug: string;
   icon: string;
@@ -176,7 +176,7 @@ export const TREATMENTS: Treatment[] = [
       },
       {
         h: { gu: "સુભમ્ આઈ ક્લિનિકમાં સારવાર", en: "Care at Subham Eye Clinic" },
-        photo: "tests",
+        photo: "consult",
         p: {
           gu: "ડૉ. શાહ આંખનું દબાણ તપાસે છે અને ઑપ્ટિક નર્વની તપાસ કરે છે. સારવાર સામાન્ય રીતે ટીપાંથી શરૂ થાય છે; જરૂર પડે તો ક્લિનિકના પોતાના ઓપરેશન થિયેટરમાં ઝામરનું ઓપરેશન કરવામાં આવે છે.",
           en: "Dr. Shah checks the pressure in the eye and examines the optic nerve. Treatment usually starts with eye drops; when needed, glaucoma surgery is done in the clinic’s own operation theatre.",
@@ -219,6 +219,7 @@ export const TREATMENTS: Treatment[] = [
     sections: [
       {
         h: { gu: "ક્લિનિકમાં તપાસ", en: "The check-up at the clinic" },
+        photo: "consult",
         p: {
           gu: "ડૉ. શાહ રેટિનાની તપાસ કરે છે અને જરૂર પડે તો ફંડસ કેમેરાથી પડદાના ફોટા તથા OCT સ્કેન કરે છે, જેમાં રેટિનાનાં પડ વિગતે દેખાય છે.",
           en: "Dr. Shah examines the retina and, where needed, takes retina photographs with the fundus camera and an OCT scan, which shows the layers of the retina in detail.",

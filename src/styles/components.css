@@ -132,6 +132,7 @@ html[lang="en"] .lang a[lang="gu"]{font-family:"Anek Switch","Noto Sans Gujarati
 .photo{margin:0}
 .photo img{width:100%;height:auto;aspect-ratio:1152/440;object-fit:cover;display:block;border-radius:var(--r);background:var(--soft)}
 .photo.tall img{aspect-ratio:3/2}
+.photo.lead{margin-bottom:var(--gap)}
 .photo figcaption{margin-top:8px;font-size:16px;color:var(--mute)}
 
 /* ---------- equipment list (inside one card) ---------- */

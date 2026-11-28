@@ -63,7 +63,7 @@ const clinic = {
   url: O + "/",
   telephone: SITE.phoneIntl,
   email: SITE.email,
-  image: [O + "/og-image.png", O + "/photos/building.jpg", O + "/photos/tests.jpg", O + "/photos/ot.jpg"],
+  image: [O + "/og-image.png", O + "/photos/building.jpg", O + "/photos/tests.jpg", O + "/photos/ot.jpg", O + "/photos/consult.jpg"],
   logo: { "@type": "ImageObject", url: O + "/icon-192.png", width: 192, height: 192 },
   foundingDate: "2002-06",
   medicalSpecialty: "Ophthalmology",
