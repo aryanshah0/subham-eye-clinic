@@ -37,8 +37,8 @@ export const SITE = {
   // OPD sessions, minutes after midnight, Monday–Saturday. Sunday closed. Emergencies 24×7 on the same number.
   sessions: [[9 * 60, 13 * 60], [17 * 60 + 30, 20 * 60 + 30]] as [number, number][],
   // Festival days when the OPD is closed (India dates, "YYYY-MM-DD"). Emergencies are still seen 24×7 on the same number.
-  // Dr. Shah, 2026-11-28: closed on Dhuleti, Janmashtami, Diwali and Gujarati New Year (whole day). 2027 dates; add the next year's each autumn.
-  holidays: ["2027-03-23", "2027-08-25", "2027-10-29", "2027-10-30"] as string[],
+  // Dr. Shah, 2026-11-28: closed on Dhuleti, Janmashtami and Diwali (whole day; not Gujarati New Year, owner 2026-11-28). 2027 dates; add the next year's each autumn.
+  holidays: ["2027-03-23", "2027-08-25", "2027-10-29"] as string[],
   // Date the page text last changed (sitemap <lastmod>). Change it by hand when the content changes, not on every deploy.
   contentUpdated: "2026-11-28",
 } as const;
