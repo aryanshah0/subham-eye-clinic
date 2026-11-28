@@ -191,8 +191,9 @@ html[lang="en"] .lang a[lang="gu"]{font-family:"Anek Switch","Noto Sans Gujarati
 .hours th{padding-right:14px!important;text-align:left;font-weight:400;color:var(--mute);padding:12px 0;vertical-align:top;border-bottom:1px solid var(--line)}
 .hours td{text-align:right;vertical-align:top;font-weight:600;color:var(--ink);padding:12px 0;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
 .hours tr:last-child>*{border:0}
-.hours .em td{color:var(--green)}
 @media (min-width:360px){.hours th{white-space:nowrap}} /* labels on one line; the narrowest phones may wrap them */
+.fest.em{color:var(--ink)}
+.fest + .fest{margin-top:0}
 .fest{margin-top:4px;padding:12px 0;border-top:1px solid var(--line);font-size:16px;color:var(--mute)}
 .fest b{font-weight:600;color:var(--ink)}
 .addr{font:600 18px/1.5 var(--f);color:var(--ink);margin-top:18px}
@@ -284,7 +285,7 @@ html[data-lang="gu"] .firstaid h2{line-height:1.48}
 /* phones: the call bar covers the bottom of the page, so the footer gets the room under it */
 @media (max-width:939px){
   footer{padding-bottom:calc(32px + 80px + env(safe-area-inset-bottom))}
-  footer .list a{padding:10px 0} /* 44px touch targets */
+  footer .list a,footer .contact a{padding:10px 0} /* 44px touch targets */
   footer .list.two{display:grid;grid-template-columns:1fr 1fr;column-gap:20px;align-items:start}
   footer .list.two .fh{grid-column:1/-1}
   .hero .acts,.nf .call{display:none} /* the same buttons are always on screen in the call bar */
