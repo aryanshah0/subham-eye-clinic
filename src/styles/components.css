@@ -179,6 +179,8 @@ html[data-lang="gu"] .doc-body > p{line-height:1.75}
 .hours td{text-align:right;vertical-align:top;font-weight:600;color:var(--ink);padding:12px 0;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
 .hours tr:last-child>*{border:0}
 .hours .em td{color:var(--green)}
+.fest{margin-top:4px;padding:12px 0;border-top:1px solid var(--line);font-size:16px;color:var(--mute)}
+.fest b{font-weight:600;color:var(--ink)}
 .addr{font:600 18px/1.5 var(--f);color:var(--ink);margin-top:18px}
 .contact-list{list-style:none;margin-top:10px;font-size:16px;color:var(--mute)}
 .contact-list a{display:inline-flex;align-items:center;min-height:44px;color:var(--green);font-weight:600}

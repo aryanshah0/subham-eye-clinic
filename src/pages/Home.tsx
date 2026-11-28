@@ -90,9 +90,9 @@ export function Visit({ lang }: { lang: Lang }) {
           <table className="hours"><tbody>
             <tr><th scope="row">{L.monSat}</th><td>{L.morning}<br />{L.evening}</td></tr>
             <tr><th scope="row">{L.sunday}</th><td>{L.closed}</td></tr>
-            <tr><th scope="row">{L.festK}</th><td>{L.festV}</td></tr>
             <tr className="em"><th scope="row">{L.emergency}</th><td>{L.always}</td></tr>
           </tbody></table>
+          <p className="fest"><b>{L.festK}:</b> {L.festV}</p>
           <Tx k="address" lang={lang} as="p" className="addr" />
           <ul className="contact-list">
             <li>{L.appt} <a href={`tel:${SITE.phoneTel}`}>{SITE.phone}</a></li>

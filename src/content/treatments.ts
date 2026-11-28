@@ -89,17 +89,17 @@ export const TREATMENTS: Treatment[] = [
       {
         h: { gu: "ઓપરેશન પછી", en: "After surgery" },
         p: {
-          gu: "ઓપરેશન પછીના દિવસો માટે ટીપાં અને સ્પષ્ટ સૂચનાઓ આપવામાં આવે છે, અને ફરી બતાવવાનો સમય નક્કી કરવામાં આવે છે. ક્લિનિકમાં આપેલી સૂચનાઓનું પાલન કરો. પહેલા અઠવાડિયા સુધી:",
-          en: "You are given eye drops and clear instructions for the days after surgery, and follow-up visits are arranged. Please follow the instructions given at the clinic. For the first week:",
+          gu: "ઓપરેશન પછીના દિવસો માટે ટીપાં અને સ્પષ્ટ સૂચનાઓ આપવામાં આવે છે, અને ફરી બતાવવાનો સમય નક્કી કરવામાં આવે છે. ક્લિનિકમાં આપેલી સૂચનાઓનું પાલન કરો.",
+          en: "You are given eye drops and clear instructions for the days after surgery, and follow-up visits are arranged. Please follow the instructions given at the clinic.",
         },
         list: {
           gu: [
             "ટીપાં નાખતાં કે મલમ લગાડતાં પહેલાં હાથ સાબુથી બરાબર સાફ કરો.",
             "ટીપાં કે મલમ આંખના પોપચાની નીચેની બાજુએ જ લગાડો.",
-            "આંખની સુરક્ષા માટે હંમેશાં કાળાં ચશ્માં પહેરો.",
-            "ઓપરેશન થયેલી આંખ ચોળો નહીં.",
+            "પહેલા અઠવાડિયા સુધી આંખની સુરક્ષા માટે હંમેશાં કાળાં ચશ્માં પહેરો.",
+            "પહેલા અઠવાડિયા સુધી ઓપરેશન થયેલી આંખ ચોળો નહીં.",
             "ઓપરેશન થયું હોય એ પડખે સૂઓ નહીં.",
-            "ઓપરેશન થયેલી આંખ ધૂઓ નહીં અને માથું પલાળીને સ્નાન ન કરો.",
+            "પહેલા અઠવાડિયા સુધી ઓપરેશન થયેલી આંખ ધૂઓ નહીં અને માથું પલાળીને સ્નાન ન કરો.",
             "ધૂળ, તડકો અને ધુમાડાથી દૂર રહો.",
             "નાનાં બાળકો સાથે રમવાનું ટાળો, જેથી આંખને હાથ કે કોઈ વસ્તુ ન લાગે.",
             "કસરત ન કરો અને ભારે વજન ન ઊંચકો, જેથી આંખ પર જોર ન પડે.",
@@ -110,10 +110,10 @@ export const TREATMENTS: Treatment[] = [
           en: [
             "Wash your hands well with soap before putting in drops or ointment.",
             "Put the drops or ointment only in the lower eyelid.",
-            "Always wear dark glasses to protect the eye.",
-            "Don’t rub the operated eye.",
+            "For the first week, always wear dark glasses to protect the eye.",
+            "For the first week, don’t rub the operated eye.",
             "Don’t sleep on the side of the operated eye.",
-            "Don’t wash the operated eye, and don’t wet your head while bathing.",
+            "For the first week, don’t wash the operated eye or wet your head while bathing.",
             "Stay away from dust, sun and smoke.",
             "Avoid playing with small children, so that no hand or object touches the eye.",
             "Don’t exercise or lift heavy things that strain the eye.",
@@ -130,7 +130,7 @@ export const TREATMENTS: Treatment[] = [
     ],
     faqs: [
       { q: { gu: "શું ઓપરેશન પછી ક્લિનિકમાં રોકાવું પડે?", en: "Do I have to stay at the clinic after surgery?" }, a: { gu: "ના. ઓપરેશનના દિવસે જ ઘરે જઈ શકાય છે.", en: "No. You go home the same day." } },
-      { q: { gu: "વાંચન, ટીવી કે ઓફિસનું કામ ક્યારથી કરી શકાય?", en: "When can I read, watch TV or go back to work?" }, a: { gu: "વાંચન, ટીવી અને ઓફિસનું કામ ઓપરેશનના બીજા દિવસથી. પહેલા અઠવાડિયા સુધી કસરત ન કરો અને ભારે વજન ન ઊંચકો.", en: "Reading, TV and office work from the next day. Avoid exercise and heavy lifting for the first week." } },
+      { q: { gu: "વાંચન, ટીવી કે ઓફિસનું કામ ક્યારથી કરી શકાય?", en: "When can I read, watch TV or go back to work?" }, a: { gu: "ઓપરેશનના બીજા દિવસથી.", en: "From the day after the operation." } },
       { q: { gu: "શું ઓપરેશન ક્લિનિકમાં જ થાય છે?", en: "Is the operation done at the clinic itself?" }, a: { gu: "હા. ડૉ. શાહ ક્લિનિકના પોતાના ઓપરેશન થિયેટરમાં મોતિયાનું ઓપરેશન કરે છે.", en: "Yes. Dr. Shah performs cataract surgery in the clinic’s own operation theatre." } },
       { q: { gu: "મોતિયાનું ઓપરેશન ક્યારે કરાવવું?", en: "When should a cataract be operated?" }, a: { gu: "મોતિયો 'પાકે' તેની રાહ જોવાની જરૂર નથી. ઝાંખું દેખાવાથી રોજિંદા કામમાં તકલીફ પડવા લાગે ત્યારે સામાન્ય રીતે ઓપરેશનની સલાહ અપાય છે — તપાસ પછી ડૉ. શાહ સલાહ આપશે.", en: "There is no need to wait for a cataract to become ‘ripe’. Surgery is usually advised when blurred vision starts to affect daily life — Dr. Shah will advise after an examination." } },
       { q: { gu: "શું ટાંકા લેવા પડે છે?", en: "Are stitches needed?" }, a: { gu: "ફેકો ઓપરેશન નાના છેદમાંથી થાય છે, જેમાં સામાન્ય રીતે ટાંકાની જરૂર પડતી નથી.", en: "Phaco surgery is done through a small opening that usually needs no stitches." } },
