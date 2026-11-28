@@ -16,7 +16,12 @@ const List = ({ items }: { items: string[] }) => <ul className="signs">{items.ma
 
 export function Treatment({ lang, t }: { lang: Lang; t: T }) {
   const L = UI[lang];
-  const photos = { ot: { file: "ot", alt: L.altOT, caption: L.phOT }, consult: { file: "consult", alt: L.altConsult, caption: L.phConsult } };
+  const photos = {
+    ot: { file: "ot", alt: L.altOT, caption: L.phOT, className: "tall" },
+    consult: { file: "consult", alt: L.altConsult, caption: L.phConsult },
+    tests: { file: "tests", alt: L.altTests, caption: L.phTests, className: "tall" },
+    kerato: { file: "kerato", alt: L.altKerato, caption: L.phKerato, className: "tall" },
+  };
   return (
     <div className="t-page">
       <nav className="crumbs" aria-label={lang === "gu" ? "તમે અહીં છો" : "Breadcrumb"}>

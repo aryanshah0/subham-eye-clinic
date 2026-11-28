@@ -4,7 +4,7 @@
 import type { L } from "./site";
 
 export type Part = "lens" | "nerve" | "retina" | "cornea" | "surface";
-export type Section = { h: L; p?: L; list?: L<string[]>; note?: L; photo?: "ot" | "consult"; lenses?: { name: L; d: L }[] };
+export type Section = { h: L; p?: L; list?: L<string[]>; note?: L; photo?: "ot" | "consult" | "tests" | "kerato"; lenses?: { name: L; d: L }[] };
 export type Treatment = {
   slug: string;
   icon: string;
@@ -385,7 +385,7 @@ export const TREATMENTS: Treatment[] = [
       },
       {
         h: { gu: "તપાસમાં શું થાય", en: "At the check-up" },
-        photo: "consult",
+        photo: "tests",
         list: {
           gu: ["ઑટો‑રિફ્રેક્ટોમીટરથી ચશ્માના નંબરની કમ્પ્યુટર તપાસ", "ડૉ. શાહ દ્વારા આંખની તપાસ"],
           en: ["Computerised testing of your glasses number with an auto‑refractometer", "An eye examination by Dr. Shah"],
@@ -393,6 +393,7 @@ export const TREATMENTS: Treatment[] = [
       },
       {
         h: { gu: "કોન્ટેક્ટ લેન્સ", en: "Contact lenses" },
+        photo: "kerato",
         p: {
           gu: "ક્લિનિકમાં કોન્ટેક્ટ લેન્સ ઉપલબ્ધ છે. કેરાટોમીટરથી કોર્નિયાનો વળાંક માપવામાં આવે છે, અને લેન્સ આપની આંખ માટે યોગ્ય છે કે નહીં તે ડૉ. શાહ જણાવશે.",
           en: "Contact lenses are available at the clinic. The curve of your cornea is measured with a keratometer, and Dr. Shah will advise whether lenses suit your eyes.",
