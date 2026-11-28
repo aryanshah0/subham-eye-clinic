@@ -90,6 +90,7 @@ const doctor = {
   name: "Dr. Rajeev Shah",
   alternateName: ["Dr. Rajiv Shah", "ડૉ. રાજીવ શાહ"],
   url: O + "/dr-rajeev-shah/",
+  ...(SITE.photos.portrait ? { image: O + "/photos/portrait.jpg" } : {}),
   jobTitle: "Ophthalmologist and eye surgeon",
   worksFor: { "@id": O + "/#clinic" },
   alumniOf: { "@type": "CollegeOrUniversity", name: "M.P. Shah Medical College, Jamnagar" },

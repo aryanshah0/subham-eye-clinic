@@ -276,6 +276,7 @@ html[data-lang="gu"] .faq summary{line-height:1.6}
   .glance dd{margin-top:4px}
   .glance div:nth-child(2){border-top:0}
   .glance div:nth-child(even){border-left:1px solid var(--line)}
+  .glance div:last-child:nth-child(odd){grid-column:1/-1}
   .others{grid-template-columns:1fr 1fr}
   footer .cols{grid-template-columns:1fr 1fr}
   footer .cols > :nth-child(2){grid-column:1/-1;grid-row:2}
@@ -312,7 +313,8 @@ html[data-lang="gu"] .faq summary{line-height:1.6}
   footer .list.two{display:grid;grid-template-columns:1fr 1fr;column-gap:24px;align-items:start}
   footer .list.two .fh{grid-column:1/-1}
   .hero-t{padding-top:26px}
-  .glance{grid-template-columns:repeat(4,1fr);margin-top:56px}
+  .glance{grid-auto-flow:column;grid-auto-columns:1fr;margin-top:56px}
+  .glance div:last-child:nth-child(odd){grid-column:auto}
   .glance div{border-top:0}
   .glance div+div{border-left:1px solid var(--line)}
   .rows{margin-top:36px}
