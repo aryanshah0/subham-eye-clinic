@@ -12,10 +12,12 @@ import { Visit } from "./Home";
 const Row = ({ h, children }: { h: string; children: ReactNode }) => (
   <section className="row"><h2>{h}</h2><div className="row-b">{children}</div></section>
 );
-const List = ({ items }: { items: string[] }) => <ul className="signs">{items.map((x) => <li key={x}>{x}</li>)}</ul>;
+const List = ({ items }: { items: string[] }) => <ul className="signs">{items.map((x) => <li key={x}><span><Phones>{x}</Phones></span></li>)}</ul>;
 
 export function Treatment({ lang, t }: { lang: Lang; t: T }) {
   const L = UI[lang];
+  // On the injuries page "What to do first" sits under the heading, above the drawing: someone with a splash must not scroll for it.
+  const [first, ...rest] = t.sections, firstAid = t.slug === "eye-injuries" ? first : null, sections = firstAid ? rest : t.sections;
   const photos = {
     ot: { file: "ot", alt: L.altOT, caption: L.phOT, className: "tall" },
     consult: { file: "consult", alt: L.altConsult, caption: L.phConsult },
@@ -40,8 +42,9 @@ export function Treatment({ lang, t }: { lang: Lang; t: T }) {
           </div>
           <OpenStatus lang={lang} emergency={t.slug === "eye-injuries"}>
             <div className="acts"><CallButton lang={lang} /><DirectionsButton lang={lang} /></div>
-            {t.slug !== "eye-injuries" && <p className="emline"><b>{L.emLabel}</b> {L.emText}</p>}
+            {t.slug !== "eye-injuries" && <p className="emline"><b>{L.emLabel}</b> <Phones>{L.emText}</Phones></p>}
           </OpenStatus>
+          {firstAid?.list && <section className="card firstaid"><h2>{firstAid.h[lang]}</h2><List items={firstAid.list[lang]} /></section>}
         </div>
         <EyeDiagram lang={lang} start={t.part} interactive={false} noteText={t.partNote[lang]} />
       </div>
@@ -51,7 +54,7 @@ export function Treatment({ lang, t }: { lang: Lang; t: T }) {
       </dl>
 
       <div className="rows">
-        {t.sections.map((s) => (
+        {sections.map((s) => (
           <Row key={s.h.en} h={s.h[lang]}>
             {s.p && <p>{s.p[lang]}</p>}
             {s.list && <List items={s.list[lang]} />}

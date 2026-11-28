@@ -33,10 +33,15 @@ export const Section = ({ id, title, sub, children }: { id?: string; title: Reac
   </section>
 );
 
+// Pixel size of each file in public/photos, so the browser knows the shape before it loads. Update it when a photo is replaced.
+const SIZES: Record<string, [number, number]> = {
+  consult: [1152, 440], building: [900, 600], tests: [970, 647], ot: [765, 510], waiting: [816, 544], kerato: [1200, 800], portrait: [706, 706],
+};
+
 /** A photo of the clinic with its caption underneath. */
-export const Photo = ({ file, alt, caption, w = 1152, h = 440, className = "" }: { file: string; alt: string; caption?: string; w?: number; h?: number; className?: string }) => (
+export const Photo = ({ file, alt, caption, className = "" }: { file: string; alt: string; caption?: string; className?: string }) => (
   <figure className={`photo ${className}`}>
-    <img src={`${import.meta.env.BASE_URL}photos/${file}.jpg`} alt={alt} width={w} height={h} loading="lazy" decoding="async" />
+    <img src={`${import.meta.env.BASE_URL}photos/${file}.jpg`} alt={alt} width={SIZES[file][0]} height={SIZES[file][1]} loading="lazy" decoding="async" />
     {caption && <figcaption>{caption}</figcaption>}
   </figure>
 );

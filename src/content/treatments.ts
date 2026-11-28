@@ -89,8 +89,8 @@ export const TREATMENTS: Treatment[] = [
       {
         h: { gu: "ઓપરેશન પછી", en: "After surgery" },
         p: {
-          gu: "ઓપરેશન પછીના દિવસો માટે ટીપાં અને સ્પષ્ટ સૂચનાઓ આપવામાં આવે છે, અને ફરી બતાવવાનો સમય નક્કી કરવામાં આવે છે. ક્લિનિકમાં આપેલી સૂચનાઓનું પાલન કરો.",
-          en: "You are given eye drops and clear instructions for the days after surgery, and follow-up visits are arranged. Please follow the instructions given at the clinic.",
+          gu: "ઓપરેશન પછીના દિવસો માટે ટીપાં અને સ્પષ્ટ સૂચનાઓ આપવામાં આવે છે, અને ફરી બતાવવાનો સમય નક્કી કરવામાં આવે છે. ક્લિનિકમાં આપેલી સૂચનાઓનું પાલન કરો. પહેલા અઠવાડિયા સુધી:",
+          en: "You are given eye drops and clear instructions for the days after surgery, and follow-up visits are arranged. Please follow the instructions given at the clinic. For the first week:",
         },
         list: {
           gu: [
@@ -129,6 +129,8 @@ export const TREATMENTS: Treatment[] = [
       },
     ],
     faqs: [
+      { q: { gu: "શું ઓપરેશન પછી ક્લિનિકમાં રોકાવું પડે?", en: "Do I have to stay at the clinic after surgery?" }, a: { gu: "ના. ઓપરેશનના દિવસે જ ઘરે જઈ શકાય છે.", en: "No. You go home the same day." } },
+      { q: { gu: "વાંચન, ટીવી કે ઓફિસનું કામ ક્યારથી કરી શકાય?", en: "When can I read, watch TV or go back to work?" }, a: { gu: "વાંચન, ટીવી અને ઓફિસનું કામ ઓપરેશનના બીજા દિવસથી. પહેલા અઠવાડિયા સુધી કસરત ન કરો અને ભારે વજન ન ઊંચકો.", en: "Reading, TV and office work from the next day. Avoid exercise and heavy lifting for the first week." } },
       { q: { gu: "શું ઓપરેશન ક્લિનિકમાં જ થાય છે?", en: "Is the operation done at the clinic itself?" }, a: { gu: "હા. ડૉ. શાહ ક્લિનિકના પોતાના ઓપરેશન થિયેટરમાં મોતિયાનું ઓપરેશન કરે છે.", en: "Yes. Dr. Shah performs cataract surgery in the clinic’s own operation theatre." } },
       { q: { gu: "મોતિયાનું ઓપરેશન ક્યારે કરાવવું?", en: "When should a cataract be operated?" }, a: { gu: "મોતિયો 'પાકે' તેની રાહ જોવાની જરૂર નથી. ઝાંખું દેખાવાથી રોજિંદા કામમાં તકલીફ પડવા લાગે ત્યારે સામાન્ય રીતે ઓપરેશનની સલાહ અપાય છે — તપાસ પછી ડૉ. શાહ સલાહ આપશે.", en: "There is no need to wait for a cataract to become ‘ripe’. Surgery is usually advised when blurred vision starts to affect daily life — Dr. Shah will advise after an examination." } },
       { q: { gu: "શું ટાંકા લેવા પડે છે?", en: "Are stitches needed?" }, a: { gu: "ફેકો ઓપરેશન નાના છેદમાંથી થાય છે, જેમાં સામાન્ય રીતે ટાંકાની જરૂર પડતી નથી.", en: "Phaco surgery is done through a small opening that usually needs no stitches." } },
@@ -272,8 +274,8 @@ export const TREATMENTS: Treatment[] = [
       {
         h: { gu: "પહેલાં શું કરવું", en: "What to do first" },
         list: {
-          gu: ["કેમિકલ ઊડે તો: આંખને પુષ્કળ ચોખ્ખા પાણીથી સતત ધોતા રહો; એ દરમિયાન બીજા કોઈને ક્લિનિકમાં ફોન કરવા કહો", "આંખમાં કંઈ પડે તો: આંખ ચોળશો નહીં", "આંખમાં કંઈ ખૂંપી ગયું હોય તો: જાતે કાઢવાનો પ્રયત્ન ન કરો — આંખને હળવેથી ઢાંકીને ક્લિનિક આવો"],
-          en: ["Chemical splash: keep rinsing the eye with plenty of clean water while someone calls the clinic", "Something in the eye: do not rub it", "Something stuck in the eye: do not try to pull it out — cover the eye gently and come to the clinic"],
+          gu: ["કેમિકલ ઊડે તો: આંખને પુષ્કળ ચોખ્ખા પાણીથી સતત ધોતા રહો; એ દરમિયાન બીજા કોઈને ક્લિનિકમાં ફોન કરવા કહો", "આંખમાં કંઈ પડે તો: આંખ ચોળશો નહીં", "આંખમાં કંઈ ખૂંપી ગયું હોય તો: જાતે કાઢવાનો પ્રયત્ન ન કરો — આંખને હળવેથી ઢાંકો, 0288 256 3274 પર ફોન કરીને ક્લિનિક આવો"],
+          en: ["Chemical splash: keep rinsing the eye with plenty of clean water while someone calls the clinic", "Something in the eye: do not rub it", "Something stuck in the eye: do not try to pull it out — cover the eye gently, call 0288 256 3274 and come to the clinic"],
         },
       },
       {
@@ -295,7 +297,7 @@ export const TREATMENTS: Treatment[] = [
     faqs: [
       { q: { gu: "શું રાત્રે ઇમરજન્સીમાં ક્લિનિક ખુલ્લું હોય છે?", en: "Is the clinic open at night for emergencies?" }, a: { gu: "હા. આંખની ઇમરજન્સી ૨૪×૭ જોવામાં આવે છે — પહેલાં 0288 256 3274 પર ફોન કરો.", en: "Yes. Eye emergencies are seen 24×7 — call 0288 256 3274 first." } },
       { q: { gu: "કેમિકલ ઊડે તો શું કરવું?", en: "What should I do after a chemical splash?" }, a: { gu: "તરત જ પુષ્કળ ચોખ્ખા પાણીથી આંખ ધુઓ અને રસ્તામાં પણ ધોતા રહો. શક્ય હોય તો કેમિકલનું નામ કે ડબ્બો સાથે લાવો.", en: "Rinse the eye immediately with plenty of clean water and keep rinsing on the way. Bring the chemical’s name or container if you can." } },
-      { q: { gu: "આંખમાં કંઈ પડે તો આંખ ચોળવી?", en: "Should I rub my eye if something gets in it?" }, a: { gu: "ના. ચોળવાથી કોર્નિયા પર ઘસરકો પડી શકે. હળવેથી પલકારા મારો અને ન નીકળે તો ક્લિનિક આવો.", en: "No. Rubbing can scratch the cornea. Blink gently, and come to the clinic if it does not come out." } },
+      { q: { gu: "આંખમાં કંઈ પડે તો આંખ ચોળવી?", en: "Should I rub my eye if something gets in it?" }, a: { gu: "ના. ચોળવાથી કોર્નિયા પર ઘસરકો પડી શકે. હળવેથી પલકારા મારો; ન નીકળે તો 0288 256 3274 પર ફોન કરીને ક્લિનિક આવો.", en: "No. Rubbing can scratch the cornea. Blink gently. If it does not come out, call 0288 256 3274 and come to the clinic." } },
     ],
   },
   {

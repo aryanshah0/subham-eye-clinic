@@ -25,7 +25,7 @@ export function Home({ lang }: { lang: Lang }) {
           </div>
           <OpenStatus lang={lang}>
             <div className="acts"><CallButton lang={lang} /><DirectionsButton lang={lang} /></div>
-            <p className="emline"><b>{L.emLabel}</b> {L.emText}</p>
+            <p className="emline"><b>{L.emLabel}</b> <Phones>{L.emText}</Phones></p>
           </OpenStatus>
         </div>
         <EyeDiagram lang={lang} />
@@ -44,7 +44,7 @@ export function Home({ lang }: { lang: Lang }) {
 
       <Section id="doc" title={L.doctor} sub={L.docRole}>
         <div className={"card doc-card" + (SITE.photos.portrait ? " has-photo" : "")}>
-          {SITE.photos.portrait && <Photo file="portrait" alt={L.doctor} w={706} h={706} className="portrait" />}
+          {SITE.photos.portrait && <Photo file="portrait" alt={L.doctor} className="portrait" />}
           <div className="doc-body">
             <p>{L.docBody}</p>
             <dl className="facts">
@@ -90,6 +90,7 @@ export function Visit({ lang }: { lang: Lang }) {
           <table className="hours"><tbody>
             <tr><th scope="row">{L.monSat}</th><td>{L.morning}<br />{L.evening}</td></tr>
             <tr><th scope="row">{L.sunday}</th><td>{L.closed}</td></tr>
+            <tr><th scope="row">{L.festK}</th><td>{L.festV}</td></tr>
             <tr className="em"><th scope="row">{L.emergency}</th><td>{L.always}</td></tr>
           </tbody></table>
           <Tx k="address" lang={lang} as="p" className="addr" />

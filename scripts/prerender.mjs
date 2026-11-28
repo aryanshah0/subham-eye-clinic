@@ -63,7 +63,7 @@ const clinic = {
   url: O + "/",
   telephone: SITE.phoneIntl,
   email: SITE.email,
-  image: [O + "/og-image.png", O + "/photos/building.jpg", O + "/photos/tests.jpg", O + "/photos/ot.jpg", O + "/photos/consult.jpg"],
+  image: ["building", "consult", "tests", "ot", "waiting"].map((f) => O + "/photos/" + f + ".jpg"),
   logo: { "@type": "ImageObject", url: O + "/icon-192.png", width: 192, height: 192 },
   foundingDate: "2002-06",
   medicalSpecialty: "Ophthalmology",
@@ -74,6 +74,8 @@ const clinic = {
     { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], opens: "09:00", closes: "13:00" },
     { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], opens: "17:30", closes: "20:30" },
   ],
+  // Festival days the OPD is closed all day (opens = closes = 00:00 is how schema.org marks a closed day).
+  specialOpeningHoursSpecification: SITE.holidays.map((d) => ({ "@type": "OpeningHoursSpecification", validFrom: d, validThrough: d, opens: "00:00", closes: "00:00" })),
   availableService: routes.filter((r) => r.kind === "treatment" && r.lang === "en")
     .flatMap((r) => SERVICES[r.treatment.slug].map(([type, name]) => ({ "@type": type, name, url: O + r.path }))),
   // Emergencies are seen 24×7 on the clinic number (QUESTIONS.md).

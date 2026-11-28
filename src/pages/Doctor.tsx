@@ -5,7 +5,7 @@ import { SITE, type Lang } from "../content/site";
 import { UI } from "../content/ui";
 import { TREATMENTS } from "../content/treatments";
 import { href, homePath, treatmentPath } from "../routes";
-import { CallButton, DirectionsButton, Icon, Photo, Section } from "../components/ui";
+import { CallButton, DirectionsButton, Icon, Phones, Photo, Section } from "../components/ui";
 import { OpenStatus } from "../components/OpenStatus";
 import { Visit } from "./Home";
 
@@ -31,11 +31,11 @@ export function Doctor({ lang }: { lang: Lang }) {
           </div>
           <OpenStatus lang={lang}>
             <div className="acts"><CallButton lang={lang} /><DirectionsButton lang={lang} /></div>
-            <p className="emline"><b>{L.emLabel}</b> {L.emText}</p>
+            <p className="emline"><b>{L.emLabel}</b> <Phones>{L.emText}</Phones></p>
           </OpenStatus>
         </div>
         {portrait
-          ? <Photo file="portrait" alt={L.doctor} w={706} h={706} className="portrait" />
+          ? <Photo file="portrait" alt={L.doctor} className="portrait" />
           : <div className="card doc-facts"><dl className="facts">{facts.map(([k, v]) => <div key={k}><dt className="label">{k}</dt><dd>{v}</dd></div>)}</dl></div>}
       </div>
 

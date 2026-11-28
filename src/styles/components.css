@@ -31,7 +31,7 @@ h3{font:600 20px/1.35 var(--f);color:var(--ink)}
 .kicker > span{display:flex;flex-wrap:wrap;margin-left:-16px}
 .kicker > span > span::before{content:"·";display:inline-block;width:16px;text-align:center}
 .lede,.info p,h2.t,.sub,.tcard p,.facil span,.steps p,.row-b p,.signs li,.ans p,.facts dd,.lens p,.legal{text-wrap:pretty}
-.tel{color:var(--green);font-weight:600;white-space:nowrap}
+.tel{color:var(--green);font-weight:600;white-space:nowrap;padding-block:10px} /* taller tap area without moving the line */
 html[data-lang="gu"] h1{line-height:1.32;letter-spacing:0}
 html[data-lang="gu"] h2.t{line-height:1.42;letter-spacing:0}
 html[data-lang="gu"] h3{line-height:1.5}
@@ -113,7 +113,7 @@ html[lang="en"] .lang a[lang="gu"]{font-family:"Anek Switch","Noto Sans Gujarati
 .eye text.on{fill:var(--gold-text);font-weight:600}
 .eye path,.eye ellipse,.eye circle{transition:fill .25s,stroke .25s,opacity .25s}
 .parts{display:flex;flex-wrap:wrap;gap:8px;padding-top:16px;margin-top:12px;border-top:1px solid var(--line)}
-.info a{color:var(--green);font-weight:600;text-decoration:underline;text-underline-offset:4px;white-space:nowrap}
+.info a{color:var(--green);font-weight:600;text-decoration:underline;text-underline-offset:4px;white-space:nowrap;padding-block:10px}
 .parts button{all:unset;flex:1 1 28%;white-space:nowrap;justify-content:center;cursor:pointer;font:600 16px/1.3 var(--f);box-sizing:border-box;min-height:44px;padding:0 8px;border-radius:10px;display:inline-flex;align-items:center;color:var(--green);background:var(--soft);transition:background .18s,color .18s}
 .parts button:focus-visible{outline:3px solid var(--gold-text);outline-offset:2px}
 .parts button:hover{background:#E3E8DA}
@@ -133,6 +133,7 @@ html[lang="en"] .lang a[lang="gu"]{font-family:"Anek Switch","Noto Sans Gujarati
 .photo img{width:100%;height:auto;aspect-ratio:1152/440;object-fit:cover;display:block;border-radius:var(--r);background:var(--soft)}
 .photo.tall img{aspect-ratio:3/2}
 .photo.lead{margin-bottom:var(--gap)}
+@media (max-width:599px){.photo.lead img{aspect-ratio:3/2;object-position:30% 50%}} /* phones: the wide room photo as tall as the ones below, centred on the desk */
 .photo figcaption{margin-top:8px;font-size:16px;color:var(--mute)}
 
 /* ---------- equipment list (inside one card) ---------- */
@@ -145,8 +146,10 @@ html[lang="en"] .lang a[lang="gu"]{font-family:"Anek Switch","Noto Sans Gujarati
 /* ---------- doctor ---------- */
 /* his own outdoor photo: square, a little calmer in colour so the blue shirt doesn't shout against the cream */
 .portrait img{aspect-ratio:1;filter:saturate(.9)}
-.doc-card.has-photo{display:grid;gap:22px}
-.doc-card .portrait{width:160px}
+/* phones: a small portrait at the top left with the text running beside and under it */
+.doc-card.has-photo{display:flow-root}
+.doc-card .portrait{float:left;width:104px;margin:6px 18px 8px 0}
+.doc-card .facts{clear:left}
 .doc-page .hero-t .portrait{width:160px;order:-1}
 .doc-body > p{font-size:20px;line-height:1.6;color:var(--ink);max-width:52em}
 .doc-more{margin-top:22px}
@@ -203,9 +206,9 @@ footer .legal{margin-top:30px;padding-top:16px;border-top:1px solid rgba(255,255
 
 /* ---------- treatment page ---------- */
 .crumbs{padding-top:22px;font-size:16px;line-height:1.4;color:var(--mute)}
-.crumbs ol{list-style:none;display:flex;flex-wrap:nowrap;min-width:0}
+.crumbs ol{list-style:none;display:flex;flex-wrap:nowrap;align-items:baseline;min-width:0}
 .crumbs li{display:flex;align-items:center;white-space:nowrap;flex:none}
-.crumbs li:last-child{flex:0 1 auto;min-width:0;display:block;overflow:hidden;text-overflow:ellipsis;padding-block:10px;color:var(--ink);font-weight:600}
+.crumbs li:last-child{flex:0 1 auto;min-width:0;align-items:baseline;white-space:normal;padding-block:10px;color:var(--ink);font-weight:600} /* a long name wraps beside its arrow */
 .crumbs li+li::before{content:"";display:inline-block;width:6px;height:6px;margin:0 12px 1px 9px;border:solid var(--mute);border-width:1.5px 1.5px 0 0;transform:rotate(45deg);vertical-align:middle;opacity:.7}
 .crumbs a{padding:10px 0}
 .crumbs a:hover{color:var(--green);text-decoration:underline;text-underline-offset:4px}
@@ -256,6 +259,11 @@ html[data-lang="gu"] .faq summary{line-height:1.6}
 .nf{padding:80px 0 20px;max-width:36em;min-height:50vh}
 .nf .acts{margin-top:24px}
 .nf p{margin-top:12px;color:var(--mute)}
+.nf .others{margin-top:40px}
+/* injuries page: first aid under the heading */
+.firstaid{padding:20px var(--pad)}
+.firstaid h2{font:600 20px/1.3 var(--f);color:var(--ink);margin-bottom:12px}
+html[data-lang="gu"] .firstaid h2{line-height:1.48}
 
 /* phones: the call bar covers the bottom of the page, so the footer gets the room under it */
 @media (max-width:939px){
@@ -263,7 +271,7 @@ html[data-lang="gu"] .faq summary{line-height:1.6}
   footer .list a{padding:10px 0} /* 44px touch targets */
   footer .list.two{display:grid;grid-template-columns:1fr 1fr;column-gap:20px;align-items:start}
   footer .list.two .fh{grid-column:1/-1}
-  .hero .acts{display:none} /* the same two buttons are always on screen in the call bar */
+  .hero .acts,.nf .call{display:none} /* the same buttons are always on screen in the call bar */
   footer .list .fh{margin-bottom:0}
 }
 @media (max-width:599px){
@@ -273,8 +281,8 @@ html[data-lang="gu"] .faq summary{line-height:1.6}
   .acts{display:flex;flex-wrap:wrap;gap:12px}
   .g4{grid-template-columns:1fr 1fr}
   .txg{grid-template-columns:1fr 1fr}
-  .doc-card.has-photo{grid-template-columns:200px 1fr;gap:28px;align-items:center}
-  .doc-card .portrait{width:auto}
+  .doc-card.has-photo{display:grid;grid-template-columns:200px 1fr;gap:28px;align-items:center}
+  .doc-card .portrait{width:auto;float:none;margin:0}
   .g3{grid-template-columns:1fr 1fr}
   .glance{grid-template-columns:1fr 1fr}
   .glance div{padding:18px var(--pad);display:block}
@@ -293,7 +301,7 @@ html[data-lang="gu"] .faq summary{line-height:1.6}
 @media (min-width:768px) and (max-width:939px){
   .eye text{font-size:27px}
   .hero{grid-template-columns:1fr 1.1fr;gap:32px}
-  .doc-page .hero-t:has(.portrait){grid-template-columns:1fr 260px;align-items:center}
+  .doc-page .hero-t:has(.portrait){grid-template-columns:1fr 260px;align-items:start}
   .doc-page .hero-t .portrait{width:auto;order:0}
 }
 @media (min-width:940px){
@@ -312,7 +320,7 @@ html[data-lang="gu"] .faq summary{line-height:1.6}
   .doc-card.has-photo{grid-template-columns:220px 1fr;gap:36px}
   .doc-card:not(.has-photo) .facts{grid-template-columns:1.25fr 1fr 1.25fr;gap:0 32px;margin-top:28px;padding-top:22px}
   .doc-card:not(.has-photo) .facts div{border:0;padding:0}
-  .doc-page .hero-t:has(.portrait){grid-template-columns:1fr 360px;align-items:center}
+  .doc-page .hero-t:has(.portrait){grid-template-columns:1fr 360px;align-items:start}
   .doc-page .hero-t .portrait{width:auto;order:0}
   #clinic .g4{grid-template-columns:1fr 1fr}
   .hero .fig{max-width:none}
@@ -338,6 +346,8 @@ html[data-lang="gu"] .faq summary{line-height:1.6}
   .steps li+li{border-left:1px solid var(--line)}
   .others{grid-template-columns:repeat(5,1fr)}
   .others a{flex-direction:column;align-items:flex-start;gap:12px;padding:20px}
+  .nf .others{grid-template-columns:1fr 1fr}
+  .nf .others a{flex-direction:row;align-items:center;gap:14px;padding:14px 18px}
   .menu{display:none}
 }
 @media (min-width:940px){

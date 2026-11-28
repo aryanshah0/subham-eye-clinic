@@ -21,8 +21,8 @@ const HOME_TITLE: L = {
   en: "Subham Eye Clinic, Jamnagar — Dr. Rajeev Shah, Eye Surgeon",
 };
 const HOME_DESC: L = {
-  gu: "જામનગરમાં ડૉ. રાજીવ શાહ (MBBS, DOMS)નું આંખનું ક્લિનિક, ૨૦૦૨થી: મોતિયાનું ઓપરેશન, ઝામર, ડાયાબિટીસમાં આંખની તપાસ અને ૨૪×૭ આંખની ઇમરજન્સી. ફોન 0288 256 3274.",
-  en: "Eye clinic of Dr. Rajeev Shah (MBBS, DOMS) in Jamnagar since 2002: cataract surgery, glaucoma, diabetic eye check-ups and 24×7 eye emergencies. Call 0288 256 3274.",
+  gu: "જામનગરમાં ડૉ. રાજીવ શાહનું આંખનું ક્લિનિક, ૨૦૦૨થી. ફોન 0288 256 3274. મોતિયાનું ઓપરેશન, ઝામર, ડાયાબિટીસમાં આંખની તપાસ અને ૨૪×૭ આંખની ઇમરજન્સી.",
+  en: "Dr. Rajeev Shah’s eye clinic in Jamnagar since 2002. Call 0288 256 3274. Cataract surgery, glaucoma, diabetic eye check-ups and 24×7 eye emergencies.",
 };
 const BRAND: L = { gu: "સુભમ્ આઈ ક્લિનિક", en: "Subham Eye Clinic" };
 
