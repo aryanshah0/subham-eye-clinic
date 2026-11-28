@@ -219,7 +219,6 @@ export const TREATMENTS: Treatment[] = [
     sections: [
       {
         h: { gu: "ક્લિનિકમાં તપાસ", en: "The check-up at the clinic" },
-        photo: "tests",
         p: {
           gu: "ડૉ. શાહ રેટિનાની તપાસ કરે છે અને જરૂર પડે તો ફંડસ કેમેરાથી પડદાના ફોટા તથા OCT સ્કેન કરે છે, જેમાં રેટિનાનાં પડ વિગતે દેખાય છે.",
           en: "Dr. Shah examines the retina and, where needed, takes retina photographs with the fundus camera and an OCT scan, which shows the layers of the retina in detail.",

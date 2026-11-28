@@ -104,7 +104,6 @@ export const UI = t(
     docPageDesc: "ડૉ. રાજીવ શાહ, MBBS, DOMS: ૩૦ વર્ષથી વધુ સમયથી જામનગરમાં આંખના સર્જન. સુભમ્ આઈ ક્લિનિકમાં મોતિયો, ઝામર, ટેરીજીયમ અને આંખની ઇજાનાં ઓપરેશન. ફોન 0288 256 3274.",
     memK: "સભ્યપદ",
     memV: "APACRS (Asia‑Pacific Association of Cataract and Refractive Surgeons)",
-    opsNote: "બધાં ઓપરેશન ક્લિનિકના પોતાના ઓપરેશન થિયેટરમાં થાય છે.",
     docMore: "ડૉ. શાહ વિશે વધુ",
   },
   {
@@ -205,7 +204,6 @@ export const UI = t(
     docPageDesc: "Dr. Rajeev Shah, MBBS, DOMS: eye surgeon in Jamnagar for over 30 years. Cataract, glaucoma, pterygium and eye-injury surgery at Subham Eye Clinic. Call 0288 256 3274.",
     memK: "Membership",
     memV: "APACRS (Asia‑Pacific Association of Cataract and Refractive Surgeons)",
-    opsNote: "All operations are done in the clinic’s own operation theatre.",
     docMore: "More about Dr. Shah",
   },
 );

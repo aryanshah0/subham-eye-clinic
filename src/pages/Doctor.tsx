@@ -41,7 +41,7 @@ export function Doctor({ lang }: { lang: Lang }) {
 
       {portrait && <dl className="card glance">{facts.map(([k, v]) => <div key={k}><dt className="label">{k}</dt><dd>{v}</dd></div>)}</dl>}
 
-      <Section id="tx" title={L.txTitle} sub={L.opsNote}>
+      <Section id="tx" title={L.txTitle} sub={L.txSub}>
         <div className="g3 txg">
           {TREATMENTS.map((t) => (
             <a key={t.slug} className="card tcard" href={href(treatmentPath(lang, t))}>
