@@ -9,10 +9,10 @@ import { EyeDiagram } from "../components/EyeDiagram";
 export function Home({ lang }: { lang: Lang }) {
   const L = UI[lang], on = SITE.photos;
   const photos = [
-    { file: "consult", alt: L.altConsult, caption: L.phConsult },
+    ...(on.tests ? [{ file: "tests", alt: L.altTests, caption: L.phTests }] : [{ file: "consult", alt: L.altConsult, caption: L.phConsult }]),
     ...(on.ot ? [{ file: "ot", alt: L.altOT, caption: L.phOT }] : []),
     ...(on.waiting ? [{ file: "waiting", alt: L.altWait, caption: L.phWait }] : []),
-    ...(on.building ? [{ file: "building", alt: L.phBldg, caption: L.phBldg }] : []),
+    ...(on.building ? [{ file: "building", alt: L.altBldg, caption: L.phBldg }] : []),
   ];
   return (
     <>
