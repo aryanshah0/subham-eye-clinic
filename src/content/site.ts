@@ -18,7 +18,7 @@ export const SITE = {
   // Embed by coordinates: a plain pin, without Google's place card (which shows a star rating, not allowed under the NMC rules).
   mapEmbed: "https://maps.google.com/maps?q=22.465287,70.0573347&z=17&output=embed",
   geo: { lat: 22.465287, lng: 70.0573347 },
-  regNo: "G-13342",
+  regNo: "G-20697", // Gujarat Medical Council, registered March 1993 (NMC Indian Medical Register, checked 2026-11-28; G-13342 was wrong: another doctor's number)
   openedYear: 2002,
   address: {
     street: "2 Shri Nivas Colony, Opp. Jay Cable, Summair Club Road",
