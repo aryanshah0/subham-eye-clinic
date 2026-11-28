@@ -52,12 +52,11 @@ function Footer({ lang }: { lang: Lang }) {
   return (
     <footer><div className="wrap">
       <div className="cols">
-        <div className="contact"><b>{L.brand}</b><Tx k="address" lang={lang} /><a href={`tel:${SITE.phoneTel}`}><b>{SITE.phone}</b></a><a href={`mailto:${SITE.email}`}>{SITE.email}</a></div>
+        <div className="contact"><b>{L.brand}</b><Tx k="address" lang={lang} /><a href={`tel:${SITE.phoneTel}`}><b>{SITE.phone}</b></a><a href={`mailto:${SITE.email}`}>{SITE.email}</a><a href={href(doctorPath(lang))}>{L.navDoc}</a></div>
         <div className="list two"><p className="fh">{L.navTx}</p>
           {TREATMENTS.map((t) => <a key={t.slug} href={href(treatmentPath(lang, t))}>{t.name[lang]}</a>)}
         </div>
         <div className="list"><p className="fh">{L.footVisit}</p>
-          <a href={href(doctorPath(lang))}>{L.navDoc}</a>
           {[["your-visit", L.visTitle], ["visit", L.navVisit]].map(([id, label]) => <a key={id} href={href(homePath(lang)) + "#" + id}>{label}</a>)}
         </div>
       </div>

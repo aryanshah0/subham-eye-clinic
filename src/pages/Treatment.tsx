@@ -46,7 +46,7 @@ export function Treatment({ lang, t }: { lang: Lang; t: T }) {
           </OpenStatus>
           {firstAid?.list && <section className="card firstaid"><h2>{firstAid.h[lang]}</h2><List items={firstAid.list[lang]} /></section>}
         </div>
-        <EyeDiagram lang={lang} start={t.part} interactive={false} noteText={t.partNote[lang]} />
+        <EyeDiagram lang={lang} start={t.part} interactive={false} />
       </div>
 
       <dl className="card glance">

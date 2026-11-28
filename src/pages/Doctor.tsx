@@ -3,11 +3,10 @@
 // no surgery counts (NMC rules). The portrait appears once SITE.photos.portrait is switched on.
 import { SITE, type Lang } from "../content/site";
 import { UI } from "../content/ui";
-import { TREATMENTS } from "../content/treatments";
-import { href, homePath, treatmentPath } from "../routes";
-import { CallButton, DirectionsButton, Icon, Phones, Photo, Section } from "../components/ui";
+import { href, homePath } from "../routes";
+import { CallButton, DirectionsButton, Phones, Photo, Section } from "../components/ui";
 import { OpenStatus } from "../components/OpenStatus";
-import { Visit } from "./Home";
+import { TxRows, Visit } from "./Home";
 
 export function Doctor({ lang }: { lang: Lang }) {
   const L = UI[lang], portrait = SITE.photos.portrait;
@@ -42,14 +41,7 @@ export function Doctor({ lang }: { lang: Lang }) {
       {portrait && <dl className="card glance">{facts.map(([k, v]) => <div key={k}><dt className="label">{k}</dt><dd>{v}</dd></div>)}</dl>}
 
       <Section id="tx" title={L.txTitle} sub={L.txSub}>
-        <div className="g3 txg">
-          {TREATMENTS.map((t) => (
-            <a key={t.slug} className="card tcard" href={href(treatmentPath(lang, t))}>
-              <Icon id={t.icon} className="ico" />
-              <div><h3>{t.name[lang]}</h3><p>{t.card[lang]}</p></div>
-            </a>
-          ))}
-        </div>
+        <TxRows lang={lang} brief />
       </Section>
 
       <Visit lang={lang} />

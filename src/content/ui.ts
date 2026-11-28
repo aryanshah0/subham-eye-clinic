@@ -87,7 +87,7 @@ export const UI = t(
     sunday: "રવિવાર",
     closed: "બંધ",
     emergency: "આંખની ઇમરજન્સી",
-    always: "૨૪×૭, એ જ નંબર",
+    always: "૨૪×૭, 0288 256 3274 પર",
     address: "૨, શ્રી નિવાસ કોલોની, જય કેબલ સામે,<br>સુમેર ક્લબ રોડ, જામનગર\u00a0૩૬૧૦૦૫",
     addressLine: "૨, શ્રી નિવાસ કોલોની, જય કેબલ સામે, સુમેર ક્લબ રોડ, જામનગર\u00a0૩૬૧૦૦૫",
     appt: "એપોઇન્ટમેન્ટ ફોનથી.",
@@ -110,6 +110,7 @@ export const UI = t(
     memK: "સભ્યપદ",
     memV: "APACRS (Asia‑Pacific Association of Cataract and Refractive Surgeons)",
     docMore: "ડૉ. શાહ વિશે વધુ",
+    docShort: "૩૦ વર્ષથી વધુ સમયથી જામનગરમાં આંખના સર્જન, ૨૦૦૨થી સુભમ્ આઈ ક્લિનિક ચલાવે છે.",
   },
   {
     brand: "Subham Eye Clinic",
@@ -193,7 +194,7 @@ export const UI = t(
     sunday: "Sunday",
     closed: "Closed",
     emergency: "Eye emergencies",
-    always: "24×7, same number",
+    always: "24×7 on 0288 256 3274",
     address: "2 Shri Nivas Colony, opp. Jay Cable,<br>Summair Club Road, Jamnagar\u00a0361005",
     addressLine: "2 Shri Nivas Colony, opp. Jay Cable, Summair Club Road, Jamnagar\u00a0361005",
     appt: "Appointments by phone.",
@@ -215,6 +216,7 @@ export const UI = t(
     memK: "Membership",
     memV: "APACRS (Asia‑Pacific Association of Cataract and Refractive Surgeons)",
     docMore: "More about Dr. Shah",
+    docShort: "Eye surgeon in Jamnagar for over 30 years, running Subham Eye Clinic since 2002.",
   },
 );
 

@@ -74,7 +74,7 @@ export function EyeDiagram({ lang, start = "lens", interactive = true, noteText 
             {CHIP_TREATMENTS.map((t) => <p key={t.slug} aria-hidden={part !== t.part}>{t.partNote[lang]} <a href={href(treatmentPath(lang, t))} aria-label={`${L.more}: ${t.name[lang]}`}>{L.more}</a></p>)}
           </div>
         </>
-      ) : <div className="info one"><p>{noteText}</p></div>}
+      ) : noteText ? <div className="info one"><p>{noteText}</p></div> : null}
     </figure>
   );
 }
