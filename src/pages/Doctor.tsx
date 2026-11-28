@@ -11,10 +11,10 @@ import { Visit } from "./Home";
 
 export function Doctor({ lang }: { lang: Lang }) {
   const L = UI[lang], portrait = SITE.photos.portrait;
-  const facts = [[L.qualsK, L.qualsV], [L.regK, L.regV], [L.langK, L.langV], [L.expK, L.expV], [L.memK, L.memV]];
-  const ops = [L.ops1, L.ops2, L.ops3, L.ops4];
+  // Languages and experience are in the intro paragraph; the operations are the treatment cards below.
+  const facts = [[L.qualsK, L.qualsV], [L.regK, L.regV], [L.memK, L.memV], [L.campsK, L.campsV]];
   return (
-    <div className="t-page">
+    <div className="t-page doc-page">
       <nav className="crumbs" aria-label={lang === "gu" ? "તમે અહીં છો" : "Breadcrumb"}>
         <ol>
           <li><a href={href(homePath(lang))}>{L.home}</a></li>
@@ -35,21 +35,13 @@ export function Doctor({ lang }: { lang: Lang }) {
           </OpenStatus>
         </div>
         {portrait
-          ? <Photo file="portrait" alt={L.doctor} w={800} h={1000} className="portrait" />
+          ? <Photo file="portrait" alt={L.doctor} w={706} h={706} className="portrait" />
           : <div className="card doc-facts"><dl className="facts">{facts.map(([k, v]) => <div key={k}><dt className="label">{k}</dt><dd>{v}</dd></div>)}</dl></div>}
       </div>
 
       {portrait && <dl className="card glance">{facts.map(([k, v]) => <div key={k}><dt className="label">{k}</dt><dd>{v}</dd></div>)}</dl>}
 
-      <div className="rows">
-        <section className="row"><h2>{L.opsTitle}</h2><div className="row-b">
-          <ul className="signs">{ops.map((x) => <li key={x}>{x}</li>)}</ul>
-          <p className="note">{L.opsNote}</p>
-        </div></section>
-        <section className="row"><h2>{L.campsK}</h2><div className="row-b"><p>{L.campsV}</p></div></section>
-      </div>
-
-      <Section id="tx" title={L.txTitle} sub={L.txSub}>
+      <Section id="tx" title={L.txTitle} sub={L.opsNote}>
         <div className="g3 txg">
           {TREATMENTS.map((t) => (
             <a key={t.slug} className="card tcard" href={href(treatmentPath(lang, t))}>

@@ -125,7 +125,7 @@ html[lang="en"] .lang a[lang="gu"]{font-family:"Anek Switch","Noto Sans Gujarati
 
 /* ---------- treatment cards ---------- */
 .tcard{display:grid;grid-template-columns:40px 1fr;gap:16px;align-items:start;align-content:start}
-.tcard h3::after,.others span::after{content:"\00a0→";display:inline-block;color:var(--green-2);transition:transform .2s}
+.tcard h3::after,.others span::after{content:"\00a0→";display:inline;color:var(--green-2);transition:transform .2s}
 .tcard p{font-size:16px;color:var(--mute);margin-top:4px}
 
 /* ---------- photos ---------- */
@@ -142,9 +142,12 @@ html[lang="en"] .lang a[lang="gu"]{font-family:"Anek Switch","Noto Sans Gujarati
 .facil span{display:block;font-size:16px;color:var(--mute);margin-top:2px}
 
 /* ---------- doctor ---------- */
-.portrait img{aspect-ratio:4/5}
-.doc{display:grid;gap:var(--gap)}
-.doc-card > p{font-size:20px;line-height:1.6;color:var(--ink);max-width:52em}
+/* his own outdoor photo: square, a little calmer in colour so the blue shirt doesn't shout against the cream */
+.portrait img{aspect-ratio:1;filter:saturate(.9)}
+.doc-card.has-photo{display:grid;gap:22px}
+.doc-card .portrait{width:160px}
+.doc-page .hero-t .portrait{width:160px;order:-1}
+.doc-body > p{font-size:20px;line-height:1.6;color:var(--ink);max-width:52em}
 .doc-more{margin-top:22px}
 .doc-more a{font-weight:600;color:var(--green);padding:10px 0}
 .doc-more a::after{content:"\00a0→";color:var(--green-2)}
@@ -152,7 +155,7 @@ html[lang="en"] .lang a[lang="gu"]{font-family:"Anek Switch","Noto Sans Gujarati
 .doc-facts{align-self:center}
 .doc-facts .facts{margin-top:0;border-top:0}
 .doc-facts .facts div:first-child{padding-top:0}
-html[data-lang="gu"] .doc-card > p{line-height:1.75}
+html[data-lang="gu"] .doc-body > p{line-height:1.75}
 .facts{display:grid;gap:0;margin-top:20px;border-top:1px solid var(--line)}
 .facts div{padding:14px 0;border-bottom:1px solid var(--line)}
 .facts div:last-child{border-bottom:0;padding-bottom:0}
@@ -269,7 +272,8 @@ html[data-lang="gu"] .faq summary{line-height:1.6}
   .acts{display:flex;flex-wrap:wrap;gap:12px}
   .g4{grid-template-columns:1fr 1fr}
   .txg{grid-template-columns:1fr 1fr}
-  .portrait{max-width:340px}
+  .doc-card.has-photo{grid-template-columns:200px 1fr;gap:28px;align-items:center}
+  .doc-card .portrait{width:auto}
   .g3{grid-template-columns:1fr 1fr}
   .glance{grid-template-columns:1fr 1fr}
   .glance div{padding:18px var(--pad);display:block}
@@ -288,6 +292,8 @@ html[data-lang="gu"] .faq summary{line-height:1.6}
 @media (min-width:768px) and (max-width:939px){
   .eye text{font-size:27px}
   .hero{grid-template-columns:1fr 1.1fr;gap:32px}
+  .doc-page .hero-t:has(.portrait){grid-template-columns:1fr 260px;align-items:center}
+  .doc-page .hero-t .portrait{width:auto;order:0}
 }
 @media (min-width:940px){
   footer .cols > :nth-child(2){grid-column:auto;grid-row:auto}
@@ -302,10 +308,12 @@ html[data-lang="gu"] .faq summary{line-height:1.6}
   .facil{display:grid;grid-template-columns:1fr 1fr}
   .facil > div:nth-child(2){border-top:0}
   .facil > div:nth-child(odd){border-right:1px solid var(--line)}
-  .doc.has-photo{grid-template-columns:300px 1fr}
-  .portrait{max-width:none}
-  .doc:not(.has-photo) .facts{grid-template-columns:1.25fr 1fr 1.25fr;gap:0 32px;margin-top:28px;padding-top:22px}
-  .doc:not(.has-photo) .facts div{border:0;padding:0}
+  .doc-card.has-photo{grid-template-columns:220px 1fr;gap:36px}
+  .doc-card:not(.has-photo) .facts{grid-template-columns:1.25fr 1fr 1.25fr;gap:0 32px;margin-top:28px;padding-top:22px}
+  .doc-card:not(.has-photo) .facts div{border:0;padding:0}
+  .doc-page .hero-t:has(.portrait){grid-template-columns:1fr 360px;align-items:center}
+  .doc-page .hero-t .portrait{width:auto;order:0}
+  #clinic .g4{grid-template-columns:1fr 1fr}
   .hero .fig{max-width:none}
   .txg{grid-template-columns:repeat(3,1fr)}
   .visit{align-items:stretch}
@@ -317,6 +325,11 @@ html[data-lang="gu"] .faq summary{line-height:1.6}
   .glance div:last-child:nth-child(odd){grid-column:auto}
   .glance div{border-top:0}
   .glance div+div{border-left:1px solid var(--line)}
+  /* his page: four facts read better as a 2×2 block than as four narrow columns */
+  .doc-page .glance{grid-auto-flow:row;grid-template-columns:1fr 1fr}
+  .doc-page .glance div+div{border-left:0}
+  .doc-page .glance div:nth-child(n+3){border-top:1px solid var(--line)}
+  .doc-page .glance div:nth-child(even){border-left:1px solid var(--line)}
   .rows{margin-top:36px}
   .row{grid-template-columns:1fr 2.1fr;gap:56px;padding:48px 0}
   .steps{grid-template-columns:repeat(3,1fr)}
@@ -350,7 +363,7 @@ html[data-lang="gu"] .faq summary{line-height:1.6}
 /* Printing (a patient may print a page or save it as PDF): text, hours and address only */
 @media print{
   .top{position:static;backdrop-filter:none}.nav,.lang,.menu,.dock,.mapcard,.fig,.others,.skip,.photo,.acts,.crumbs,.st{display:none!important}
-  .hero,.row,.g2,.doc{display:block!important}
+  .hero,.row,.g2,.doc-card{display:block!important}
   .t-page > section:last-child{display:none}
   body{background:#fff;font-size:12pt}.hero,.hero-t{padding-top:12px}.card{border-color:#bbb;break-inside:avoid}
   .row{padding:14px 0;break-inside:avoid}section{padding-top:24px}

@@ -29,8 +29,8 @@ export const SITE = {
   },
   // Photos shot at the clinic. Set to true after adding public/photos/portrait.jpg (4:5) or building.jpg (4:3);
   // until then the page simply has no empty slot for them.
-  // building.jpg and tests.jpg (3:2, 1200×800) are from 28 Nov 2026; the old consult.jpg stays on the treatment pages only.
-  // portrait.jpg: Dr. Shah's own photo sent 28 Nov 2026 (4:5 crop, 688×860); a white-coat photo can replace it later.
+  // building.jpg and tests.jpg are 3:2 crops of 28 Nov 2026 photos; the 2020 consult.jpg (covered machines) was dropped.
+  // portrait.jpg: Dr. Shah's own photo sent 28 Nov 2026 (square crop, 706×706); a white-coat photo can replace it later.
   // waiting.jpg: the owner's Dec 2020 Google listing photo, 3:2 crop of the 1152×544 original (user's choice, 28 Nov 2026).
   // ot.jpg (operating microscope, 3:2) and kerato.jpg (keratometer, eye-tests page) are from 28 Nov 2026; the phaco machine is left out (worn cover).
   photos: { portrait: true as boolean, building: true as boolean, tests: true as boolean, ot: true as boolean, waiting: true as boolean },

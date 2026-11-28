@@ -9,7 +9,7 @@ import { EyeDiagram } from "../components/EyeDiagram";
 export function Home({ lang }: { lang: Lang }) {
   const L = UI[lang], on = SITE.photos;
   const photos = [
-    ...(on.tests ? [{ file: "tests", alt: L.altTests, caption: L.phTests }] : [{ file: "consult", alt: L.altConsult, caption: L.phConsult }]),
+    ...(on.tests ? [{ file: "tests", alt: L.altTests, caption: L.phTests }] : []),
     ...(on.ot ? [{ file: "ot", alt: L.altOT, caption: L.phOT }] : []),
     ...(on.waiting ? [{ file: "waiting", alt: L.altWait, caption: L.phWait }] : []),
     ...(on.building ? [{ file: "building", alt: L.altBldg, caption: L.phBldg }] : []),
@@ -43,14 +43,13 @@ export function Home({ lang }: { lang: Lang }) {
       </Section>
 
       <Section id="doc" title={L.doctor} sub={L.docRole}>
-        <div className={"doc" + (SITE.photos.portrait ? " has-photo" : "")}>
-          {SITE.photos.portrait && <Photo file="portrait" alt={L.doctor} w={800} h={1000} className="portrait" />}
-          <div className="card doc-card">
+        <div className={"card doc-card" + (SITE.photos.portrait ? " has-photo" : "")}>
+          {SITE.photos.portrait && <Photo file="portrait" alt={L.doctor} w={706} h={706} className="portrait" />}
+          <div className="doc-body">
             <p>{L.docBody}</p>
             <dl className="facts">
               <div><dt className="label">{L.qualsK}</dt><dd>{L.qualsV}</dd></div>
               <div><dt className="label">{L.regK}</dt><dd>{L.regV}</dd></div>
-              <div><dt className="label">{L.campsK}</dt><dd>{L.campsV}</dd></div>
             </dl>
             <p className="doc-more"><a href={href(doctorPath(lang))}>{L.docMore}</a></p>
           </div>
