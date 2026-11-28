@@ -11,7 +11,7 @@ import { Visit } from "./Home";
 
 export function Doctor({ lang }: { lang: Lang }) {
   const L = UI[lang], portrait = SITE.photos.portrait;
-  const facts = [[L.qualsK, L.qualsV], [L.regK, L.regV], [L.langK, L.langV], [L.expK, L.expV]];
+  const facts = [[L.qualsK, L.qualsV], [L.regK, L.regV], [L.langK, L.langV], [L.expK, L.expV], [L.memK, L.memV]];
   const ops = [L.ops1, L.ops2, L.ops3, L.ops4];
   return (
     <div className="t-page">

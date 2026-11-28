@@ -100,6 +100,7 @@ const doctor = {
       recognizedBy: { "@type": "Organization", name: "Gujarat Medical Council" } },
   ],
   knowsLanguage: ["en", "gu", "hi"],
+  memberOf: { "@type": "Organization", name: "Asia-Pacific Association of Cataract and Refractive Surgeons", alternateName: "APACRS" },
 };
 // alternateName ends with our own address: Google's documented remedy when it shows the parent domain's name
 // ("Cloudflare", because of pages.dev) as the site name in search results.
